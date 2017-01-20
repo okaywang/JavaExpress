@@ -1,3 +1,4 @@
 rootProject.name = 'JaveExpress'
 include 'proxy'
+include 'proxy-spring'
 
