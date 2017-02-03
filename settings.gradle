@@ -3,4 +3,5 @@ include 'proxy'
 include 'proxy-spring'
 include 'collections'
 include 'gc'
+include 'fn'
 
