@@ -8,8 +8,11 @@ public class App {
         System.setOut(System.err);
 
         HelloService service = new HelloServiceImpl();
+        service.sayHello("lucy");
+
         DynamicProxy proxy = new DynamicProxy();
         service = (HelloService) proxy.bind(service, new Class[]{HelloService.class});
         service.sayHello("wgj");
+        
     }
 }
