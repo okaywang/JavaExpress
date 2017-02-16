@@ -1,18 +1,21 @@
+import java.util.Arrays;
 import java.util.Vector;
+import java.util.stream.Stream;
 
 /**
  * Created by wgj on 2017/1/21.
  */
 public class App {
     public static void main(String[] args) {
-        System.out.printf("33");
-        Vector<String> vector = new Vector<String>();
-        vector.add("1111");
-        vector.add("aaa");
-        vector.forEach(System.out::println);
-        vector.forEach(App::P);
+        Arrays.asList("wgj","ljg","lw").forEach(System.out::println);
+        
+        System.out.println(  Stream.generate(Math::random).limit(10).sorted().reduce(10d,Double::sum));
+        //Arrays.stream(App.class.getMethods()).map((x) -> x.getReturnType().getName()).forEach(App::P);
     }
 
+    public int p2(){
+return 3;
+    }
     public static void P(String str)
     {
         System.err.println(str);
