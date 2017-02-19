@@ -9,3 +9,6 @@ include 'myservlet'
 include 'myservletmvc'
 include 'spring'
 include 'demos'
+include 'commons-langs'
+include 'jetty-demo'
+

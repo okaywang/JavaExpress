@@ -1,5 +1,6 @@
 import java.lang.ref.ReferenceQueue;
 import java.lang.ref.SoftReference;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,20 +9,14 @@ import java.util.List;
  */
 public class App {
     public static void main(String[] args) {
-        ReferenceQueue<MyObject> queue = new ReferenceQueue<MyObject>();
-        SoftReference<MyObject> softReference = new SoftReference<MyObject>(new MyObject(), queue);
-        System.out.println(softReference.get());
+        ThreadLocal<MyObject> tl1 = new ThreadLocal<MyObject>();
+        ThreadLocal<String> tl2 = new ThreadLocal<String>();
+        tl1.set(new MyObject());
+        tl2.set(new String("vvvvvvvvvvvvvvvvv"));
+        System.out.println(tl1.get());
+        System.out.println(tl2.get());
+        tl1 = null;
         System.gc();
-        System.out.println(softReference.get());
-
-       List<byte[]> items = new ArrayList<byte[]>();
-        while (true)
-        {
-            System.out.println(softReference.get());
-            byte[] b = new byte[99999999];
-           items.add(b);
-        }
-
-
+        System.out.println("over");
     }
 }
