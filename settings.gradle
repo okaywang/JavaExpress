@@ -13,4 +13,5 @@ include 'commons-langs'
 include 'jetty-demo'
 include 'zktest'
 include 'threads'
+include 'thrift'
 
