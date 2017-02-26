@@ -1,6 +1,6 @@
-package di;
+package di.ctxxml;
 
-import di.hello.MessagePrinter;
+import di.ctxxml.hello.MessagePrinter;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

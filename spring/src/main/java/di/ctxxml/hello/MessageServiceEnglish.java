@@ -1,4 +1,4 @@
-package di.hello;
+package di.ctxxml.hello;
 
 /**
  * foo...Created by wgj on 2017/2/12.
@@ -6,6 +6,6 @@ package di.hello;
 public class MessageServiceEnglish implements MessageService {
     @Override
     public String getMessage() {
-        return "di.hello my dear";
+        return "di.ctxxml.hello my dear";
     }
 }

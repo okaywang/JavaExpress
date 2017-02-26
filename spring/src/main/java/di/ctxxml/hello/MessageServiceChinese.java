@@ -1,4 +1,4 @@
-package di.hello;
+package di.ctxxml.hello;
 
 /**
  * foo...Created by wgj on 2017/2/12.
