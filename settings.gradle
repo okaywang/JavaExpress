@@ -12,4 +12,5 @@ include 'demos'
 include 'commons-langs'
 include 'jetty-demo'
 include 'zktest'
+include 'threads'
 
