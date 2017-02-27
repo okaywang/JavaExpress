@@ -11,5 +11,9 @@ include 'spring'
 include 'demos'
 include 'commons-langs'
 include 'jetty-demo'
-include 'unirest'
+include 'zktest'
+include 'threads'
+include 'thrift'
+include 'thrift-web'
+
 

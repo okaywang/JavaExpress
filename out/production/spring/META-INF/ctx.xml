@@ -3,9 +3,9 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="
 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <bean id="messageServiceChinese" class="di.hello.MessageServiceChinese"/>
-    <bean id="messageServiceEnglish" class="di.hello.MessageServiceEnglish"/>
-    <bean id="messagePrinter" class="di.hello.MessagePrinter">
-        <constructor-arg ref="messageServiceEnglish"/>
+    <bean id="messageServiceChinese" class="di.ctxxml.hello.MessageServiceChinese"/>
+    <bean id="messageServiceEnglish" class="di.ctxxml.hello.MessageServiceEnglish"/>
+    <bean id="messagePrinter" class="di.ctxxml.hello.MessagePrinter">
+        <constructor-arg ref="messageServiceChinese"/>
     </bean>
 </beans>
