@@ -11,4 +11,5 @@ include 'spring'
 include 'demos'
 include 'commons-langs'
 include 'jetty-demo'
+include 'unirest'
 
