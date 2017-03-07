@@ -15,5 +15,5 @@ include 'zktest'
 include 'threads'
 include 'thrift'
 include 'thrift-web'
-
+include 'mykafka'
 
