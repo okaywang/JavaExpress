@@ -17,4 +17,5 @@ include 'thrift'
 include 'thrift-web'
 include 'mykafka'
 include 'mybatis'
+include 'jersey'
 
