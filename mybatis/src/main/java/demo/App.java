@@ -23,11 +23,11 @@ public class App {
         BlogDao mapper = session.getMapper(BlogDao.class);
         System.out.println(mapper.getBlog(7));
 
-        for (int i = 0; i < 10; i++) {
-            Blog blog = new Blog();
-            blog.setBlogName("python11111");
-            System.out.println(mapper.insertBlog(blog));
-        }
+//        for (int i = 0; i < 10; i++) {
+//            Blog blog = new Blog();
+//            blog.setBlogName("python11111");
+//            System.out.println(mapper.insertBlog(blog));
+//        }
 
 
 

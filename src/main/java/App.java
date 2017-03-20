@@ -9,12 +9,13 @@ import java.util.List;
 public class App {
 
     public static void main(String... args) throws IOException {
-        List<String> s = Arrays.asList("aaa","bbbb");
+        Object s = (String)null;
 
-        ArrayList<String> bb;
+        Object i = (Integer)null;
+        Employee e = new Employee();
+        System.out.println(s == i);//true
+        System.out.println(e);
 
-        System.out.println(s);
-        System.out.println(Thread.activeCount());
     }
 }
 
