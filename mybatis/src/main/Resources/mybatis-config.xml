@@ -18,14 +18,23 @@
         <setting name="jdbcTypeForNull" value="OTHER"/>
         <setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString"/>
     </settings>
-    <environments default="development">
-        <environment id="development">
+    <environments default="company">
+        <environment id="company">
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
                 <property name="driver" value="org.postgresql.Driver"/>
                 <property name="url" value="jdbc:postgresql://172.17.5.20:5432/ihrdb"/>
                 <property name="username" value="dev_zhaopin"/>
                 <property name="password" value="zhaopin123"/>
+            </dataSource>
+        </environment>
+        <environment id="home">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="org.postgresql.Driver"/>
+                <property name="url" value="jdbc:postgresql://localhost:5432/ihrdb"/>
+                <property name="username" value="postgres"/>
+                <property name="password" value="111111"/>
             </dataSource>
         </environment>
     </environments>

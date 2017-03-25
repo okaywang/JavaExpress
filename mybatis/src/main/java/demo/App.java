@@ -19,12 +19,15 @@ public class App {
         String resource = "mybatis-config.xml";
         InputStream inputStream = Resources.getResourceAsStream(resource);
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        //sqlSessionFactory.getConfiguration().setDefaultStatementTimeout(2);
+        sqlSessionFactory.getConfiguration();
         SqlSession session = sqlSessionFactory.openSession(true);
         BlogDao mapper = session.getMapper(BlogDao.class);
-        System.out.println(mapper.getBlog(7));
+        System.out.println(mapper.getBlog(1));
 
-//        for (int i = 0; i < 10; i++) {
+//        for (int i = 10; i < 12; i++) {
 //            Blog blog = new Blog();
+//            blog.setId(i);
 //            blog.setBlogName("python11111");
 //            System.out.println(mapper.insertBlog(blog));
 //        }

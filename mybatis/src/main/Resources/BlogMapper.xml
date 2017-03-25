@@ -7,6 +7,6 @@
         select * from Blog where id = #{id}
     </select>
     <insert id="insertBlog" parameterType="demo.Blog">
-        INSERT INTO Blog (blogname) VALUES (#{blog.blogName})
+        INSERT INTO Blog (id,blogName) VALUES (#{blog.id}, #{blog.blogName})
     </insert>
 </mapper>
