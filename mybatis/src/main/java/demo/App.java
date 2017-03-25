@@ -9,21 +9,27 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Enumeration;
 
 /**
  * Created by guojun.wang on 2017/3/7.
  */
 public class App {
     public static void main(String[] args) throws IOException {
+        //System.out.println(BlogTypeEnum.Constellation);
+        //BlogTypeEnum blogTypeEnum = Enum.valueOf(BlogTypeEnum.class, "Finacial");
+
+
         System.out.println("this is mybatis demo");
         String resource = "mybatis-config.xml";
         InputStream inputStream = Resources.getResourceAsStream(resource);
-        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream,"home");
         //sqlSessionFactory.getConfiguration().setDefaultStatementTimeout(2);
         sqlSessionFactory.getConfiguration();
         SqlSession session = sqlSessionFactory.openSession(true);
         BlogDao mapper = session.getMapper(BlogDao.class);
-        System.out.println(mapper.getBlog(1));
+        Blog blog = mapper.getBlog(1);
+        System.out.println(blog);
 
 //        for (int i = 10; i < 12; i++) {
 //            Blog blog = new Blog();

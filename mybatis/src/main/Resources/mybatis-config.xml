@@ -18,7 +18,7 @@
         <setting name="jdbcTypeForNull" value="OTHER"/>
         <setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString"/>
     </settings>
-    <environments default="company">
+    <environments default="home">
         <environment id="company">
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
@@ -38,6 +38,7 @@
             </dataSource>
         </environment>
     </environments>
+
     <mappers>
         <mapper resource="BlogMapper.xml"/>
     </mappers>

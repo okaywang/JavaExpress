@@ -6,6 +6,7 @@ package demo;
 public class Blog {
     private long id;
     private String blogName;
+    private BlogTypeEnum blogType;
 
     public long getId() {
         return id;
@@ -23,11 +24,20 @@ public class Blog {
         this.blogName = blogName;
     }
 
+    public BlogTypeEnum getBlogType() {
+        return blogType;
+    }
+
+    public void setBlogType(BlogTypeEnum blogType) {
+        this.blogType = blogType;
+    }
+
     @Override
     public String toString() {
         return "Blog{" +
                 "id=" + id +
                 ", blogName='" + blogName + '\'' +
+                ", blogType=" + blogType +
                 '}';
     }
 }
