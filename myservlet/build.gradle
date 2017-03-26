@@ -9,7 +9,7 @@ httpPort = 8088
 stopPort = 8089
 stopKey  = 'ss'
 
-sourceCompatibility = 1.5
+sourceCompatibility = 8
 
 repositories {
     mavenCentral()
