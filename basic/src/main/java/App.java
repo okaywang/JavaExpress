@@ -1,4 +1,5 @@
 
+import model.Person;
 import sun.misc.Unsafe;
 
 import java.lang.reflect.Field;
@@ -13,8 +14,11 @@ public class App {
     int i2 = 200;
 
     public static void main(String[] args) throws Exception {
+
+
+
         App test = new App();
-        Thread.sleep(10000);
+        Thread.sleep(1000);
         System.out.println(getInt(test, "i1"));
         System.out.println(getInt(test, "s1"));
         System.out.println(getInt(test, "s2"));

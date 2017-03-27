@@ -1,3 +1,4 @@
+
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
@@ -5,7 +6,7 @@ import java.lang.reflect.Proxy;
 /**
  * Created by wgj on 2017/1/20.
  */
-public class DynamicProxy implements InvocationHandler {
+public class PerformanceProxy implements InvocationHandler {
 
 
     private Object target;
@@ -30,16 +31,14 @@ public class DynamicProxy implements InvocationHandler {
      * @param args -- 方法的参数
      */
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        System.out.println("############我是JDK动态代理################");
         Object result = null;
         //反射方法前调用
         long start = System.currentTimeMillis();
-        System.out.println(method.getName() + " " + args[0] + " start ");
         //反射执行方法  相当于调用target.sayHelllo;
         result = method.invoke(target, args);
         //反射方法后调用.
         long end = System.currentTimeMillis();
-        System.out.println(method.getName() + " end," + (end - start));
+        System.out.println( "PERFORMANCE, takes " + (end - start));
 
         return result;
     }
