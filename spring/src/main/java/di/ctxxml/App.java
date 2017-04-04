@@ -10,6 +10,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class App {
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("META-INF/ctx.xml");
+        //App app = context.getBean(App.class);
+        //System.out.println(app);
         MessagePrinter printer = context.getBean(MessagePrinter.class);
         printer.printMessage();
     }
