@@ -1,6 +1,8 @@
 package configuration;
 
-import javafx.application.Application;
+
+import org.springframework.beans.factory.ListableBeanFactory;
+import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -9,8 +11,18 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
  */
 public class App {
     public static void main(String[] args) {
+        //ListableBeanFactory beanFactory = new DefaultListableBeanFactory();
+
+        //beanFactory.getBean(App.class);
+
         ApplicationContext context = new AnnotationConfigApplicationContext("configuration");
-        ICaptcha captcha = context.getBean(ICaptcha.class);
-        captcha.generate();
+
+        //ICaptcha captcha1 = context.getParentBeanFactory().getBean(ICaptcha.class);
+        ICaptcha captcha2 = (ICaptcha) context.getBean("getCaptcha");
+
+        ICaptcha captcha3 = (ICaptcha) context.getBean("getCaptcha");
+
+        System.out.println(captcha2 == captcha3);
+        captcha2.generate();
     }
 }
