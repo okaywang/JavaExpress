@@ -1,6 +1,7 @@
 package demo;
 
 import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.mapping.Environment;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
@@ -23,13 +24,20 @@ public class App {
         System.out.println("this is mybatis demo");
         String resource = "mybatis-config.xml";
         InputStream inputStream = Resources.getResourceAsStream(resource);
-        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream,"home");
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream, "company");
         //sqlSessionFactory.getConfiguration().setDefaultStatementTimeout(2);
         sqlSessionFactory.getConfiguration();
         SqlSession session = sqlSessionFactory.openSession(true);
+        //Environment environment = new Environment();
+
+        //sqlSessionFactory.getConfiguration().setEnvironment(environment);
         BlogDao mapper = session.getMapper(BlogDao.class);
         Blog blog = mapper.getBlog(1);
+        System.out.println(sqlSessionFactory.getConfiguration().getDatabaseId());
         System.out.println(blog);
+
+
+        org.apache.ibatis.binding.MapperProxy m;
 
 //        for (int i = 10; i < 12; i++) {
 //            Blog blog = new Blog();
@@ -37,7 +45,6 @@ public class App {
 //            blog.setBlogName("python11111");
 //            System.out.println(mapper.insertBlog(blog));
 //        }
-
 
 
         //Blog blog = session.selectOne("demo.BlogDao.getBlog", 2);

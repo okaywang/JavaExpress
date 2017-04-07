@@ -1,3 +1,4 @@
+import org.apache.commons.lang3.RandomUtils;
 import org.apache.commons.lang3.StringUtils;
 
 /**
@@ -8,5 +9,7 @@ public class App {
         String str = StringUtils.leftPad("foobar11111111111111111", 10, '*');
         StringUtils.isEmpty("bb");
         System.out.println(StringUtils.repeat('*', 5));
+
+        System.out.println(RandomUtils.nextInt(10,20));
     }
 }
