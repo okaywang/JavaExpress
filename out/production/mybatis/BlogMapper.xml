@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="demo.BlogDao">
+    <resultMap id="blogMap" type="demo.Blog">
+        <result column="blogtype" property="blogType" javaType="demo.BlogTypeEnum" typeHandler="demo.BlogTypeEnumTypeHandler" />
+    </resultMap>
+    <select id="getBlog" resultMap="blogMap">
+        select * from Blog where id = #{id}
+    </select>
+    <insert id="insertBlog" parameterType="demo.Blog">
+        INSERT INTO Blog (id,blogName) VALUES (#{blog.id}, #{blog.blogName})
+    </insert>
+</mapper>

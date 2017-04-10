@@ -1,8 +1,8 @@
-package configuration;
-
+package aop.configuration;
 
 import org.springframework.beans.factory.ListableBeanFactory;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
+ import aop.configuration.captcha.ICaptcha;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
