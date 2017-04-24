@@ -10,15 +10,28 @@ import java.io.InputStreamReader;
 public class App2 {
     private static final Logger logger = LoggerFactory.getLogger(App2.class);
 
-    protected App2(){
+    protected App2() {
 
     }
+
     public static void main(String[] args) {
 
-        logger.info("this is a info message");
+        print1(1000, 5000, 1000);
+    }
 
-        System.out.println(java.lang.Runtime.getRuntime().availableProcessors());
-        InputStream is;
-        InputStreamReader isr;
+    static void print1(int n, int max, int raw) {
+        System.out.println(n);
+        if (n < max) {
+            print1(2 * n, max, raw);
+        } else {
+            print2(n, raw);
+        }
+    }
+
+    static void print2(int n, int raw) {
+        System.out.println(n);
+        if (n > raw) {
+            print2(n / 2, raw);
+        }
     }
 }
