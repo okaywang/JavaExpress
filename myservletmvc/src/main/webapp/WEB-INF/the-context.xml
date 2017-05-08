@@ -8,7 +8,11 @@
 
     <!--代理配置结束  JfreeChart 配置结束-->
     <context:component-scan base-package="com.zhaopin"/>
-    <mvc:annotation-driven />
+    <mvc:annotation-driven/>
+
+    <mvc:resources mapping="/**" location="/html/" />
+
+
     <bean id="jsonConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
         <property name="prefixJson" value="false"/>
         <property name="supportedMediaTypes" value="application/json"/>

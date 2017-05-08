@@ -10,8 +10,6 @@ import java.util.Properties;
  */
 public class App {
     public static void main(String[] args) {
-
-
         ApplicationContext context = new ClassPathXmlApplicationContext("placeholder/ctx-placeholder.xml");
         JdbcConfig obj = context.getBean(JdbcConfig.class);
         System.out.println(obj);

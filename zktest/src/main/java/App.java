@@ -26,7 +26,8 @@ public class App {
     // 初始化 ZooKeeper 实例
     private void createZKInstance() throws IOException {
         // 连接到ZK服务，多个可以用逗号分割写
-        zk = new ZooKeeper("192.168.112.128:3001,192.168.112.128:3002,192.168.112.128:3003", App.SESSION_TIMEOUT, this.wh);
+        //zk = new ZooKeeper("192.168.112.128:3001,192.168.112.128:3002,192.168.112.128:3003", App.SESSION_TIMEOUT, this.wh);
+        zk = new ZooKeeper("172.17.6.11:2181,172.17.6.12:2181,172.17.6.13:2181", App.SESSION_TIMEOUT, this.wh);
 
     }
 

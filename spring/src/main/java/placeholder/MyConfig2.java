@@ -16,6 +16,9 @@ public class MyConfig2 {
     @Value("${urls.getjob}")
     private String url_getjob;
 
+    @Value("${urls.getjob}")
+    private static String url_getjob_static;
+
     public String getUrl_getjob() {
         return url_getjob;
     }
@@ -30,6 +33,14 @@ public class MyConfig2 {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public static String getUrl_getjob_static() {
+        return url_getjob_static;
+    }
+
+    public static void setUrl_getjob_static(String url_getjob_static) {
+        MyConfig2.url_getjob_static = url_getjob_static;
     }
 
     @PostConstruct

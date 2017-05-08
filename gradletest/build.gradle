@@ -1,0 +1,25 @@
+group 'com.me'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 8
+
+ext{
+    profile = System.getProperty("env") ?: "dev"
+    println "[current profile]:" + profile
+}
+sourceSets {
+    main {
+        resources {
+            srcDirs = ["src/main/resources", "env/$profile"]
+        }
+    }
+}
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}

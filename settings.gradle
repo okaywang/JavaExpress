@@ -23,4 +23,6 @@ include 'mykafka-spring'
 include 'friend'
 include 'known-people'
 include 'asm'
+include 'algorithm'
+include 'gradletest'
 
