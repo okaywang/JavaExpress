@@ -25,4 +25,5 @@ include 'known-people'
 include 'asm'
 include 'algorithm'
 include 'gradletest'
+include 'gradleTest'
 
