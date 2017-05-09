@@ -26,4 +26,5 @@ include 'asm'
 include 'algorithm'
 include 'gradletest'
 include 'gradleTest'
+include 'junitdemo'
 

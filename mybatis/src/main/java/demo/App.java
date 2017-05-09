@@ -24,7 +24,7 @@ public class App {
         System.out.println("this is mybatis demo");
         String resource = "mybatis-config.xml";
         InputStream inputStream = Resources.getResourceAsStream(resource);
-        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream, "home");
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream, "company");
         //sqlSessionFactory.getConfiguration().setDefaultStatementTimeout(2);
         sqlSessionFactory.getConfiguration();
         SqlSession session = sqlSessionFactory.openSession(true);
@@ -36,6 +36,12 @@ public class App {
         System.out.println(sqlSessionFactory.getConfiguration().getDatabaseId());
         System.out.println(blog);
 
+
+        Blog myBlog = new Blog();
+        myBlog.setBlogName("hello1");
+        //myBlog.setBlogType(BlogTypeEnum.Finacial);
+        int id = mapper.insertBlog2(myBlog);
+        System.out.println(id);
 
         org.apache.ibatis.binding.MapperProxy m;
 

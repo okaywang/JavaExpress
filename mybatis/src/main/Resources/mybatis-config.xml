@@ -38,7 +38,7 @@
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
                 <property name="driver" value="org.postgresql.Driver"/>
-                <property name="url" value="jdbc:postgresql://172.17.5.20:5432/ihrdb"/>
+                <property name="url" value="jdbc:postgresql://172.17.5.20:5432/test"/>
                 <property name="username" value="dev_zhaopin"/>
                 <property name="password" value="zhaopin123"/>
             </dataSource>

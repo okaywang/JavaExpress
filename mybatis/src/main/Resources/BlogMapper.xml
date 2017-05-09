@@ -12,7 +12,8 @@
     <select id="search" parameterType="paging.SearchParams" resultMap="blogMap">
         select id,blogname from Blog where blogname like concat('%', #{searchParams.blogName}, '%')
     </select>
-    <insert id="insertBlog" parameterType="demo.Blog">
-        INSERT INTO Blog (id,blogName) VALUES (#{blog.id}, #{blog.blogName})
+    <insert id="insertBlog" parameterType="demo.Blog" useGeneratedKeys="true"
+            keyProperty="entity.id">
+        INSERT INTO Blog (blogname,blogtype) VALUES (#{entity.blogName}, 1)
     </insert>
 </mapper>

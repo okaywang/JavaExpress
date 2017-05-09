@@ -114,9 +114,9 @@ public class App {
 
     private static void addTemplate(TemplateDto dto) throws UnirestException {
         //String url = "http://localhost:8090/template/add";
-        String url = "http://172.17.6.16:8080/template/add";
+        //String url = "http://172.17.6.16:8080/template/add";
         //String url = "http://ihrapi.zpidc.com/template/add";
-
+        String url = "test";
         HttpResponse<Long> response = Unirest.post(url)
                 .header("user-id", String.valueOf(dto.getCreateUserId()))
                 .header("Content-Type", "application/json")

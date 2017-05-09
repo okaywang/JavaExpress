@@ -1,5 +1,7 @@
 package demo;
 
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Param;
 import paging.SearchParams;
 
@@ -13,5 +15,9 @@ public interface BlogDao {
 
     public List<Blog> search(@Param("searchParams") SearchParams searchParams);
 
-    public int insertBlog(@Param("blog") Blog blog);
+    public int insertBlog(@Param("entity") Blog entity);
+
+    @Insert("INSERT INTO Blog (blogname,blogtype) VALUES (#{entity.blogName}, 1)")
+    @Options(useGeneratedKeys = true, keyProperty = "entity.id",keyColumn = "id")
+    public int insertBlog2(@Param("entity") Blog entity);
 }
