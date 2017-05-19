@@ -1,0 +1,5 @@
+projectKey=FooProject
+serverUrl=http://localhost:9000
+dashboardUrl=http://localhost:9000/dashboard/index/FooProject
+ceTaskId=AVv3OvF_EeA6RvU6kXtw
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AVv3OvF_EeA6RvU6kXtw

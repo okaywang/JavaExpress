@@ -12,6 +12,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.DispatcherServlet;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 
 /**
@@ -22,14 +23,14 @@ import java.util.Date;
 @Scope("prototype")
 public class HelloController {
     private int i;
-
-    @RequestMapping(method = RequestMethod.GET, value = "test")
+    //application/json;charset=UTF-8
+    @RequestMapping(method = RequestMethod.GET, value = "test", produces = "text/plain;charset=UTF-8")
     @ResponseBody
-    public String test() {
+    public String test(String name) throws Exception {
         i++;
         javax.servlet.http.HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         //return String.valueOf(i);
-        return "change code 111: the date is : " + new Date().toString();
+        return "your name is " + name;
     }
 
 
@@ -38,5 +39,12 @@ public class HelloController {
     public String addPerson(@RequestBody PersonModel model, BindingResult result) {
         System.out.println("234");
         return "vv";
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "location")
+    @ResponseBody
+    public String uploadLocation(HttpServletRequest request, double lat, double lng) {
+        String strLat = request.getParameter("lat");
+        return strLat + lat + lng;
     }
 }

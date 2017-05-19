@@ -1,6 +1,5 @@
 package reflection;
 
-import org.apache.commons.lang3.reflect.FieldUtils;
 
 import java.lang.reflect.Field;
 
@@ -16,6 +15,5 @@ public class App {
         field.setAccessible(true);
         System.out.println(field.getInt(p));
 
-        System.out.println(FieldUtils.readField(p, "page", true));
     }
 }

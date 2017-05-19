@@ -52,7 +52,8 @@ public class App {
 
     public static void main(String[] args) throws IOException, UnirestException {
         loadBaseData();
-        Map<String, String> templates = loadTemplatesFromExcel();
+        Map<String, String> templates = loadTemplatesFromExcel(51, 100);
+        System.out.println(templates.size());
         for (Map.Entry<String, String> entry : templates.entrySet()) {
             process(entry.getKey(), entry.getValue());
         }
@@ -67,15 +68,17 @@ public class App {
         }
     }
 
-    private static Map<String, String> loadTemplatesFromExcel() throws IOException {
+    private static Map<String, String> loadTemplatesFromExcel(int fromRow, int toRow) throws IOException {
         Map<String, String> templates = new LinkedHashMap<>();
-        String filename = "C:\\Users\\guojun.wang\\Desktop\\jobt.xlsx";
+        //String filename = "C:\\Users\\guojun.wang\\Desktop\\jobt.xlsx";
+        String filename = "C:\\Users\\guojun.wang\\Desktop\\职位模板（240字以内）2期.xlsx";
 
         FileInputStream input = new FileInputStream(new File(filename));  //读取的文件路径
-        XSSFWorkbook wb = new XSSFWorkbook(new BufferedInputStream(input));
+        BufferedInputStream bufferedInputStream = new BufferedInputStream(input);
+        XSSFWorkbook wb = new XSSFWorkbook(bufferedInputStream);
         System.out.println(wb.getNumberOfSheets());
         XSSFSheet xssfSheet = wb.getSheetAt(0);
-        for (int rowNum = 1; rowNum <= 50; rowNum++) {
+        for (int rowNum = fromRow; rowNum <= toRow; rowNum++) {
             XSSFRow xssfRow = xssfSheet.getRow(rowNum);
             if (xssfRow != null) {
                 String subtypeName = getValue(xssfRow.getCell(0));
@@ -114,9 +117,9 @@ public class App {
 
     private static void addTemplate(TemplateDto dto) throws UnirestException {
         //String url = "http://localhost:8090/template/add";
-        //String url = "http://172.17.6.16:8080/template/add";
+        String url = "http://172.17.6.16:8080/template/add";
         //String url = "http://ihrapi.zpidc.com/template/add";
-        String url = "test";
+        //String url = "test";
         HttpResponse<Long> response = Unirest.post(url)
                 .header("user-id", String.valueOf(dto.getCreateUserId()))
                 .header("Content-Type", "application/json")

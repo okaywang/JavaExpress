@@ -1,3 +1,5 @@
+package com.zhaopin;
+
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
@@ -25,6 +27,7 @@ public class StrCrypto {
 
     /**
      * 加密
+     *
      * @param rootCompanyId
      * @param resumeNumber
      * @return
@@ -36,27 +39,26 @@ public class StrCrypto {
         String str = GetEncodedString(encrptedBytes);
         return str;
     }
+
     /**
      * 解密
+     *
      * @param encrptedString
-     * @return:返回格式：（公司编号，简历编号）;
      * @throws Exception
+     * @return:返回格式：（公司编号，简历编号）;
      */
-    public String decrypt(String encrptedString) throws Exception
-    {
+    public String decrypt(String encrptedString) throws Exception {
         byte[] encrptedBytes = GetBytesFromEncodedString(encrptedString);
         byte[] rawBytes = decrypt(encrptedBytes, this.iv, this.key);
         String resumeNumber = Translator.Translate(rawBytes);
         return resumeNumber;
     }
 
-    private byte[] GetBytesFromEncodedString(String str)
-    {
+    private byte[] GetBytesFromEncodedString(String str) {
         String result = str.replace("(", "+");
         result = result.replace(")", "/");
         int equalCount = str.length() % 4;
-        for (int i = 0; i < equalCount; i++)
-        {
+        for (int i = 0; i < equalCount; i++) {
             result += "=";
         }
         byte[] bytes = DatatypeConverter.parseBase64Binary(result);
@@ -98,26 +100,26 @@ public class StrCrypto {
 
             byte[] bytesCompanyId = intToByteArray(companyId);
             byte[] bytesUserId = intToByteArray(userId);
-            byte[] bytesChar = resumeNumber.substring(1, 1+1).getBytes();
+            byte[] bytesChar = resumeNumber.substring(1, 1 + 1).getBytes();
 
             byte[] bytes2 = intToByteArray(id);
-            byte[] padding = new byte[]{0,0,0};
-            byte[] bytes = concat(padding,bytesUserId, bytesChar, bytesCompanyId, bytes2);// bytesUserId.Concat(bytesChar).Concat(bytesCompanyId).Concat(bytes2).ToArray();
+            byte[] padding = new byte[]{0, 0, 0};
+            byte[] bytes = concat(padding, bytesUserId, bytesChar, bytesCompanyId, bytes2);// bytesUserId.Concat(bytesChar).Concat(bytesCompanyId).Concat(bytes2).ToArray();
             return bytes;
         }
 
         public static String Translate(byte[] bytes) {
             int paddingCount = 3;
-            byte[] bytesUserId = Arrays.copyOfRange(bytes, paddingCount + 0,paddingCount +  4);//  bytes.Take(4).ToArray();
-            byte[] byteM = Arrays.copyOfRange(bytes,paddingCount +  4, paddingCount + 4 + 1);// bytes.Skip(4).Take(1).ToArray();
-            byte[] bytesCompanyId = Arrays.copyOfRange(bytes,paddingCount +  5,paddingCount +  5 + 4);//bytes.Skip(5).Take(4).ToArray();
-            byte[] byte2 = Arrays.copyOfRange(bytes,paddingCount +  9,paddingCount +  9 + 4);//bytes.Skip(9).Take(4).ToArray();
+            byte[] bytesUserId = Arrays.copyOfRange(bytes, paddingCount + 0, paddingCount + 4);//  bytes.Take(4).ToArray();
+            byte[] byteM = Arrays.copyOfRange(bytes, paddingCount + 4, paddingCount + 4 + 1);// bytes.Skip(4).Take(1).ToArray();
+            byte[] bytesCompanyId = Arrays.copyOfRange(bytes, paddingCount + 5, paddingCount + 5 + 4);//bytes.Skip(5).Take(4).ToArray();
+            byte[] byte2 = Arrays.copyOfRange(bytes, paddingCount + 9, paddingCount + 9 + 4);//bytes.Skip(9).Take(4).ToArray();
 
             int companyId = bytesToInt(bytesCompanyId, 0);
             int userId = bytesToInt(bytesUserId, 0);
             char ch = (char) (byteM[0]);
             int id = bytesToInt(byte2, 0);
-            String result = String.format("%d,J%c%09dR%09d00",companyId, ch, userId, id);
+            String result = String.format("%d,J%c%09dR%09d00", companyId, ch, userId, id);
             return result;
         }
 

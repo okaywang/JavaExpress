@@ -20,6 +20,10 @@ public class App {
 
     public static void main(String[] args) throws Exception {
 
+        System.out.println("git test via idea");
+
+        System.out.println(System.getProperty("user.dir"));
+
         long x = 3000000000L;
         Long y = 3000000000L;
 

@@ -1,5 +1,3 @@
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -8,15 +6,13 @@ import java.io.InputStreamReader;
  * foo...Created by wgj on 2017/3/26.
  */
 public class App2 {
-    private static final Logger logger = LoggerFactory.getLogger(App2.class);
-
     protected App2() {
 
     }
 
     public static void main(String[] args) {
-
-        print1(1000, 5000, 1000);
+        new Exception("vvvvvvvvvvvvvvv").printStackTrace();
+        System.out.println(System.getProperty("user.dir"));
     }
 
     static void print1(int n, int max, int raw) {
