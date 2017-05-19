@@ -10,7 +10,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.Enumeration;
+import java.util.List;
 
 /**
  * Created by guojun.wang on 2017/3/7.
@@ -33,15 +35,18 @@ public class App {
         //sqlSessionFactory.getConfiguration().setEnvironment(environment);
         BlogDao mapper = session.getMapper(BlogDao.class);
         Blog blog = mapper.getBlog(1);
+        long[] ids = {1, 2, 4};
+        List<Blog> blogs = mapper.getBlogs2(ids);
+        System.out.println(blogs);
         System.out.println(sqlSessionFactory.getConfiguration().getDatabaseId());
         System.out.println(blog);
 
 
-        Blog myBlog = new Blog();
-        myBlog.setBlogName("hello1");
-        //myBlog.setBlogType(BlogTypeEnum.Finacial);
-        int id = mapper.insertBlog2(myBlog);
-        System.out.println(id);
+//        Blog myBlog = new Blog();
+//        myBlog.setBlogName("hello1");
+//        //myBlog.setBlogType(BlogTypeEnum.Finacial);
+//        int id = mapper.insertBlog2(myBlog);
+//        System.out.println(id);
 
         org.apache.ibatis.binding.MapperProxy m;
 
