@@ -5,9 +5,11 @@ package generic;
  */
 public class App {
     public static void main(String[] args) {
-        Foo bar = getObject(Foo.class);
+        Class<Foo> c = Foo.class;
+        Foo bar = getObject(c);
+        System.out.println(bar.getClass().getClassLoader());
+        System.out.println(c.hashCode());
         System.out.println(bar);
-
     }
 
     private static <T> T getObject(Class<T> classType) {
@@ -15,5 +17,4 @@ public class App {
         Bar bar = new Bar();
         return (T) foo;
     }
-
 }

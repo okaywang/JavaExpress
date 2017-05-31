@@ -5,6 +5,7 @@ package template;
  */
 public class BaseDataDto {
     private String version;
+    private String[][] jobType;
     private String[][] subJobType;
 
     public String getVersion() {
@@ -13,6 +14,14 @@ public class BaseDataDto {
 
     public void setVersion(String version) {
         this.version = version;
+    }
+
+    public String[][] getJobType() {
+        return jobType;
+    }
+
+    public void setJobType(String[][] jobType) {
+        this.jobType = jobType;
     }
 
     public String[][] getSubJobType() {

@@ -11,6 +11,13 @@ public class App2 {
     }
 
     public static void main(String[] args) {
+
+        System.out.println("aaht1tp".indexOf("http"));
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("aaaaa");
+        System.out.println(String.format(" limit %d offset %d", 10, 2));
+
         new Exception("vvvvvvvvvvvvvvv").printStackTrace();
         System.out.println(System.getProperty("user.dir"));
     }

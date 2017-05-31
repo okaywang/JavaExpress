@@ -13,19 +13,17 @@ import template.JobTemplateAddDto;
 import template.TemplateDto;
 
 import java.io.*;
-import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
  * Created by guojun.wang on 2017/3/30.
  */
 public class App {
-    private static Map<String, String> templates = new LinkedHashMap<>();
+    private static Map<String, String> subJobTypes = new LinkedHashMap<>();
+    private static Map<String, String> jobTypes = new LinkedHashMap<>();
 
     static {
         Unirest.setObjectMapper(new ObjectMapper() {
@@ -52,7 +50,7 @@ public class App {
 
     public static void main(String[] args) throws IOException, UnirestException {
         loadBaseData();
-        Map<String, String> templates = loadTemplatesFromExcel(51, 100);
+        Map<String, String> templates = loadTemplatesFromExcel(1, 200);
         System.out.println(templates.size());
         for (Map.Entry<String, String> entry : templates.entrySet()) {
             process(entry.getKey(), entry.getValue());
@@ -63,15 +61,19 @@ public class App {
         String filename1 = "D:\\Projects\\JProjects\\JavaExpress\\known-people\\src\\main\\resources\\basedata.json";
         String text = new String(Files.readAllBytes(Paths.get(filename1)));
         BaseDataDto baseData = JSON.parseObject(text, BaseDataDto.class);
+        for (String[] item : baseData.getJobType()) {
+            //subJobTypes.put(item[2], item[0] + "," + item[1]);
+            jobTypes.put(item[0], item[2]);
+        }
         for (String[] item : baseData.getSubJobType()) {
-            templates.put(item[2], item[0] + "," + item[1]);
+            subJobTypes.put(item[2], item[0] + "," + item[1]);
         }
     }
 
     private static Map<String, String> loadTemplatesFromExcel(int fromRow, int toRow) throws IOException {
         Map<String, String> templates = new LinkedHashMap<>();
         //String filename = "C:\\Users\\guojun.wang\\Desktop\\jobt.xlsx";
-        String filename = "C:\\Users\\guojun.wang\\Desktop\\职位模板（240字以内）2期.xlsx";
+        String filename = "C:\\Users\\guojun.wang\\Desktop\\职位模板（240字以内）3期-优化.xlsx";
 
         FileInputStream input = new FileInputStream(new File(filename));  //读取的文件路径
         BufferedInputStream bufferedInputStream = new BufferedInputStream(input);
@@ -90,7 +92,8 @@ public class App {
     }
 
     private static void process(String subtypeName, String description) throws UnirestException {
-        String[] items = templates.get(subtypeName).split(",");
+        String[] items = subJobTypes.get(subtypeName).split(",");
+        String jobTypeName = jobTypes.get(items[1]);
         JobTemplateAddDto model = new JobTemplateAddDto();
         model.setJobTypeMain(items[1]);
         model.setSubJobTypeMain(items[0]);
@@ -99,7 +102,7 @@ public class App {
 
         TemplateDto templateDto = new TemplateDto();
         templateDto.setCreateUserId(0);
-        templateDto.setTemplateTypeName(subtypeName);
+        templateDto.setTemplateTypeName(jobTypeName);
         templateDto.setTemplateContent(JSON.toJSONString(model));
         templateDto.setHot(true);
         templateDto.setTemplateName(model.getJobtitle());
@@ -109,8 +112,9 @@ public class App {
 
         addTemplate(templateDto);
 
-        System.out.println("subtypeId:" + templates.get(subtypeName));
+        System.out.println("subtypeId:" + subJobTypes.get(subtypeName));
         System.out.println("subtypeName:" + subtypeName);
+        System.out.println("jobTypeName:" + jobTypeName);
         //System.out.println("description:" + description);
         System.out.println("---------------------");
     }
