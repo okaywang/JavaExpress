@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.RequestContextListener;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.DispatcherServlet;
 
@@ -27,10 +28,13 @@ public class HelloController {
     @RequestMapping(method = RequestMethod.GET, value = "test", produces = "text/plain;charset=UTF-8")
     @ResponseBody
     public String test(String name) throws Exception {
+
+
+
         i++;
         javax.servlet.http.HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         //return String.valueOf(i);
-        return "your name is " + name;
+        return "your name is " + request.getParameter("name");
     }
 
 

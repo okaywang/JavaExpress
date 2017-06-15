@@ -10,8 +10,8 @@
     <context:component-scan base-package="com.zhaopin"/>
     <mvc:annotation-driven/>
 
-    <mvc:resources mapping="/**" location="/html/" />
-
+    <mvc:resources location="/js/" mapping="/js/**"/>
+    <mvc:resources location="/html/" mapping="/html/**"/>
 
     <bean id="jsonConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
         <property name="prefixJson" value="false"/>

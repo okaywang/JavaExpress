@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+  ~ Copyright (c) 2017. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  ~ Morbi non lorem porttitor neque feugiat blandit. Ut vitae ipsum eget quam lacinia accumsan.
+  ~ Etiam sed turpis ac ipsum condimentum fringilla. Maecenas magna.
+  ~ Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
+  ~ Vestibulum commodo. Ut rhoncus gravida arcu.
+  -->
+
+<html>
+<head>
+    <title>zp login</title>
+    <script src="/js/jquery-1.8.2.js"></script>
+    <script>
+        var uuid = "";
+        $(document).ready(function () {
+            var url = "http://192.168.7.227:8013/passport/qrid?jsonpcallback=?";
+
+            $.getJSON(url, function (data) {
+                console.log(data);
+                uuid = data;
+
+                var qrurl = "http://192.168.7.227:8013/passport/qrimage?size=180&uuid=" + uuid;
+
+                $("#img1").attr("src", qrurl);
+                setTimeout(checkQRStatus, 5000);
+            });
+        });
+        function checkQRStatus() {
+            var checkUrl = "http://192.168.7.227:8013/passport/qrauthstatus?jsonpcallback=?&uuid=" + uuid;
+            $.getJSON(checkUrl, function (model) {
+                console.log(model)
+                if (model.code == 3) {
+                    console.log(model.data);
+
+                    setCookie(model.data, model.data);
+                    window.location.href = "http://ihr.zhaopin.com";
+
+                    return;
+                }
+                setTimeout(checkQRStatus, 5000);
+            });
+        }
+
+        function setCookie(at, rt) {
+            document.cookie = "at=" + at + ";path=/;domain=.zhaopin.com"
+            document.cookie = "rt=" + rt + ";path=/;domain=.zhaopin.com"
+        }
+    </script>
+</head>
+<body>
+
+QR:
+<img id="img1"/>
+
+</body>
+</html>

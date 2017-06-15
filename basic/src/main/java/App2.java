@@ -1,7 +1,5 @@
-
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.lang.reflect.Method;
+import java.util.*;
 
 /**
  * foo...Created by wgj on 2017/3/26.
@@ -12,6 +10,20 @@ public class App2 {
     }
 
     public static void main(String[] args) {
+        List<Foo> foos = new ArrayList<>();
+        foos.add(new Foo(2, "2222", new Date(2002, 1, 1)));
+        foos.add(new Foo(1, "1111", new Date(2001, 1, 1)));
+        foos.add(new Foo(3, "3333", new Date(2003, 1, 1)));
+        //foos.add(new Foo(4, "3333", null));
+
+        //foos.stream().filter(i -> i.getBirthday() != null).sorted(((i, j) -> j.getBirthday().compareTo(i.getBirthday()));
+
+        Comparator<Foo> comparator = Comparator.comparing(Foo::getBirthday);
+        Collections.sort(foos, comparator.reversed());
+
+
+        foos.forEach(System.out::println);
+
 
         Method[] methods = String.class.getMethods();
         for (int i = 0; i < methods.length; i++) {
