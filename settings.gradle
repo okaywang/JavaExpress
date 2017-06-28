@@ -27,4 +27,5 @@ include 'algorithm'
 include 'gradletest'
 include 'gradleTest'
 include 'junitdemo'
+include 'dp'
 
