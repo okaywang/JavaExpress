@@ -16,6 +16,8 @@
         $(document).ready(function () {
             var url = "http://192.168.7.227:8013/passport/qrid?jsonpcallback=?";
 
+
+
             $.getJSON(url, function (data) {
                 console.log(data);
                 uuid = data;
@@ -30,6 +32,9 @@
             var checkUrl = "http://192.168.7.227:8013/passport/qrauthstatus?jsonpcallback=?&uuid=" + uuid;
             $.getJSON(checkUrl, function (model) {
                 console.log(model)
+                if (model.code == 2){
+                    console.log("已扫描，请按在手机上确认");
+                }
                 if (model.code == 3) {
                     console.log(model.data);
 

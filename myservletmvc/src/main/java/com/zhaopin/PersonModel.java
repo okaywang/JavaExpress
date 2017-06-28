@@ -1,9 +1,12 @@
 package com.zhaopin;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * foo...Created by wgj on 2017/3/20.
  */
 public class PersonModel {
+    @JsonIgnore
     private String name;
     private int age;
 

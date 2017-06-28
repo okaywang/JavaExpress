@@ -1,6 +1,7 @@
 package com.zhaopin;
 
 import org.springframework.context.annotation.Scope;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -24,17 +25,49 @@ import java.util.Date;
 @Scope("prototype")
 public class HelloController {
     private int i;
+
     //application/json;charset=UTF-8
     @RequestMapping(method = RequestMethod.GET, value = "test", produces = "text/plain;charset=UTF-8")
     @ResponseBody
     public String test(String name) throws Exception {
-
-
-
         i++;
         javax.servlet.http.HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         //return String.valueOf(i);
         return "your name is " + request.getParameter("name");
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "testmodel", produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public PersonModel testModel(String name) throws Exception {
+        PersonModel pm = new PersonModel();
+        pm.setAge(18);
+        pm.setName("lucy");
+        return pm;
+    }
+
+
+    @RequestMapping(method = RequestMethod.GET, value = "gray1", produces = "text/plain;charset=UTF-8")
+    @ResponseBody
+    public String gray1(HttpServletRequest request) throws Exception {
+        StringBuilder sb = new StringBuilder();
+        sb.append("host: " + System.getenv("COMPUTERNAME"));
+        sb.append("<br />");
+        sb.append("url:" + request.getRequestURL().toString() + "?" + request.getQueryString());
+        return sb.toString();
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "gray2", produces = "text/plain;charset=UTF-8")
+    @ResponseBody
+    public String gray2(HttpServletRequest request, HttpEntity<String> httpEntity) throws Exception {
+        StringBuilder sb = new StringBuilder();
+        sb.append("host: " + System.getenv("COMPUTERNAME"));
+        sb.append("<br />");
+        sb.append("url:" + request.getRequestURL().toString() + "?" + request.getQueryString());
+        sb.append("<br />");
+        sb.append("rootid:" + request.getHeader("rootid"));
+        sb.append("<br />");
+        sb.append("body:" + httpEntity.getBody());
+        return sb.toString();
     }
 
 
