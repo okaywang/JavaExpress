@@ -25,7 +25,8 @@ import org.springframework.web.servlet.ModelAndView;
 public class PassportController {
     @RequestMapping(method = RequestMethod.GET, value = "login", produces = "text/plain;charset=UTF-8")
     public ModelAndView login(String name) throws Exception {
-        ModelAndView mv = new ModelAndView("/WEB-INF/views/login.jsp");
+        ModelAndView mv = new ModelAndView("login");
+        mv.addObject("serverName","BJPD000001");
         return mv;
     }
 }

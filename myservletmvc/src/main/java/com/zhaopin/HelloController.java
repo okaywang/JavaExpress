@@ -5,14 +5,12 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.RequestContextListener;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.DispatcherServlet;
+import org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
@@ -24,6 +22,12 @@ import java.util.Date;
 @RequestMapping("/hello")
 @Scope("prototype")
 public class HelloController {
+
+    @ModelAttribute
+    public void preRun() {
+        System.out.println("Test Pre-Run");
+    }
+
     private int i;
 
     //application/json;charset=UTF-8
@@ -34,6 +38,18 @@ public class HelloController {
         javax.servlet.http.HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         //return String.valueOf(i);
         return "your name is " + request.getParameter("name");
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "test2", produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public PersonModel test2(String name) throws Exception {
+        i++;
+        javax.servlet.http.HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        //return String.valueOf(i);
+        PersonModel person = new PersonModel();
+        person.setAge(30);
+        person.setName("wgj");
+        return person;
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "testmodel", produces = "application/json;charset=UTF-8")

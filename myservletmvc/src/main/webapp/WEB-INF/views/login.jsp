@@ -20,7 +20,7 @@
     <title>zp login</title>
     <script src="/js/jquery-1.8.2.js"></script>
     <script>
-        var uuid="";
+        var uuid = "";
         $(document).ready(function () {
             var url = "http://192.168.7.227:8013/passport/qrid?jsonpcallback=?";
 
@@ -30,31 +30,32 @@
 
                 var qrurl = "http://192.168.7.227:8013/passport/qrimage?size=180&uuid=" + uuid;
 
-                $("#img1").attr("src",qrurl);
-                setTimeout(checkQRStatus,5000);
+                $("#img1").attr("src", qrurl);
+                setTimeout(checkQRStatus, 5000);
             });
         });
-        function checkQRStatus(){
+        function checkQRStatus() {
             var checkUrl = "http://192.168.7.227:8013/passport/qrauthstatus?jsonpcallback=?&uuid=" + uuid;
-            $.getJSON(checkUrl,function(model){
+            $.getJSON(checkUrl, function (model) {
                 console.log(model)
-                if(model.code == 3){
+                if (model.code == 3) {
                     console.log(model.data);
 
 
-                    window.location.href="http://ihr.zhaopin.com";
+                    window.location.href = "http://ihr.zhaopin.com";
 
                     return;
                 }
-                setTimeout(checkQRStatus,5000);
+                setTimeout(checkQRStatus, 5000);
             });
         }
     </script>
 </head>
 <body>
-
+<h1>this is login page</h1>
+<h2>server name is : ${serverName}</h2>
 QR:
-<img id="img1" />
+<img id="img1"/>
 
 </body>
 </html>
