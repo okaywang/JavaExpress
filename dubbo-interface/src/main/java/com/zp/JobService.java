@@ -13,4 +13,5 @@ package com.zp;
  */
 public interface JobService {
     JobDto getJobInfo(int id);
+    int getJobCount();
 }

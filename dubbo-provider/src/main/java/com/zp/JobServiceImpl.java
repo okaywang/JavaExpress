@@ -21,4 +21,9 @@ public class JobServiceImpl implements JobService {
         System.out.println("getJobInfo end");
         return jobDto;
     }
+
+    @Override
+    public int getJobCount() {
+        return 100;
+    }
 }
