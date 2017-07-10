@@ -28,4 +28,7 @@ include 'gradletest'
 include 'gradleTest'
 include 'junitdemo'
 include 'dp'
+include 'dubbo-provider'
+include 'dubbo-consumer'
+include 'dubbo-interface'
 

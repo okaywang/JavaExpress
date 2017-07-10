@@ -1,0 +1,18 @@
+group 'com.me'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.5
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.springframework:spring-context:4.2.6.RELEASE"
+    compile "com.alibaba:dubbo:2.5.3"
+    compile "com.101tec:zkclient:0.9"
+    compile (project(":dubbo-interface"))
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
