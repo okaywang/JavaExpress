@@ -6,8 +6,10 @@
  * Vestibulum commodo. Ut rhoncus gravida arcu.
  */
 
-package com.zp;
+package com.zp.consumer;
 
+import com.zp.JobDto;
+import com.zp.JobService;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
@@ -19,7 +21,18 @@ public class App {
         context.start();
         JobService demoService = (JobService) context.getBean("jobService"); // 获取bean
 
-        JobDto dto = demoService.getJobInfo(234);
-        System.out.println(dto);
+        for (int i = 0; i < 1000; i++) {
+            JobDto dto = demoService.getJobInfo(234);
+            int count = demoService.getJobCount();
+            System.out.println(dto);
+            System.out.println(count);
+
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 }

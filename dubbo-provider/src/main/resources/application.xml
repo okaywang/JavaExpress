@@ -21,6 +21,6 @@
 
     <dubbo:service ref="jobService" interface="com.zp.JobService" />
     <!-- designate implementation -->
-    <bean id="jobService" class="com.zp.JobServiceImpl" />
+    <bean id="jobService" class="com.zp.provider.JobServiceImpl" />
 
 </beans>

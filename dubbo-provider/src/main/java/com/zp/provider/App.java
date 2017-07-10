@@ -6,24 +6,22 @@
  * Vestibulum commodo. Ut rhoncus gravida arcu.
  */
 
-package com.zp;
+package com.zp.provider;
+
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import java.io.IOException;
 
 /**
  * Created by guojun.wang on 2017/7/10.
  */
-public class JobServiceImpl implements JobService {
-    @Override
-    public JobDto getJobInfo(int id) {
-        System.out.println("getJobInfo start ...");
-        JobDto jobDto = new JobDto();
-        jobDto.setId(id);
-        jobDto.setJobTitle("this is from server(dubbo)");
-        System.out.println("getJobInfo end");
-        return jobDto;
-    }
+public class App {
+    public static void main(String[] args) throws IOException {
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[] {"application.xml"});
+        context.start();
 
-    @Override
-    public int getJobCount() {
-        return 100;
+        System.out.println(" app run ");
+
+        System.in.read(); // 按任意键退出
     }
 }
