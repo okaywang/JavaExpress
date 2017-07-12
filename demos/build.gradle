@@ -10,6 +10,7 @@ repositories {
 }
 
 dependencies {
+    compile group: 'org.freemarker', name: 'freemarker', version: '2.3.14'
     compile 'commons-codec:commons-codec:1.9'
     compile 'net.glxn:qrgen:1.4'
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version:'2.4.2'
