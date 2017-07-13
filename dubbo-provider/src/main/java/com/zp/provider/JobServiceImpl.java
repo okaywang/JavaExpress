@@ -18,11 +18,10 @@ import com.zp.JobService;
 public class JobServiceImpl implements JobService {
     @Override
     public JobDto getJobInfo(int id) {
-        System.out.println("getJobInfo start ...");
+        System.out.println("getJobInfo invoked ...");
         JobDto jobDto = new JobDto();
         jobDto.setId(id);
         jobDto.setJobTitle("this is from server(dubbo)");
-        System.out.println("getJobInfo end");
         return jobDto;
     }
 

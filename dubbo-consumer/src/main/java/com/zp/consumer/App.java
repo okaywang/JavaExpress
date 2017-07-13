@@ -21,17 +21,11 @@ public class App {
         context.start();
         JobService demoService = (JobService) context.getBean("jobService"); // 获取bean
 
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 100; i++) {
             JobDto dto = demoService.getJobInfo(234);
             int count = demoService.getJobCount();
-            System.out.println(dto);
+            System.out.print(dto);
             System.out.println(count);
-
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
         }
 
     }
