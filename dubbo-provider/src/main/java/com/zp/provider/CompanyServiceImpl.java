@@ -8,6 +8,7 @@
 
 package com.zp.provider;
 
+import com.zp.CompanyService;
 import com.zp.JobDto;
 import com.zp.JobService;
 
@@ -15,18 +16,9 @@ import com.zp.JobService;
 /**
  * Created by guojun.wang on 2017/7/10.
  */
-public class JobServiceImpl implements JobService {
+public class CompanyServiceImpl implements CompanyService {
     @Override
-    public JobDto getJobInfo(int id) {
-        System.out.println("getJobInfo invoked ... id(" + id + ")");
-        JobDto jobDto = new JobDto();
-        jobDto.setId(id);
-        jobDto.setJobTitle("this is from server(dubbo)");
-        return jobDto;
-    }
-
-    @Override
-    public int getJobCount() {
-        return 100;
+    public String getCompanyName(int id) {
+        return "Company " + id;
     }
 }

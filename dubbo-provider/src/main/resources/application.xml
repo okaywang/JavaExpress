@@ -20,7 +20,8 @@
     <dubbo:protocol name="dubbo" port="20880"></dubbo:protocol>
 
     <dubbo:service ref="jobService" interface="com.zp.JobService" />
+    <dubbo:service ref="companyService" interface="com.zp.CompanyService" />
     <!-- designate implementation -->
     <bean id="jobService" class="com.zp.provider.JobServiceImpl" />
-
+    <bean id="companyService" class="com.zp.provider.CompanyServiceImpl" />
 </beans>

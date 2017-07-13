@@ -8,6 +8,7 @@
 
 package com.zp.consumer;
 
+import com.zp.CompanyService;
 import com.zp.JobDto;
 import com.zp.JobService;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -20,12 +21,23 @@ public class App {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[]{"application.xml"});
         context.start();
         JobService demoService = (JobService) context.getBean("jobService"); // 获取bean
-
-        for (int i = 0; i < 100; i++) {
-            JobDto dto = demoService.getJobInfo(234);
-            int count = demoService.getJobCount();
-            System.out.print(dto);
-            System.out.println(count);
+        CompanyService companyService = (CompanyService) context.getBean("companyService");
+        for (int i = 0; i < 1000; i++) {
+            try {
+                JobDto dto = demoService.getJobInfo(i);
+                int count = demoService.getJobCount();
+                String cname = companyService.getCompanyName(i);
+                System.out.print(dto);
+                System.out.println(count);
+                System.out.println(cname);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
 
     }
