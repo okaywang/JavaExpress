@@ -2,6 +2,8 @@ package fastjsondemo;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.Date;
 import java.util.regex.Pattern;
@@ -23,15 +25,30 @@ public class App {
     private String xx;
 
     public static void main(String[] args) {
+
+        ApplicationContext context = new AnnotationConfigApplicationContext("fastjsondemo");
+
+
         Person person = new Person();
         person.setId(345);
         person.setName("Jim");
         person.setBirthday(new Date());
+        person.setWorkBeginning(new Date());
 
-        String json = JSON.toJSONString(person);
-        System.out.println(json);
-        Person p2 = JSON.parseObject(json, Person.class);
-        System.out.println(p2);
+        ZpFoo bean = context.getBean(ZpFoo.class);
+        bean.test1(person);
+        bean.test2(person);
+        bean.test3(person);
+
+//        ZpFoo zpFoo = new ZpFoo();
+//        zpFoo.test1(person);
+//
+//        zpFoo.test2(person);
+//
+//        zpFoo.test3(person);
+
+
+
 
 
         regexTest();

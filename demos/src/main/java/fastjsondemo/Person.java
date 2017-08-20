@@ -15,6 +15,8 @@ public class Person {
     @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date birthday;
 
+    private Date workBeginning;
+
     public int getId() {
         return id;
     }
@@ -39,12 +41,21 @@ public class Person {
         this.birthday = birthday;
     }
 
+    public Date getWorkBeginning() {
+        return workBeginning;
+    }
+
+    public void setWorkBeginning(Date workBeginning) {
+        this.workBeginning = workBeginning;
+    }
+
     @Override
     public String toString() {
         return "Person{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", birthday=" + birthday +
+                ", workBeginning=" + workBeginning +
                 '}';
     }
 }
