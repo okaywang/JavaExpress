@@ -16,8 +16,19 @@ public class MyConfig2 {
     @Value("${urls.getjob}")
     private String url_getjob;
 
+    @Value("#{'${urls.iosusers}'.split(',| ')}")
+    private String[] iosUsers;
+
     @Value("${urls.getjob}")
     private static String url_getjob_static;
+
+    public void setIosUsers(String[] iosUsers) {
+        this.iosUsers = iosUsers;
+    }
+
+    public String[] getIosUsers() {
+        return iosUsers;
+    }
 
     public String getUrl_getjob() {
         return url_getjob;
@@ -53,6 +64,7 @@ public class MyConfig2 {
         return "MyConfig2{" +
                 "username='" + username + '\'' +
                 ", url_getjob='" + url_getjob + '\'' +
+                ", iosUsers='" + iosUsers + '\'' +
                 '}';
     }
 }

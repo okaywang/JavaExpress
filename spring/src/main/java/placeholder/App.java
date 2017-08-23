@@ -17,6 +17,7 @@ public class App {
         MyConfig2 obj2 = context.getBean(MyConfig2.class);
         System.out.println(obj2);
 
+
 //        Object o = context.getBean("propertyConfigurer");
 //        System.out.println(o);
 //        Properties properties = (Properties)context.getBean("configProperties");
