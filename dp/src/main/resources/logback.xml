@@ -3,8 +3,9 @@
 
     <!-- ch.qos.logback.core.ConsoleAppender 控制台输出 -->
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="dp.state.zhaopin.MyFilter" />
         <encoder>
-            <pattern>[%-5level] %d{HH:mm:ss.SSS} [%thread] %logger{36} - %msg%n</pattern>
+            <pattern>%X{sId}[%-5level] %d{HH:mm:ss.SSS} [%thread] %logger{36} - %msg\(%line\)%n</pattern>
         </encoder>
     </appender>
 
