@@ -19,7 +19,7 @@ import java.util.Set;
  * @version 1.0
  */
 public class SensitiveWordInit {
-	private String ENCODING = "gbk";    //字符编码
+	private String ENCODING = "utf-8";    //字符编码
 	@SuppressWarnings("rawtypes")
 	public HashMap sensitiveWordMap;
 
