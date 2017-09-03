@@ -9,23 +9,26 @@ public class App {
     private static int x = 100;
 
     public static void main(String[] args) {
+        RdHelper.showInfo();
+        int type = Integer.parseInt(args[0]);
+        int times = Integer.parseInt(args[1]);
+        System.out.println("current type:" + type + ", times: " + times);
         long begin = System.currentTimeMillis();
-        for (int i = 0; i < 10000 * 10000; i++) {
+        for (int i = 0; i < times * 10000; i++) {
             UUID uuid = UUID.randomUUID();
-            String str = uuid.toString().replace("-", "");
-            //String str = getString(uuid);
+            String str = null;
+            if (type == 1) {
+                str = uuid.toString().replace("-", "");
+            } else if (type == 2) {
+                str = getString(uuid);
+            } else if (type == 3) {
+                str = getString3(uuid);
+            }
             process(str);
         }
         long end = System.currentTimeMillis();
         System.out.print("takes ");
         System.out.println(end - begin);
-    }
-
-    private static String getString(UUID uuid) {
-        long mostSigBits = uuid.getMostSignificantBits();
-        long leastSigBits = uuid.getLeastSignificantBits();
-
-        return Long.toHexString(mostSigBits) + Long.toHexString(leastSigBits);
     }
 
     /**
@@ -40,5 +43,18 @@ public class App {
         if (x > 1000) {
             System.out.println(uuid);
         }
+    }
+
+    private static String getString(UUID uuid) {
+        long mostSigBits = uuid.getMostSignificantBits();
+        long leastSigBits = uuid.getLeastSignificantBits();
+
+        return Long.toHexString(mostSigBits) + Long.toHexString(leastSigBits);
+    }
+    private static String getString3(UUID uuid) {
+        long mostSigBits = uuid.getMostSignificantBits();
+        long leastSigBits = uuid.getLeastSignificantBits();
+
+        return new StringBuilder().append(Long.toHexString(mostSigBits)).append(Long.toHexString(leastSigBits)).toString();
     }
 }

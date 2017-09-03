@@ -15,3 +15,10 @@ dependencies {
 
     testCompile group: 'junit', name: 'junit', version: '4.11'
 }
+
+task wcp(type:Exec) {
+    workingDir '../basic/cmd'
+
+    //on windows:
+    commandLine 'cmd', '/c', 'testcp.bat'
+}
