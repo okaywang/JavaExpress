@@ -8,7 +8,7 @@
         http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <!--代理配置结束  JfreeChart 配置结束-->
-    <context:component-scan base-package="com.zhaopin"/>
+    <context:component-scan base-package="com.zhaopin.ThriftInterface"/>
     <mvc:annotation-driven/>
 
     <mvc:resources location="/js/" mapping="/js/**"/>
@@ -26,7 +26,7 @@
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/**"/>
-            <bean class="com.zhaopin.SecurityInterceptor"></bean>
+            <bean class="com.zhaopin.ThriftInterface.SecurityInterceptor"></bean>
         </mvc:interceptor>
     </mvc:interceptors>
 

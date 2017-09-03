@@ -30,7 +30,6 @@ import org.apache.ibatis.scripting.defaults.DefaultParameterHandler;
 import org.apache.ibatis.session.Configuration;
 
 /**
- *
  * @author ykzhen2015
  */
 @Intercepts({
@@ -48,7 +47,7 @@ public class PagingPlugin implements Interceptor {
     private Boolean defaultCheckFlag; //默认是否检测页码参数
     private Boolean defaultCleanOrderBy; //默认是否清除最后一个order by 后的语句
 
-    private static final String DB_TYPE_POSTGRE= "postgre";
+    private static final String DB_TYPE_POSTGRE = "postgre";
     private static final String DB_TYPE_ORACLE = "oracle";
 
     /**
@@ -61,7 +60,7 @@ public class PagingPlugin implements Interceptor {
         MetaObject metaStatementHandler = SystemMetaObject.forObject(stmtHandler);
         String sql = (String) metaStatementHandler.getValue("delegate.boundSql.sql");
 
-        MappedStatement mappedStatement =  (MappedStatement) metaStatementHandler.getValue("delegate.mappedStatement");
+        MappedStatement mappedStatement = (MappedStatement) metaStatementHandler.getValue("delegate.mappedStatement");
         String dbType = this.getDataSourceType(mappedStatement);
 
         //不是select语句.
@@ -76,15 +75,15 @@ public class PagingPlugin implements Interceptor {
         }
 
         //获取配置中是否启用分页功能.
-        Boolean useFlag = pageParams.getUseFlag() == null? this.defaultUseFlag : pageParams.getUseFlag();
+        Boolean useFlag = pageParams.getUseFlag() == null ? this.defaultUseFlag : pageParams.getUseFlag();
         if (!useFlag) {  //不使用分页插件.
             return invocation.proceed();
         }
         //获取相关配置的参数.
-        Integer pageNum = pageParams.getPage() == null? defaultPage : pageParams.getPage();
-        Integer pageSize = pageParams.getPageSize() == null? defaultPageSize : pageParams.getPageSize();
-        Boolean checkFlag = pageParams.getCheckFlag() == null? defaultCheckFlag : pageParams.getCheckFlag();
-        Boolean cleanOrderBy = pageParams.getCleanOrderBy() == null? defaultCleanOrderBy : pageParams.getCleanOrderBy();
+        Integer pageNum = pageParams.getPage() == null ? defaultPage : pageParams.getPage();
+        Integer pageSize = pageParams.getPageSize() == null ? defaultPageSize : pageParams.getPageSize();
+        Boolean checkFlag = pageParams.getCheckFlag() == null ? defaultCheckFlag : pageParams.getCheckFlag();
+        Boolean cleanOrderBy = pageParams.getCleanOrderBy() == null ? defaultCleanOrderBy : pageParams.getCleanOrderBy();
         //计算总条数
         int total = this.getTotal(invocation, metaStatementHandler, boundSql, cleanOrderBy, dbType);
         //回填总条数到分页参数
@@ -117,11 +116,11 @@ public class PagingPlugin implements Interceptor {
             Map<String, Object> paramMap = (Map<String, Object>) parameterObject;
             Set<String> keySet = paramMap.keySet();
             Iterator<String> iterator = keySet.iterator();
-            while(iterator.hasNext()) {
+            while (iterator.hasNext()) {
                 String key = iterator.next();
                 Object value = paramMap.get(key);
                 if (value instanceof PageParams) {
-                    return (PageParams)value;
+                    return (PageParams) value;
                 }
             }
         } else if (parameterObject instanceof PageParams) { //参数POJO继承了PageParams
@@ -131,7 +130,7 @@ public class PagingPlugin implements Interceptor {
             //尝试从POJO中获得类型为PageParams的属性
             for (Field field : fields) {
                 if (field.getType() == PageParams.class) {
-                    PropertyDescriptor pd = new PropertyDescriptor (field.getName(), parameterObject.getClass());
+                    PropertyDescriptor pd = new PropertyDescriptor(field.getName(), parameterObject.getClass());
                     Method method = pd.getReadMethod();
                     return (PageParams) method.invoke(parameterObject);
                 }
@@ -143,6 +142,7 @@ public class PagingPlugin implements Interceptor {
 
     /**
      * 判断是否sql语句.
+     *
      * @param sql
      * @return
      */
@@ -154,12 +154,13 @@ public class PagingPlugin implements Interceptor {
 
     /**
      * 检查当前页码的有效性.
+     *
      * @param checkFlag
      * @param pageNum
      * @param pageTotal
      * @throws Throwable
      */
-    private void checkPage(Boolean checkFlag, Integer pageNum, Integer pageTotal) throws Throwable  {
+    private void checkPage(Boolean checkFlag, Integer pageNum, Integer pageTotal) throws Throwable {
         if (checkFlag) {
             //检查页码page是否合法.
             if (pageNum > pageTotal) {
@@ -171,6 +172,7 @@ public class PagingPlugin implements Interceptor {
 
     /**
      * 预编译改写后的SQL，并设置分页参数
+     *
      * @param invocation
      * @param metaStatementHandler
      * @param boundSql
@@ -189,20 +191,19 @@ public class PagingPlugin implements Interceptor {
         //执行编译，这里相当于StatementHandler执行了prepared()方法，这个时候，就剩下2个分页参数没有设置。
         Object statementObj = invocation.proceed();
         //设置两个分页参数。
-        this.preparePageDataParams((PreparedStatement)statementObj, pageNum, pageSize, dbType);
+        this.preparePageDataParams((PreparedStatement) statementObj, pageNum, pageSize, dbType);
         return statementObj;
     }
-
 
 
     /**
      * 获取总条数.
      *
-     * @param ivt Invocation
+     * @param ivt                  Invocation
      * @param metaStatementHandler statementHandler
-     * @param boundSql sql
-     * @param cleanOrderBy 是否清除order by语句
-     * * @param dbType
+     * @param boundSql             sql
+     * @param cleanOrderBy         是否清除order by语句
+     *                             * @param dbType
      * @return sql查询总数.
      * @throws Throwable 异常.
      */
@@ -277,6 +278,7 @@ public class PagingPlugin implements Interceptor {
 
     /**
      * 生成代理对象
+     *
      * @param statementHandler 原始对象
      * @return 代理对象
      */
@@ -287,6 +289,7 @@ public class PagingPlugin implements Interceptor {
 
     /**
      * 设置插件配置参数。
+     *
      * @param props
      */
     @Override
@@ -308,15 +311,16 @@ public class PagingPlugin implements Interceptor {
      * TODO
      * 计算总数的SQL,
      * 这里需要根据数据库的类型改写SQL，目前支持MySQL和Oracle
+     *
      * @param currSql —— 当前执行的SQL
      * @return 改写后的SQL
      * @throws NotSupportedException
      */
     private String getTotalSQL(String currSql, String dbType) throws NotSupportedException {
         if (DB_TYPE_POSTGRE.equals(dbType)) {
-            return  "select count(*) as total from (" + currSql + ") as a";
+            return "select count(*) as total from (" + currSql + ") as a";
         } else if (DB_TYPE_ORACLE.equals(dbType)) {
-            return "select count(*) as total from (" + currSql +")";
+            return "select count(*) as total from (" + currSql + ")";
         } else {
             throw new NotSupportedException("当前插件未支持此类型数据库");
         }
@@ -326,6 +330,7 @@ public class PagingPlugin implements Interceptor {
      * TODO 需要使用其他数据库需要改写
      * 分页获取参数的SQL
      * 这里需要根据数据库的类型改写SQL，目前支持MySQL和Oracle
+     *
      * @param currSql —— 当前执行的SQL
      * @return 改写后的SQL
      * @throws NotSupportedException
@@ -343,9 +348,9 @@ public class PagingPlugin implements Interceptor {
     /**
      * TODO 需要使用其他数据库需要改写
      * 使用PreparedStatement预编译两个分页参数，如果数据库的规则不一样，需要改写设置的参数规则。目前支持MySQL和Oracle
+     *
      * @throws SQLException
      * @throws NotSupportedException
-     *
      */
     private void preparePageDataParams(PreparedStatement ps, int pageNum, int pageSize, String dbType) throws Exception {
         //prepared()方法编译SQL，由于MyBatis上下文没有我们分页参数的信息，所以这里需要设置这两个参数.
@@ -353,10 +358,10 @@ public class PagingPlugin implements Interceptor {
         int idx = ps.getParameterMetaData().getParameterCount();
         if (DB_TYPE_POSTGRE.equals(dbType)) {
             //最后两个是我们的分页参数.
-            ps.setInt(idx -1, (pageNum - 1) * pageSize);//开始行
+            ps.setInt(idx - 1, (pageNum - 1) * pageSize);//开始行
             ps.setInt(idx, pageSize); //限制条数
         } else if (DB_TYPE_ORACLE.equals(dbType)) {
-            ps.setInt(idx -1, pageNum * pageSize);//结束行
+            ps.setInt(idx - 1, pageNum * pageSize);//结束行
             ps.setInt(idx, (pageNum - 1) * pageSize); //开始行
         } else {
             throw new NotSupportedException("当前插件未支持此类型数据库");
@@ -365,9 +370,9 @@ public class PagingPlugin implements Interceptor {
     }
 
     /**
-     *
      * TODO 需要使用其他数据库需要改写
      * 目前支持MySQL和Oracle
+     *
      * @param mappedStatement
      * @return
      * @throws Exception
@@ -377,13 +382,13 @@ public class PagingPlugin implements Interceptor {
         String dbConnectionStr = null;
         try {
             conn = mappedStatement.getConfiguration().getEnvironment().getDataSource().getConnection();
-            dbConnectionStr  = conn.toString();
+            dbConnectionStr = conn.toString();
         } finally {
             if (conn != null) {
                 conn.close();
             }
         }
-        if (null == dbConnectionStr || dbConnectionStr.trim().equals(""))  {
+        if (null == dbConnectionStr || dbConnectionStr.trim().equals("")) {
             throw new NotSupportedException("当前插件未能获得数据库连接信息。");
         }
         dbConnectionStr = dbConnectionStr.toLowerCase();

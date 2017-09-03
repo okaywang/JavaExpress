@@ -19,7 +19,7 @@ public class App {
         System.out.println("this is mybatis demo");
         String resource = "mybatis-config.xml";
         InputStream inputStream = Resources.getResourceAsStream(resource);
-        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream, "home");
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream, "company");
         //sqlSessionFactory.getConfiguration().setDefaultStatementTimeout(2);
         sqlSessionFactory.getConfiguration();
         SqlSession session = sqlSessionFactory.openSession(true);
@@ -30,7 +30,7 @@ public class App {
         Blog blog = mapper.getBlog(1);
         SearchParams params = new SearchParams();
         params.setBlogName("1");
-        params.setPage(0);
+        params.setPage(1);
         params.setPageSize(10);
         List<Blog> blogs = mapper.search(params);
         System.out.println(blogs.size());

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://www.jd.com/rocketrpcserver"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:beans="http://www.springframework.org/schema/beans"
+	targetNamespace="http://code.zhaopin.com/schema/thrift"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<xsd:import namespace="http://www.springframework.org/schema/beans" />
+
+	<xsd:element name="server">
+		<xsd:complexType>
+			<xsd:attribute name="name" type="xsd:string" use="required"></xsd:attribute>
+			<xsd:attribute name="port" type="xsd:string" use="optional"></xsd:attribute>
+			<xsd:attribute name="channels" type="xsd:int" use="optional"
+				default="1"></xsd:attribute>
+			<xsd:attribute name="check" type="xsd:string" use="optional"
+				default="on"></xsd:attribute>
+			<xsd:attribute name="checkPkg" type="xsd:string" use="optional"
+				default="com.zhaopin"></xsd:attribute>
+			<xsd:attribute name="sampleRate" type="xsd:float" use="optional"
+				default="1.0"></xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="service">
+		<xsd:complexType>
+			<xsd:attribute name="id" type="xsd:string" use="required"></xsd:attribute>
+			<xsd:attribute name="version" type="xsd:string" use="required"></xsd:attribute>
+			<xsd:attribute name="ref" type="xsd:string" use="required"></xsd:attribute>
+			<xsd:attribute name="group" type="xsd:string" use="optional"></xsd:attribute>
+			<xsd:attribute name="weight" type="xsd:string" use="optional"
+				default="5"></xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="registry">
+		<xsd:complexType>
+			<xsd:attribute name="zkAddr" type="xsd:string" use="required"></xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="reference">
+		<xsd:complexType>
+			<xsd:attribute name="id" type="xsd:string" use="required"></xsd:attribute>
+			<xsd:attribute name="target" type="xsd:string" use="optional"></xsd:attribute>
+			<xsd:attribute name="version" type="xsd:string" use="required"></xsd:attribute>
+			<xsd:attribute name="interface" type="xsd:string" use="required"></xsd:attribute>
+			<xsd:attribute name="retry" type="xsd:int" use="optional" default="3"></xsd:attribute>
+			<xsd:attribute name="timeout" type="xsd:long" use="optional" default="3000"></xsd:attribute>
+			<xsd:attribute name="group" type="xsd:string" use="optional"></xsd:attribute>
+			<xsd:attribute name="strategy" type="xsd:string" use="optional" default="failover"></xsd:attribute>
+			<xsd:attribute name="selector" type="xsd:string" use="optional" default="token"></xsd:attribute>
+			<xsd:attribute name="async" type="xsd:int" use="optional" default="0"></xsd:attribute>
+			<xsd:attribute name="balance" type="xsd:string" use="optional"></xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="http">
+		<xsd:complexType>
+			<xsd:attribute name="context" type="xsd:string" use="required"></xsd:attribute>
+			<xsd:attribute name="port" type="xsd:string" use="optional"></xsd:attribute>
+			<xsd:attribute name="reply" type="xsd:string" use="optional"></xsd:attribute>
+			<xsd:attribute name="sampleRate" type="xsd:float" use="optional"
+				default="1.0"></xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

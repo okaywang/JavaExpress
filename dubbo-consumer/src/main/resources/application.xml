@@ -19,6 +19,6 @@
     <dubbo:application name="jobads"/>
     <dubbo:registry address="zookeeper://172.17.6.11:2181"/>
     <dubbo:consumer timeout="5000"/>
-    <dubbo:reference id="jobService" interface="com.zp.JobService"/>
-    <dubbo:reference id="companyService" interface="com.zp.CompanyService"/>
+    <dubbo:reference id="jobService" interface="com.zhaopin.ThriftInterface.JobService"/>
+    <dubbo:reference id="companyService" interface="com.zhaopin.ThriftInterface.CompanyService"/>
 </beans>

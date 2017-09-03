@@ -1,4 +1,4 @@
-namespace java com.zhaopin.thrift
+namespace java com.zhaopin.ThriftInterface.thrift
 
 struct JobDto {
 	1:i32 id;

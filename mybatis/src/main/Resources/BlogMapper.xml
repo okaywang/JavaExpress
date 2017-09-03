@@ -7,7 +7,7 @@
         <result column="blogtype" property="blogType" javaType="demo.BlogTypeEnum" typeHandler="demo.BlogTypeEnumTypeHandler" />
     </resultMap>
     <select id="getBlog" resultMap="blogMap">
-        select * from Blog where id = #{id}
+        select * from Blog where id = #{id} and id=${id}
     </select>
     <select id="getBlogs" resultMap="blogMap" >
         select * from Blog where id in

@@ -6,5 +6,5 @@ Class-Path: spring-beans-4.2.6.RELEASE.jar jline-0.9.94.jar slf4j-api-
  g-2.5.6.SEC03.jar netty-3.7.0.Final.jar netty-3.2.5.Final.jar spring-
  context-4.2.6.RELEASE.jar spring-expression-4.2.6.RELEASE.jar spring-
  aop-4.2.6.RELEASE.jar
-Main-Class: com.zp.consumer.App
+Main-Class: com.zhaopin.ThriftInterface.consumer.App
 

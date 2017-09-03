@@ -2,6 +2,8 @@ package demo;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.mapping.Environment;
+import org.apache.ibatis.scripting.defaults.RawSqlSource;
+import org.apache.ibatis.scripting.xmltags.DynamicSqlSource;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
@@ -22,6 +24,9 @@ public class App {
         //System.out.println(BlogTypeEnum.Constellation);
         //BlogTypeEnum blogTypeEnum = Enum.valueOf(BlogTypeEnum.class, "Finacial");
 
+        String str = "67";
+        System.out.printf(str.substring(0));
+
 
         System.out.println("this is mybatis demo");
         String resource = "mybatis-config.xml";
@@ -33,6 +38,9 @@ public class App {
         //Environment environment = new Environment();
 
         //sqlSessionFactory.getConfiguration().setEnvironment(environment);
+
+        //DynamicSqlSource
+
         BlogDao mapper = session.getMapper(BlogDao.class);
         Blog blog = mapper.getBlog(1);
         long[] ids = {1, 2, 4};

@@ -1,0 +1,10 @@
+1. 服务的灰度发布结构
+	/graypub
+		/1
+			/thrift://com.zhaopin.Service?group={}&major={}
+				{
+					"version": "0.1.0",
+					"group": "plat"
+				}
+2. token的规则
+	0~f

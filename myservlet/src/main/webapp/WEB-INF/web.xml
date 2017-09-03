@@ -5,11 +5,11 @@
          version="3.1">
     <servlet>
         <servlet-name>FirstServlet</servlet-name>
-        <servlet-class>com.zhaopin.FirstServlet</servlet-class>
+        <servlet-class>com.zhaopin.ThriftInterface.FirstServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>SecondServlet</servlet-name>
-        <servlet-class>com.zhaopin.SecondServlet</servlet-class>
+        <servlet-class>com.zhaopin.ThriftInterface.SecondServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>FirstServlet</servlet-name>
@@ -23,11 +23,11 @@
 
     <filter>
         <filter-name>filter1</filter-name>
-        <filter-class>com.zhaopin.filters.MyFilter1</filter-class>
+        <filter-class>com.zhaopin.ThriftInterface.filters.MyFilter1</filter-class>
     </filter>
     <filter>
         <filter-name>filter2</filter-name>
-        <filter-class>com.zhaopin.filters.MyFilter2</filter-class>
+        <filter-class>com.zhaopin.ThriftInterface.filters.MyFilter2</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>filter1</filter-name>

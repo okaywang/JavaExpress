@@ -1,0 +1,32 @@
+group 'com.zhaopin'
+version '1.5'
+
+archivesBaseName = "zhaopin-plugin"
+
+
+apply plugin: 'java'
+apply plugin: 'maven'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile (project(":thrift-compile-tools"))
+    compile gradleApi()
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            //repository(url:uri('D://Repository'))  本地
+            repository(url: "http://localhost:8081/nexus/content/repositories/maven-ihrx/") {
+                authentication(userName: "admin", password: "admin123")
+            }
+        }
+    }
+}

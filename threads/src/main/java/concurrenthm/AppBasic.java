@@ -19,7 +19,7 @@ public class AppBasic {
     public static void main(String[] args) throws InterruptedException {
         ConcurrentHashMap<String, String> maps = new ConcurrentHashMap<>();
         //替换成这个那么线程不安全
-        //HashMap<String, String> maps = new HashMap<>();
+//        HashMap<String, String> maps = new HashMap<>();
 
         Thread[] threads = new Thread[1];
         for (int i = 0; i < threads.length; i++) {

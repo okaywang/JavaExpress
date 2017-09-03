@@ -15,10 +15,8 @@ import java.util.Properties;
 public class App {
     public static void main(String[] args) throws URISyntaxException, IOException {
         System.out.println("gradle test");
-
         printResourceText("appconfig.properties");
         printResourceText("pg.properties");
-
     }
 
     private static void printResourceText(String filename) throws URISyntaxException, IOException {
