@@ -34,4 +34,6 @@ include 'dubbo-interface'
 include 'rabbitmq-producer'
 include 'rabbitmq-consumer'
 include 'groovydemo'
+include 'rabbitmq-zp-produer'
+include 'rabbitmq-zp-consumer'
 
