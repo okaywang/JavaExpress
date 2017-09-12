@@ -14,16 +14,18 @@ public class App {
         Executors.newFixedThreadPool(10);
 
 
-        for (int i = 0; i < 10; i++) {
-            final int index = i;
-            try {
-                Thread.sleep(index * 1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+        for (int i = 0; i < 1000; i++) {
+            int finalI = i;
             cachedThreadPool.execute(new Runnable() {
                 public void run() {
-                    System.out.println(index);
+                    System.out.println(Thread.currentThread().getName() + " begin ...");
+                    System.out.println(finalI);
+                    try {
+                        Thread.sleep(100 * 1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    System.out.println(Thread.currentThread().getName() + " end ...");
                 }
             });
         }
