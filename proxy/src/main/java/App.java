@@ -20,7 +20,7 @@ public class App {
 
         Thread.sleep(1000000);
         service1.sayHello("vvvvvvvvvvvvvvvvvvvvvvvvvv");
-//        HelloService helloService = (HelloService)Proxy.newProxyInstance(App.class.getClassLoader(), new Class[] { HelloService.class }, proxy);
+//        HelloService helloService = (HelloService)Proxy.newProxyInstance(zp.App1.class.getClassLoader(), new Class[] { HelloService.class }, proxy);
 //        helloService.sayHello("李大师");
     }
 
