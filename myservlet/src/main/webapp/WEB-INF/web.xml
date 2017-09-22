@@ -20,6 +20,9 @@
         <servlet-name>SecondServlet</servlet-name>
         <url-pattern>/second</url-pattern>
     </servlet-mapping>
+    <listener>
+        <listener-class>com.zhaopin.ZhaopinListener</listener-class>
+    </listener>
 
     <filter>
         <filter-name>filter1</filter-name>

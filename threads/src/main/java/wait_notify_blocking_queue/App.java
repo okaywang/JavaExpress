@@ -1,11 +1,15 @@
 package wait_notify_blocking_queue;
 
+import java.util.concurrent.ArrayBlockingQueue;
+
 /**
  * foo...Created by wgj on 2017/3/26.
  */
 public class App {
     public static void main(String[] args) throws InterruptedException {
-        BlockingQueue<String> bq = new BlockingQueue<>(3);
+
+        //BlockingQueue<String> bq = new BlockingQueue<>(3);
+        PrettyBlockingQueue<String> bq = new PrettyBlockingQueue<>(3);
         Runnable t1 = new Runnable() {
             @Override
             public void run() {

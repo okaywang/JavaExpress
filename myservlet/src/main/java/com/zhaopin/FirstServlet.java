@@ -8,6 +8,11 @@ import java.io.PrintWriter;
  */
 @javax.servlet.annotation.WebServlet(name = "FirstServlet")
 public class FirstServlet extends javax.servlet.http.HttpServlet {
+
+    public FirstServlet() {
+        System.out.println("ctor");
+    }
+
     protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
 
     }

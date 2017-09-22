@@ -17,7 +17,7 @@ public class BlockingQueue<T> {
     }
 
     public synchronized void put(T element) throws InterruptedException {
-        if (queue.size() == capacity){
+        while (queue.size() == capacity) {
             wait();
         }
         queue.add(element);
@@ -25,7 +25,7 @@ public class BlockingQueue<T> {
     }
 
     public synchronized T take() throws InterruptedException {
-        if (queue.isEmpty()){
+        while (queue.isEmpty()) {
             wait();
         }
         T item = queue.remove();

@@ -37,4 +37,5 @@ include 'groovydemo'
 include 'rabbitmq-zp-produer'
 include 'rabbitmq-zp-consumer'
 include 'classloader'
+include 'netty'
 

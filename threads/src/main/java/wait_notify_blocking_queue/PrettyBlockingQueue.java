@@ -26,7 +26,6 @@ public class PrettyBlockingQueue<T> {
             while(queue.size() == capacity) {
                 notFull.await();
             }
-
             queue.add(element);
             notEmpty.signal();
         } finally {
