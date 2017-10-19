@@ -8,7 +8,7 @@ import java.util.concurrent.TimeoutException;
  * Created by Administrator on 2017/7/16.
  */
 public class App {
-    private final static String QUEUE_NAME = "rabbitMQ.apply1";
+    private final static String QUEUE_NAME = "test09281";
 
     public static void main(String[] args) throws IOException, TimeoutException {
         ConnectionFactory factory = new ConnectionFactory();
@@ -16,9 +16,10 @@ public class App {
         Connection connection = factory.newConnection();
         Channel channel = connection.createChannel();
 
-        channel.queueDeclare(QUEUE_NAME, false, false, false, null);
+//        channel.queueDeclare(QUEUE_NAME, false, false, false, null);
         System.out.println(" [*] Waiting for messages. To exit press CTRL+C");
 
+        QueueingConsumer queueingConsumer = new QueueingConsumer(channel);
         Consumer consumer = new MyConsumer(channel);
         channel.basicConsume(QUEUE_NAME, true, consumer);
     }

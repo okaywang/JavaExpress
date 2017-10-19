@@ -15,11 +15,6 @@ public class Bootstrap {
     private final static int DEFAULT_QRY_CODE = 1;
 
     public static void main(String[] args) {
-        System.out.println(String.format("%s?qrcode=%s&status=%s", "http://www.baidu.com", "asdfadfasfa", 323));
-        if (System.currentTimeMillis() > 1) {
-            return;
-        }
-
         try {
             TTransport tTransport = getTTransport();
             TProtocol protocol = new TBinaryProtocol(tTransport);

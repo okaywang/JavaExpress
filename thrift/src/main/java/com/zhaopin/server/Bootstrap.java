@@ -4,6 +4,7 @@ import com.zhaopin.service.JobServiceImpl;
 import com.zhaopin.thrift.JobService;
 import org.apache.thrift.TProcessorFactory;
 import org.apache.thrift.protocol.TBinaryProtocol;
+import org.apache.thrift.protocol.TJSONProtocol;
 import org.apache.thrift.server.TNonblockingServer;
 import org.apache.thrift.server.TServer;
 import org.apache.thrift.transport.TFramedTransport;
@@ -23,6 +24,7 @@ public class Bootstrap {
             JobService.Processor processor = new JobService.Processor(new JobServiceImpl());
             TNonblockingServer.Args arg = new TNonblockingServer.Args(socket);
             arg.protocolFactory(new TBinaryProtocol.Factory());
+//            arg.protocolFactory(new TJSONProtocol.Factory());
             arg.transportFactory(new TFramedTransport.Factory());
             arg.processorFactory(new TProcessorFactory(processor));
             server = new TNonblockingServer(arg);

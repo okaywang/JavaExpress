@@ -27,7 +27,7 @@ public class ProducerDemo {
 
         while (true) {
             for (long i = 0; i < Long.MAX_VALUE; i++) {
-                producer.send(new ProducerRecord<String, String>("tttttt24", "aaaaa " + i, "bbbb bbbb bbbb bbbb " + i)).get();
+                producer.send(new ProducerRecord<String, String>("notification", "aaaaa " + i, "bbbb bbbb bbbb bbbb " + i)).get();
                 Thread.sleep(500);
             }
         }
