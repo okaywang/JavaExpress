@@ -10,6 +10,8 @@ repositories {
 }
 
 dependencies {
+    compile 'org.nutz:nutz:1.r.62'
+    compile group: 'org.postgresql', name: 'postgresql', version: '9.4-1201-jdbc41'
     compile 'org.springframework:spring-beans:4.1.0.RELEASE'
     compile 'org.springframework:spring-context:4.1.0.RELEASE'
     compile 'org.springframework:spring-aspects:4.1.0.RELEASE'

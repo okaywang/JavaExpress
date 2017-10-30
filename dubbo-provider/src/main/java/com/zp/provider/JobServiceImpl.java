@@ -9,6 +9,7 @@
 package com.zp.provider;
 
 import com.zp.JobDto;
+import com.zp.JobException;
 import com.zp.JobService;
 
 
@@ -22,6 +23,9 @@ public class JobServiceImpl implements JobService {
         JobDto jobDto = new JobDto();
         jobDto.setId(id);
         jobDto.setJobTitle("this is from server(dubbo)");
+        if (id > 0) {
+            throw  new JobException("vvvvvvvvvvvv aaaaaaaaaaaaaaaaaaa");
+        }
         return jobDto;
     }
 
