@@ -14,6 +14,8 @@ import com.zp.JobException;
 import com.zp.JobService;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.List;
+
 /**
  * Created by guojun.wang on 2017/7/10.
  */
@@ -22,6 +24,10 @@ public class App {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[]{"application.xml"});
         context.start();
         JobService demoService = (JobService) context.getBean("jobService"); // 获取bean
+
+        List<JobDto> search = demoService.search(1000, null);
+        System.out.println(search);
+
         try {
 
             JobDto jobInfo = demoService.getJobInfo(3);

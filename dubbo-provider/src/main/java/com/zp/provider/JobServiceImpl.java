@@ -12,6 +12,9 @@ import com.zp.JobDto;
 import com.zp.JobException;
 import com.zp.JobService;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * Created by guojun.wang on 2017/7/10.
@@ -27,6 +30,20 @@ public class JobServiceImpl implements JobService {
             throw  new JobException("vvvvvvvvvvvv aaaaaaaaaaaaaaaaaaa");
         }
         return jobDto;
+    }
+
+    @Override
+    public List<JobDto> search(long companyId, Integer status) {
+        System.out.println(status);
+        List<JobDto> items = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            JobDto dto = new JobDto();
+            dto.setId(i);
+            dto.setJobTitle("title" + i);
+            items.add(dto);
+        }
+
+        return items;
     }
 
     @Override

@@ -8,10 +8,13 @@
 
 package com.zp;
 
+import java.util.List;
+
 /**
  * Created by guojun.wang on 2017/7/10.
  */
 public interface JobService {
     JobDto getJobInfo(int id);
+    List<JobDto> search(long companyId, Integer status);
     int getJobCount();
 }
