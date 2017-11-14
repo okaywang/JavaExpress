@@ -9,7 +9,31 @@ public class App2 {
 
     }
 
+    public static int[] reverse(int[] items, int index) {
+        if (index == items.length / 2) {
+            return items;
+        }
+        int tmp = items[index];
+        items[index] = items[items.length - index - 1];
+        items[items.length - index - 1] = tmp;
+        return reverse(items, index + 1);
+    }
+
+
     public static void main(String[] args) {
+
+        int[] items = new int[]{1, 2, 3, 4, 5};
+        int[] result = reverse(items, 0);
+        System.out.println(result);
+        StringBuilder sb = new StringBuilder();
+        sb.append("abc");
+        sb.delete(0, sb.length());
+        sb.delete(0, sb.length());
+        System.out.println(sb.toString());
+        if (System.currentTimeMillis() > 3) {
+            return;
+        }
+
         List<Foo> foos = new ArrayList<>();
         foos.add(new Foo(2, "2222", new Date(2002, 1, 1)));
         foos.add(new Foo(1, "1111", new Date(2001, 1, 1)));

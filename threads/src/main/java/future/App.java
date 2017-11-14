@@ -15,7 +15,7 @@ public class App {
             @Override
             public Integer call() throws Exception {
                 System.out.println("do thing 1 at" + new Date());
-                Thread.sleep(1000);
+                Thread.sleep(5000);
                 return new Random().nextInt(100);
             }
         };

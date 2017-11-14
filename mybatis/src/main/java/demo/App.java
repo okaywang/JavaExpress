@@ -30,6 +30,7 @@ public class App {
         //sqlSessionFactory.getConfiguration().setDefaultStatementTimeout(2);
         sqlSessionFactory.getConfiguration();
         SqlSession session = sqlSessionFactory.openSession(true);
+
         //Environment environment = new Environment();
 
         //sqlSessionFactory.getConfiguration().setEnvironment(environment);
