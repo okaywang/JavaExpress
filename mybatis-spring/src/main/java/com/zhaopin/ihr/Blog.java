@@ -1,4 +1,4 @@
-package com.zhaopin;
+package com.zhaopin.ihr;
 
 /**
  * Created by guojun.wang on 2017/3/7.

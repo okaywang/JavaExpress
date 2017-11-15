@@ -1,5 +1,6 @@
 package com.zhaopin;
 
+import com.zhaopin.ihr.*;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -9,8 +10,12 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class App {
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("AppContext.xml");
-        BlogMapper mapper = context.getBean(BlogMapper.class);
-        Blog blog = mapper.getBlog(345, 1);
-        System.out.println(blog);
+        IhrBusiness business = context.getBean(IhrBusiness.class);
+        business.addBlog();
+
+//        Blog blog = blogMapper.getBlog(345, 1);
+//        System.out.println(blog);
+
+
     }
 }

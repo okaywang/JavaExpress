@@ -25,9 +25,9 @@ public interface BlogDao {
 
     public List<Blog> search(@Param("searchParams") SearchParams searchParams);
 
-    public int insertBlog(@Param("entity") Blog entity);
+    public int insertBlog(@Param("ihr") Blog entity);
 
-    @Insert("INSERT INTO Blog (blogname,blogtype) VALUES (#{entity.blogName}, 1)")
-    @Options(useGeneratedKeys = true, keyProperty = "entity.id", keyColumn = "id")
-    public int insertBlog2(@Param("entity") Blog entity);
+    @Insert("INSERT INTO Blog (blogname,blogtype) VALUES (#{ihr.blogName}, 1)")
+    @Options(useGeneratedKeys = true, keyProperty = "ihr.id", keyColumn = "id")
+    public int insertBlog2(@Param("ihr") Blog entity);
 }

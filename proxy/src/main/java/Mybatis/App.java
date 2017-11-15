@@ -8,8 +8,8 @@ public class App {
 //        MapperProxyFactory<BlogDao> factory = new MapperProxyFactory<>(BlogDao.class);
 //        MapperProxy<BlogDao> mapperProxy = new MapperProxy<>();
 //        BlogDao dao = factory.newInstance(mapperProxy);
-//        BlogEntity entity = dao.getById(3);
-//        System.out.println(entity);
+//        BlogEntity ihr = dao.getById(3);
+//        System.out.println(ihr);
 
 
         MapperProxyFactory<ResumeDao> factory2 = new MapperProxyFactory<>(ResumeDao.class);

@@ -14,7 +14,12 @@ public class ShardingDataSourceRouter implements ApplicationContextAware {
     private ApplicationContext applicationContext;
 
     public void onRoute(String shardingTableName, Object parameter) {
-        int userId = Integer.parseInt(((MapperMethod.ParamMap) parameter).get("userId").toString());
+        MapperMethod.ParamMap paramMap = (MapperMethod.ParamMap) parameter;
+        if(!paramMap.containsKey("userId")){
+            ShardingContextHolder.setDBKey("rd1");
+            return;
+        }
+        int userId = Integer.parseInt(paramMap.get("userId").toString());
         ShardingContextHolder.setDBKey(userId % 2 == 0 ? "rd1" : "rd2");
     }
 
