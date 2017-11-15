@@ -12,19 +12,22 @@
     http://www.springframework.org/schema/aop
     http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 
-    <bean id="rd1" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+
+    <bean id="parentDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="org.postgresql.Driver"/>
+        <property name="maxActive" value="30"/>
+    </bean>
+    <bean id="rd1" parent="parentDataSource">
         <property name="url" value="jdbc:postgresql://172.17.5.20:5432/test"/>
         <property name="username" value="dev_zhaopin"/>
         <property name="password" value="zhaopin123"/>
     </bean>
-    <bean id="rd2" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-        <property name="driverClassName" value="org.postgresql.Driver"/>
+    <bean id="rd2" parent="parentDataSource">
         <property name="url" value="jdbc:postgresql://172.17.5.20:5432/friend01"/>
         <property name="username" value="dev_zhaopin"/>
         <property name="password" value="zhaopin123"/>
     </bean>
-    <bean id="dataSource" class="com.zhaopin.MyRoutingDataSource">
+    <bean id="routingDataSource" class="com.zhaopin.MyRoutingDataSource">
         <property name="targetDataSources">
             <map>
                 <entry key="rd1" value-ref="rd1"/>
@@ -33,11 +36,26 @@
         </property>
         <property name="defaultTargetDataSource" ref="rd1"/>
     </bean>
+    <bean id="lazyDataSource" class="org.springframework.jdbc.datasource.LazyConnectionDataSourceProxy">
+        <property name="targetDataSource">
+            <ref bean="routingDataSource"/>
+        </property>
+    </bean>
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="dataSource" ref="dataSource"/>
+        <property name="dataSource" ref="lazyDataSource"/>
+        <property name="plugins">
+            <array>
+                <ref bean="mySqlIntercepter"/>
+            </array>
+        </property>
     </bean>
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="lazyDataSource"/>
+    </bean>
+    <tx:annotation-driven transaction-manager="transactionManager"/>
     <bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-        <property name="mapperInterface" value="com.zhaopin.BlogMapper" />
-        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+        <property name="mapperInterface" value="com.zhaopin.BlogMapper"/>
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
     </bean>
+    <bean id="mySqlIntercepter" class="com.zhaopin.MySqlIntercepter"/>
 </beans>
