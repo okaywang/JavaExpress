@@ -10,6 +10,7 @@ repositories {
 }
 
 dependencies {
+    compile 'org.apache.velocity:velocity:1.7'
     compile 'org.springframework:spring-beans:4.1.0.RELEASE'
     compile 'org.springframework:spring-context:4.1.0.RELEASE'
     compile 'org.springframework:spring-aspects:4.1.0.RELEASE'

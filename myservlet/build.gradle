@@ -3,11 +3,11 @@ version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
 apply plugin: 'war'
-apply plugin : 'jetty'
+//apply plugin : 'jetty'
 
-httpPort = 8088
-stopPort = 8089
-stopKey  = 'ss'
+//httpPort = 8088
+//stopPort = 8089
+//stopKey  = 'ss'
 
 sourceCompatibility = 8
 
