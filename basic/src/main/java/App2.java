@@ -10,6 +10,8 @@ public class App2 {
     }
 
     public static void main(String[] args) {
+        Class<Integer> integerClass = int.class;
+        Class<Integer> integerClass1 = Integer.class;
         List<Foo> foos = new ArrayList<>();
         foos.add(new Foo(2, "2222", new Date(2002, 1, 1)));
         foos.add(new Foo(1, "1111", new Date(2001, 1, 1)));

@@ -38,4 +38,6 @@ include 'groovydemo'
 //include 'thrift-compile-tools'
 //include 'thrift-rpc-core'
 include 'myservlet-argo'
+include 'gs'
+include 'io'
 
