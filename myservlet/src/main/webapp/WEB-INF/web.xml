@@ -11,6 +11,10 @@
         <servlet-name>SecondServlet</servlet-name>
         <servlet-class>com.zhaopin.SecondServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ThirdServlet</servlet-name>
+        <servlet-class>com.zhaopin.ThirdServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>FirstServlet</servlet-name>
         <url-pattern>/first</url-pattern>
@@ -19,6 +23,11 @@
     <servlet-mapping>
         <servlet-name>SecondServlet</servlet-name>
         <url-pattern>/second</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ThirdServlet</servlet-name>
+        <url-pattern>/third</url-pattern>
     </servlet-mapping>
 
     <filter>

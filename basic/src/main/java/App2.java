@@ -1,4 +1,7 @@
+import java.io.File;
 import java.lang.reflect.Method;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 
 /**
@@ -10,6 +13,10 @@ public class App2 {
     }
 
     public static void main(String[] args) {
+
+        System.out.println(Paths.get(Paths.get(System.getProperty("user.dir")).getRoot().toString(), "/opt/wf"));
+
+
         Class<Integer> integerClass = int.class;
         Class<Integer> integerClass1 = Integer.class;
         List<Foo> foos = new ArrayList<>();

@@ -8,7 +8,7 @@ import java.io.PrintWriter;
  * foo...Created by wgj on 2017/2/12.
  */
 @javax.servlet.annotation.WebServlet(name = "FirstServlet")
-public class FirstServlet extends javax.servlet.http.HttpServlet {
+public class ThirdServlet extends javax.servlet.http.HttpServlet {
     protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
 
     }
@@ -20,6 +20,5 @@ public class FirstServlet extends javax.servlet.http.HttpServlet {
         PrintWriter pw = response.getWriter();
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/second");
         requestDispatcher.forward(request,response);
-//        pw.write("<h1> hello first servlet by wgj!</h1>");
     }
 }

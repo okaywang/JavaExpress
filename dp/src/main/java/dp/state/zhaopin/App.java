@@ -19,13 +19,14 @@ public class App {
     public static int i;
 
     public static void main(String[] args) throws InterruptedException {
+        System.out.println("main");
+        System.out.println("");
         logger.debug("app start");
         Applying applying = new Applying(1234132);
         applying.sendInterview();
         applying.makeImproper();
 
         logger.debug("app over");
-
 
         MDC.put("sId", "user1");
         logger.info("user1 doing ...");

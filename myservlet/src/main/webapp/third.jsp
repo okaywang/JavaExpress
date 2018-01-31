@@ -9,12 +9,9 @@
 <html>
   <head>
     <title>$Title$</title>
-    <script>
-      window.location.href="http://www.baidu.com";
-    </script>
   </head>
   <body>
-  this is a jsp page
-  $END$
+  my jsp page:ttttttttttttttttttttt
+  <%=session.getAttribute("server")%>
   </body>
 </html>

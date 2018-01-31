@@ -10,6 +10,8 @@ repositories {
 }
 
 dependencies {
+    compile 'org.nutz:nutz:1.r.63.r2'
+    compile 'com.google.guava:guava:23.5-jre'
     compile 'org.apache.velocity:velocity:1.7'
     compile 'org.springframework:spring-beans:4.1.0.RELEASE'
     compile 'org.springframework:spring-context:4.1.0.RELEASE'
