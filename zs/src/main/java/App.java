@@ -1,8 +1,16 @@
+import common.AStockHelper;
 import common.CurrentDetail;
+import common.InitHelper;
 import domain.StandardDetailItem;
+import org.apache.commons.io.IOUtils;
+import provider.DayProvider;
+import provider.MinuteItem;
+import provider.MinuteProvider;
 
 import java.io.IOException;
+import java.nio.file.Files;
 import java.time.LocalDate;
+import java.util.List;
 
 /**
  * Created by wangguojun01 on 2018/1/31.
@@ -25,6 +33,17 @@ public class App {
 0943 74.99 34724\n\
      */
     public static void main(String[] args) throws IOException {
+
+        InitHelper.initStocks();
+
+
+//        DayProvider.getData("300216");
+//        MinuteItem[] data = MinuteProvider.getData("300216");
+//        System.out.println(data);
+//        MyContainer container = new MyContainer(node);
+    }
+
+    private static void ttt() {
         StandardDetailItem[] items = new StandardDetailItem[5];
         StandardDetailItem item = new StandardDetailItem("09:25", 5626, 10);
         items[0] = new StandardDetailItem("09:25", 5626, 0);
@@ -34,8 +53,6 @@ public class App {
         items[4] = new StandardDetailItem("09:33", 3600, 0.05);
 
         represent(items);
-
-//        MyContainer container = new MyContainer(node);
     }
 
     public static void represent(StandardDetailItem[] items) {
