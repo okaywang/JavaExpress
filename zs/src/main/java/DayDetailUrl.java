@@ -8,7 +8,7 @@ import java.util.Locale;
 /**
  * Created by wangguojun01 on 2018/2/1.
  */
-public class DetailUrl {
+public class DayDetailUrl {
     private String code;
     private LocalDate localDate;
 
@@ -16,7 +16,7 @@ public class DetailUrl {
     private static final String url_pattern = "http://market.finance.sina.com.cn/downxls.php?date=%s&symbol=%s";
     private static final String response_encoding = "gb2312";
 
-    public DetailUrl(String code, LocalDate localDate) {
+    public DayDetailUrl(String code, LocalDate localDate) {
         this.code = code;
         this.localDate = localDate;
     }
