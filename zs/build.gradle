@@ -9,6 +9,15 @@ repositories {
     mavenCentral()
 }
 
+jar {
+    manifest {
+        attributes "Main-Class": "App"
+    }
+
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
 dependencies {
     compile 'mysql:mysql-connector-java:6.0.6'
     compile 'com.alibaba:fastjson:1.2.4'
