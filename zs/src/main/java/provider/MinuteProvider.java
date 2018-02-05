@@ -27,17 +27,22 @@ public class MinuteProvider {
             HttpEntity entity = response1.getEntity();
             String data = EntityUtils.toString(entity, "gb2312");
             String[] items = data.split("\n");
-            MinuteItem[] minuteItems = new MinuteItem[items.length - 2];
+            MinuteItem[] minuteItems = new MinuteItem[items.length - 2 - 1];
             float lastPrice = DayProvider.getData(code, AStockHelper.previousDay()).getClose();
+            int lastTotalVolume = 0;
+            float factor = 100 / lastPrice;
             for (int i = 2; i < items.length - 1; i++) {
                 String[] subItems = items[i].split(" ");
                 MinuteItem mi = new MinuteItem();
                 mi.setTime(subItems[0]);
                 mi.setPrice(Float.parseFloat(subItems[1]));
-                mi.setVolume(Integer.parseInt(subItems[2].replace("\\n\\", "")));
-                mi.setDelta(mi.getPrice() - lastPrice);
+                mi.setSprice(mi.getPrice() * factor);
+                int v = Integer.parseInt(subItems[2].replace("\\n\\", ""));
+                mi.setVolume(v - lastTotalVolume);
+                mi.setDelta((mi.getPrice() - lastPrice) * factor);
                 minuteItems[i - 2] = mi;
                 lastPrice = mi.getPrice();
+                lastTotalVolume = v;
             }
             EntityUtils.consume(entity);
             return minuteItems;

@@ -1,7 +1,10 @@
 package provider;
 
+import common.AStockHelper;
+
 public class MinuteItem {
     private String time;
+    private float sprice;
     private float price;
     private float delta;
     private int volume;
@@ -16,6 +19,14 @@ public class MinuteItem {
 
     public float getPrice() {
         return price;
+    }
+
+    public float getSprice() {
+        return sprice;
+    }
+
+    public void setSprice(float sprice) {
+        this.sprice = sprice;
     }
 
     public void setPrice(float price) {
@@ -36,5 +47,16 @@ public class MinuteItem {
 
     public void setVolume(int volume) {
         this.volume = volume;
+    }
+
+    @Override
+    public String toString() {
+        return "MinuteItem{" +
+                "time='" + time + '\'' +
+                ", price=" + AStockHelper.DecimalFormat.format(price) +
+                ", sprice=" + AStockHelper.DecimalFormat.format(sprice) +
+                ", delta=" + AStockHelper.DecimalFormat.format(delta) +
+                ", volume=" + volume +
+                '}';
     }
 }

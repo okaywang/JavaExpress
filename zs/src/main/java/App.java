@@ -1,5 +1,7 @@
+import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
 import common.AStockHelper;
 import common.CurrentDetail;
+import common.DaoHelper;
 import common.InitHelper;
 import domain.StandardDetailItem;
 import org.apache.commons.io.IOUtils;
@@ -34,12 +36,22 @@ public class App {
      */
     public static void main(String[] args) throws IOException {
 
-        InitHelper.initStocks();
+        //InitHelper.initStocks();
 
 
 //        DayProvider.getData("300216");
-//        MinuteItem[] data = MinuteProvider.getData("300216");
-//        System.out.println(data);
+
+        String code = "300277";
+        MinuteItem[] data = MinuteProvider.getData(code);
+
+        long start = System.currentTimeMillis();
+//        for (MinuteItem datum : data) {
+//            System.out.println(datum);
+//            DaoHelper.insert(code, datum);
+//        }
+        DaoHelper.insertBatch(code, data);
+        System.out.println(System.currentTimeMillis() - start);
+        System.out.println("over");
 //        MyContainer container = new MyContainer(node);
     }
 
