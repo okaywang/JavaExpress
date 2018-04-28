@@ -2,6 +2,7 @@
  * Created by guojun.wang on 2017/4/18.
  */
 public class App {
+
     public static void main(String[] args) {
         int score[] = {67, 69, 75, 87, 89, 90, 99, 100};
         sort(score);
