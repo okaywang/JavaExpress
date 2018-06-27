@@ -27,7 +27,7 @@ public class App_CountDownLatch {
                         // 如果当前计数为零，则此方法立即返回。
                         // 等待
                         begin.await();
-                        System.out.println(NO +  " run ...");
+                        System.out.println(NO + " run ...");
                         Thread.sleep((long) (Math.random() * 10000));
                         System.out.println("No." + NO + " arrived");
                     } catch (InterruptedException e) {
@@ -46,7 +46,7 @@ public class App_CountDownLatch {
         // begin减一，开始游戏
         begin.countDown();
         // 等待end变为0，即所有选手到达终点
-        endLatch.await();
+        endLatch.await(4, TimeUnit.SECONDS);
         System.out.println("Game Over");
         exec.shutdown();
     }

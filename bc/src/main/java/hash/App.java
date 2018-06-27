@@ -12,6 +12,7 @@ public class App {
     //look up hash value starting with "0000"
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
+        test("wj");
         test("Hello, world!0");
         test("Hello, world!1");
         //...
@@ -31,9 +32,13 @@ public class App {
 
     private static String sha256(byte[] bytes) throws NoSuchAlgorithmException {
         MessageDigest messageDigest;
-        messageDigest = MessageDigest.getInstance("SHA-256");
+        messageDigest = MessageDigest.getInstance("SHA-1");
         messageDigest.update(bytes);
         byte[] resultBytes = messageDigest.digest();
+
+        System.out.println(String.format("%8s", Integer.toBinaryString(resultBytes[0] & 0xFF)).replace(' ', '0'));
+
+
         String resultStr = Hex.encodeHexString(resultBytes);
         return resultStr;
 

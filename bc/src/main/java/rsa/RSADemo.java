@@ -1,5 +1,7 @@
 package rsa;
 
+import sun.security.rsa.RSAPrivateCrtKeyImpl;
+
 import java.security.Key;
 import java.security.KeyPair;
 import java.util.Scanner;
@@ -9,11 +11,12 @@ public class RSADemo {
         KeyPairGenerator keyGenerator = new KeyPairGenerator();
 //        keyGenerator.generate();
         KeyPair keyPair = keyGenerator.getKeyPair();
-        System.out.println("current keyPair: " + keyPair.toString());
+        System.out.println("current keyPair: ");
+        System.out.println(keyPair.getPrivate().toString());
+        System.out.println(keyPair.getPublic().toString());
         System.out.println("请输入明文：");
         Scanner sca = new Scanner(System.in);
         String str = sca.nextLine();
-
         testRSA(str, keyPair.getPublic(), keyPair.getPrivate());
         testRSA(str, keyPair.getPrivate(), keyPair.getPublic());
     }
