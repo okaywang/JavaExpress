@@ -26,9 +26,9 @@ public class ConfigHelper {
             @Override
             public PrivateKey getKey() {
                 String key = "-----BEGIN PRIVATE KEY-----\n" +
-                        "MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgC4xWMlvj+7+tvg6/\n" +
-                        "HKwVbv6QpJA+ckpxMRupJbN+KSChRANCAARSSLb2xYVe6slbwvVED4ef8XpQs2Iz\n" +
-                        "E7R8M0nSOiD2IfxUexTEL+fhSsXCgZKCDwdzFIRyvYOs7c7gHJJswAs2\n" +
+                        "MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgpnDbEvHlh2ZGvcuW\n" +
+                        "+9h7RDWTKYIfyjAb6eNOYTJV6OuhRANCAASm9v5ZU9GAFyTVKGDacZl/M77nYKZS\n" +
+                        "dTp4gCRT4IHXgfI2U0YZ9SjezpSYY+eEFvYEUCFTkpZHsE196ozh5sH0\n" +
                         "-----END PRIVATE KEY-----";
                 PrivateKey privateKey = null;
                 try {
@@ -44,22 +44,22 @@ public class ConfigHelper {
                 }
                 return privateKey;
             }
-
+            //github.com/chaincode/chaincode_example02/go
             @Override
             public String getCert() {
                 return "-----BEGIN CERTIFICATE-----\n" +
-                        "MIICKTCCAdCgAwIBAgIQHBugv3C8se5A3BjSbLDnyjAKBggqhkjOPQQDAjBzMQsw\n" +
-                        "CQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZy\n" +
-                        "YW5jaXNjbzEZMBcGA1UEChMQb3JnMS5leGFtcGxlLmNvbTEcMBoGA1UEAxMTY2Eu\n" +
-                        "b3JnMS5leGFtcGxlLmNvbTAeFw0xODA2MjExMzA2MDlaFw0yODA2MTgxMzA2MDla\n" +
-                        "MGwxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1T\n" +
-                        "YW4gRnJhbmNpc2NvMQ8wDQYDVQQLEwZjbGllbnQxHzAdBgNVBAMMFkFkbWluQG9y\n" +
-                        "ZzEuZXhhbXBsZS5jb20wWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAARSSLb2xYVe\n" +
-                        "6slbwvVED4ef8XpQs2IzE7R8M0nSOiD2IfxUexTEL+fhSsXCgZKCDwdzFIRyvYOs\n" +
-                        "7c7gHJJswAs2o00wSzAOBgNVHQ8BAf8EBAMCB4AwDAYDVR0TAQH/BAIwADArBgNV\n" +
-                        "HSMEJDAigCCzwoQiWEEcAZ7Gztzw/pAuKGXpxhsW1RFMgve+DqpooTAKBggqhkjO\n" +
-                        "PQQDAgNHADBEAiAsiVJ6um8pFryDWFCqR/E7/iyuveRtenK1IWclZ775ngIgIHLK\n" +
-                        "+u6nxKCbsEcJM0SglZFAS0z0aHGMTX1Trwqm+gA=\n" +
+                        "MIICKjCCAdGgAwIBAgIRALmsOVUFJuQYakEfxMR6f1MwCgYIKoZIzj0EAwIwczEL\n" +
+                        "MAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG\n" +
+                        "cmFuY2lzY28xGTAXBgNVBAoTEG9yZzIuZXhhbXBsZS5jb20xHDAaBgNVBAMTE2Nh\n" +
+                        "Lm9yZzIuZXhhbXBsZS5jb20wHhcNMTgwNzA0MTI1NzU5WhcNMjgwNzAxMTI1NzU5\n" +
+                        "WjBsMQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMN\n" +
+                        "U2FuIEZyYW5jaXNjbzEPMA0GA1UECxMGY2xpZW50MR8wHQYDVQQDDBZBZG1pbkBv\n" +
+                        "cmcyLmV4YW1wbGUuY29tMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEpvb+WVPR\n" +
+                        "gBck1Shg2nGZfzO+52CmUnU6eIAkU+CB14HyNlNGGfUo3s6UmGPnhBb2BFAhU5KW\n" +
+                        "R7BNfeqM4ebB9KNNMEswDgYDVR0PAQH/BAQDAgeAMAwGA1UdEwEB/wQCMAAwKwYD\n" +
+                        "VR0jBCQwIoAgz6bWq8RVtKeyDCwK9KyIJkFrTipTpH0tE4gHtf8CyOIwCgYIKoZI\n" +
+                        "zj0EAwIDRwAwRAIgMVvo1wz2UtbbQJ55mMSoUFJPDEp3TMypPBRjR1Cft6cCIDe0\n" +
+                        "+LqI1K93f2lm6ufxU//Wb2U7eWO4SVy+9GCgCksW\n" +
                         "-----END CERTIFICATE-----";
             }
         };
@@ -67,12 +67,59 @@ public class ConfigHelper {
         return enrollment;
     }
 
+
+    public static Enrollment getOrderEnrollment() {
+        Enrollment enrollment = new Enrollment() {
+            @Override
+            public PrivateKey getKey() {
+                String key = "-----BEGIN PRIVATE KEY-----\n" +
+                        "MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgcJNbPbRPPH01sbKn\n" +
+                        "yVUieNmbG7+WVpBz7lviOkS8mlmhRANCAARZpuT07zjVsSor/lVl+M0AxqKrOBSx\n" +
+                        "W6XmJGp5CPd5y7JFcO24PhfnzK5dF1quw0CmuBCjaHqr30Myw0isiScr\n" +
+                        "-----END PRIVATE KEY-----";
+                PrivateKey privateKey = null;
+                try {
+                    privateKey = PrivateKeyUtil.getPrivateKeyFromBytes(key.getBytes("UTF-8"));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (NoSuchProviderException e) {
+                    e.printStackTrace();
+                } catch (NoSuchAlgorithmException e) {
+                    e.printStackTrace();
+                } catch (InvalidKeySpecException e) {
+                    e.printStackTrace();
+                }
+                return privateKey;
+            }
+            //github.com/chaincode/chaincode_example02/go
+            @Override
+            public String getCert() {
+                return "-----BEGIN CERTIFICATE-----\n" +
+                        "MIICCzCCAbGgAwIBAgIRAMYT+1h9p2VUmCMEcux7CTUwCgYIKoZIzj0EAwIwaTEL\n" +
+                        "MAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG\n" +
+                        "cmFuY2lzY28xFDASBgNVBAoTC2V4YW1wbGUuY29tMRcwFQYDVQQDEw5jYS5leGFt\n" +
+                        "cGxlLmNvbTAeFw0xODA3MDQxMjU3NTlaFw0yODA3MDExMjU3NTlaMFYxCzAJBgNV\n" +
+                        "BAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1TYW4gRnJhbmNp\n" +
+                        "c2NvMRowGAYDVQQDDBFBZG1pbkBleGFtcGxlLmNvbTBZMBMGByqGSM49AgEGCCqG\n" +
+                        "SM49AwEHA0IABFmm5PTvONWxKiv+VWX4zQDGoqs4FLFbpeYkankI93nLskVw7bg+\n" +
+                        "F+fMrl0XWq7DQKa4EKNoeqvfQzLDSKyJJyujTTBLMA4GA1UdDwEB/wQEAwIHgDAM\n" +
+                        "BgNVHRMBAf8EAjAAMCsGA1UdIwQkMCKAIKWE0nkwrnW02iz17VdpmCGldXNIvuOo\n" +
+                        "DLm0IELAtVh/MAoGCCqGSM49BAMCA0gAMEUCIQD1h88UlVxAielxNcLz5MnAVHoo\n" +
+                        "vcLI+VUD2dLLW6U9CQIgLOGjaQP2wTYhPXVTZyXHUzQGCT6+NZhxHznrcadtA9M=\n" +
+                        "-----END CERTIFICATE-----";
+            }
+        };
+
+        return enrollment;
+    }
+
+
     public static Channel getChannel(String channelName, HFClient client) throws InvalidArgumentException, TransactionException {
         //client.setUserContext(userContext);
 
         Channel channel =  client.newChannel(channelName);
         channel.addOrderer(client.newOrderer("orderer0","grpc://111.230.147.33:7050"));
-        channel.addPeer(client.newPeer("peer0", "grpc://111.230.147.33:7051"));
+//        channel.addPeer(client.newPeer("peer0", "grpc://111.230.147.33:7051"));
         channel.addPeer(client.newPeer("peer0", "grpc://111.230.147.33:9051"));
         channel.initialize();
 

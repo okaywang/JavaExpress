@@ -25,19 +25,27 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 /**
  * Created by wangguojun01 on 2018/6/25.
  */
-public class App {
+public class AppInvoke {
     public static void main(String[] args) throws InvalidArgumentException, ProposalException, IllegalAccessException, InvocationTargetException, InstantiationException, NoSuchMethodException, CryptoException, ClassNotFoundException, TransactionException, InterruptedException, ExecutionException, TimeoutException {
         Enrollment enrollment = ConfigHelper.getEnrollment();
-        User user1 = new ClientUser("Admin", enrollment, "Org1MSP");
+        User user1 = new ClientUser("Admin", enrollment, "Org2MSP");
 
         HFClient client = HFClient.createNewInstance();
         client.setCryptoSuite(CryptoSuite.Factory.getCryptoSuite());
         client.setUserContext(user1);
+        Channel channel = ConfigHelper.getChannel("mychannel", client);
+
+        for (int i = 0; i < 35; i++) {
+            invokeMethod(channel, user1, client);
+        }
 
 
+    }
+
+    private static void invokeMethod(Channel channel, User user1, HFClient client) throws InvalidArgumentException, TransactionException, ProposalException, InterruptedException, ExecutionException, TimeoutException {
         ChaincodeID.Builder chaincodeIDBuilder = ChaincodeID.newBuilder().setName("mycc")
-                .setVersion("1.0")
-                .setPath("github.com/hyperledger/fabric/examples/chaincode/go/chaincode_example02");
+                .setVersion("5.1");
+        //.setPath("github.com/hyperledger/fabric/examples/chaincode/go/chaincode_example02");
 
         ChaincodeID chaincodeID = chaincodeIDBuilder.build();
 
@@ -45,10 +53,10 @@ public class App {
         transactionProposalRequest.setChaincodeID(chaincodeID);
         transactionProposalRequest.setChaincodeLanguage(TransactionRequest.Type.GO_LANG);
         //transactionProposalRequest.setFcn("invoke");
-        transactionProposalRequest.setFcn("saveWealthAndPower");
+        //transactionProposalRequest.setFcn("saveWealthAndPower");
+        transactionProposalRequest.setFcn("move");
         //transactionProposalRequest.setProposalWaitTime(testConfig.getProposalWaitTime());
-        transactionProposalRequest.setArgs("{\"pid\":2311111,\"time\":1529899415257,\"type\":3,\"uid\":111111111111,\"value\":1213}",
-                "{\"amount\":123.231,\"time\":1529899415258,\"type\":1,\"uid\":111111111111,\"wid\":12313131}");
+        transactionProposalRequest.setArgs("a", "b", "1");
 
 
         Map<String, byte[]> tm2 = ConfigHelper.getTransientMap();
@@ -56,7 +64,6 @@ public class App {
 
         System.out.println("sending transactionProposal to all peers with arguments: move(a,b,100)");
 
-        Channel channel = ConfigHelper.getChannel("mychannel", client);
 
         transactionProposalRequest.setUserContext(user1);
         Collection<ProposalResponse> transactionPropResp = channel.sendTransactionProposal(transactionProposalRequest, channel.getPeers());
@@ -74,7 +81,7 @@ public class App {
         Collection<Set<ProposalResponse>> proposalConsistencySets = SDKUtils.getProposalConsistencySets(transactionPropResp);
         if (proposalConsistencySets.size() != 1) {
             out(format("Expected only one set of consistent proposal responses but got %d", proposalConsistencySets.size()));
-            return;
+            //return;
         }
 
         out("Received %d install proposal responses. Successful+verified: %d . Failed: %d", 1, successful.size(), failed.size());
@@ -94,24 +101,10 @@ public class App {
 
         CompletableFuture<BlockEvent.TransactionEvent> transactionEventCompletableFuture = channel.sendTransaction(successful);
 
-        BlockEvent.TransactionEvent txEvent = transactionEventCompletableFuture.get(1000, TimeUnit.SECONDS);
+        //BlockEvent.TransactionEvent txEvent = transactionEventCompletableFuture.get(1000, TimeUnit.SECONDS);
 
-        out("Finished transaction with transaction id %s", txEvent.getTransactionID());
-
-
+        //out("Finished transaction with transaction id %s", txEvent.getTransactionID());
     }
-
-//    private static Channel getChannel(String channelName, HFClient client, User userContext) throws InvalidArgumentException, TransactionException {
-//        client.setUserContext(userContext);
-//
-//        Channel channel =  client.newChannel(channelName);
-//        channel.addOrderer(client.newOrderer("orderer0","grpc://111.230.147.33:7050"));
-//        channel.addPeer(client.newPeer("peer0", "grpc://111.230.147.33:7051"));
-//        channel.initialize();
-//
-//        return channel;
-//    }
-
 
     static void out(String format, Object... args) {
 

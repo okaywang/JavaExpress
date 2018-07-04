@@ -1,0 +1,626 @@
+2018-07-04 10:34:28.657 UTC [orderer/consensus/kafka] processMessagesToBlocks -> DEBU 4815 [channel: mychannel] Successfully unmarshalled consumed message, offset is 951. Inspecting type...
+2018-07-04 10:34:28.657 UTC [orderer/consensus/kafka] processRegular -> DEBU 4816 [channel: mychannel] Processing regular Kafka message of type CONFIG
+2018-07-04 10:34:28.657 UTC [orderer/consensus/kafka] processRegular -> WARN 4817 [channel: mychannel] This orderer is running in compatibility mode
+2018-07-04 10:34:28.657 UTC [orderer/common/msgprocessor] ProcessConfigMsg -> DEBU 4818 Processing config message for channel mychannel
+2018-07-04 10:34:28.657 UTC [orderer/common/msgprocessor] ProcessConfigUpdateMsg -> DEBU 4819 Processing config update message for channel mychannel
+2018-07-04 10:34:28.657 UTC [policies] Evaluate -> DEBU 481a == Evaluating *policies.implicitMetaPolicy Policy /Channel/Writers ==
+2018-07-04 10:34:28.657 UTC [policies] Evaluate -> DEBU 481b This is an implicit meta policy, it will trigger other policy evaluations, whose failures may be benign
+2018-07-04 10:34:28.657 UTC [policies] Evaluate -> DEBU 481c == Evaluating *policies.implicitMetaPolicy Policy /Channel/Orderer/Writers ==
+2018-07-04 10:34:28.657 UTC [policies] Evaluate -> DEBU 481d This is an implicit meta policy, it will trigger other policy evaluations, whose failures may be benign
+2018-07-04 10:34:28.657 UTC [policies] Evaluate -> DEBU 481e == Evaluating *cauthdsl.policy Policy /Channel/Orderer/OrdererOrg/Writers ==
+2018-07-04 10:34:28.657 UTC [msp] DeserializeIdentity -> INFO 481f Obtaining identity
+2018-07-04 10:34:28.657 UTC [msp/identity] newIdentity -> DEBU 4820 Creating identity instance for cert -----BEGIN CERTIFICATE-----
+MIICHzCCAcWgAwIBAgIQWzUR3aiiW6N0p7DAJOi9OzAKBggqhkjOPQQDAjB3MQsw
+CQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZy
+YW5jaXNjbzEbMBkGA1UEChMSYmxvY2tjaGFpbmRlbW8uY29tMR4wHAYDVQQDExVj
+YS5ibG9ja2NoYWluZGVtby5jb20wHhcNMTgwNjA2MDI1OTUxWhcNMjgwNjAzMDI1
+OTUxWjBdMQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UE
+BxMNU2FuIEZyYW5jaXNjbzEhMB8GA1UEAwwYQWRtaW5AYmxvY2tjaGFpbmRlbW8u
+Y29tMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEVWahMLAX7rEecX2lmKC8AqL9
+Ost5WnIdnC7f70PD4XboIkwv7ppxP0iNtx1brPAjt/U+gn/lcFnVB7HrSvRY+6NN
+MEswDgYDVR0PAQH/BAQDAgeAMAwGA1UdEwEB/wQCMAAwKwYDVR0jBCQwIoAg74rE
+XiRik8X4GG51qaogQdqel/ZzieY8Y2JcMIpoSjIwCgYIKoZIzj0EAwIDSAAwRQIh
+AN3uL9heSi4gAAkIHS38Z4hszywu56V8gnY+zb1uRCy8AiBy8kBuqc2ojDL1eTAE
+M37V+scqDXS2um/XcWk3MI1eWA==
+-----END CERTIFICATE-----
+2018-07-04 10:34:28.658 UTC [cauthdsl] func1 -> DEBU 4821 0xc420be4430 gate 1530700468658024420 evaluation starts
+2018-07-04 10:34:28.658 UTC [cauthdsl] func2 -> DEBU 4822 0xc420be4430 signed by 0 principal evaluation starts (used [false])
+2018-07-04 10:34:28.658 UTC [cauthdsl] func2 -> DEBU 4823 0xc420be4430 processing identity 0 with bytes of 0a0a4f7264657265724d5350129e062d2d2d2d2d424547494e2043455254494649434154452d2d2d2d2d0a4d494943487a4343416357674177494241674951577a55523361696957364e30703744414a4f69394f7a414b42676771686b6a4f50515144416a42334d5173770a435159445651514745774a56557a45544d4245474131554543424d4b5132467361575a76636d3570595445574d4251474131554542784d4e5532467549455a790a5957356a61584e6a627a45624d426b474131554543684d53596d78765932746a61474670626d526c62573875593239744d52347748415944565151444578566a0a595335696247396a61324e6f59576c755a4756746279356a623230774868634e4d5467774e6a41324d4449314f5455785768634e4d6a67774e6a417a4d4449310a4f545578576a42644d517377435159445651514745774a56557a45544d4245474131554543424d4b5132467361575a76636d3570595445574d425147413155450a42784d4e5532467549455a795957356a61584e6a627a45684d42384741315545417777595157527461573541596d78765932746a61474670626d526c625738750a593239744d466b77457759484b6f5a497a6a3043415159494b6f5a497a6a30444151634451674145565761684d4c4158377245656358326c6d4b433841714c390a4f737435576e49646e433766373050443458626f496b7776377070785030694e747831627250416a742f552b676e2f6c63466e5642374872537652592b364e4e0a4d45737744675944565230504151482f42415144416765414d41774741315564457745422f7751434d4141774b7759445652306a42435177496f4167373472450a586952696b3858344747353171616f67516471656c2f5a7a6965593859324a634d49706f536a4977436759494b6f5a497a6a30454177494453414177525149680a414e33754c3968655369346741416b49485333385a3468737a79777535365638676e592b7a6231755243793841694279386b42757163326f6a444c31655441450a4d3337562b73637144585332756d2f5863576b334d49316557413d3d0a2d2d2d2d2d454e442043455254494649434154452d2d2d2d2d0a
+2018-07-04 10:34:28.658 UTC [msp] SatisfiesPrincipal -> DEBU 4824 Checking if identity satisfies MEMBER role for OrdererMSP
+2018-07-04 10:34:28.658 UTC [msp] Validate -> DEBU 4825 MSP OrdererMSP validating identity
+2018-07-04 10:34:28.658 UTC [cauthdsl] func2 -> DEBU 4826 0xc420be4430 principal matched by identity 0
+2018-07-04 10:34:28.658 UTC [msp/identity] Verify -> DEBU 4827 Verify: digest = 00000000  e1 50 41 66 61 ee 45 3f  31 72 28 35 c0 67 22 ee  |.PAfa.E?1r(5.g".|
+00000010  50 70 89 1e 7a 99 94 6f  88 52 e2 a7 8a 74 04 6f  |Pp..z..o.R...t.o|
+2018-07-04 10:34:28.658 UTC [msp/identity] Verify -> DEBU 4828 Verify: sig = 00000000  30 44 02 20 3d 49 d5 41  66 c6 30 df 46 1d 00 e8  |0D. =I.Af.0.F...|
+00000010  58 de 23 64 75 b0 97 72  7d cf d5 22 bf 44 3d a3  |X.#du..r}..".D=.|
+00000020  c3 ac 41 26 02 20 37 ea  2a d4 9b f9 41 6c 7b 6b  |..A&. 7.*...Al{k|
+00000030  97 e7 88 ff c6 23 91 3a  9d cb 07 35 97 59 67 75  |.....#.:...5.Ygu|
+00000040  6a 2f af 9f bf 94                                 |j/....|
+2018-07-04 10:34:28.658 UTC [cauthdsl] func2 -> DEBU 4829 0xc420be4430 principal evaluation succeeds for identity 0
+2018-07-04 10:34:28.658 UTC [cauthdsl] func1 -> DEBU 482a 0xc420be4430 gate 1530700468658024420 evaluation succeeds
+2018-07-04 10:34:28.658 UTC [policies] Evaluate -> DEBU 482b Signature set satisfies policy /Channel/Orderer/OrdererOrg/Writers
+2018-07-04 10:34:28.658 UTC [policies] Evaluate -> DEBU 482c == Done Evaluating *cauthdsl.policy Policy /Channel/Orderer/OrdererOrg/Writers
+2018-07-04 10:34:28.658 UTC [policies] Evaluate -> DEBU 482d Signature set satisfies policy /Channel/Orderer/Writers
+2018-07-04 10:34:28.658 UTC [policies] Evaluate -> DEBU 482e == Done Evaluating *policies.implicitMetaPolicy Policy /Channel/Orderer/Writers
+2018-07-04 10:34:28.658 UTC [policies] Evaluate -> DEBU 482f Signature set satisfies policy /Channel/Writers
+2018-07-04 10:34:28.658 UTC [policies] Evaluate -> DEBU 4830 == Done Evaluating *policies.implicitMetaPolicy Policy /Channel/Writers
+2018-07-04 10:34:28.658 UTC [common/configtx] addToMap -> DEBU 4831 Adding to config map: [Group]  /Channel
+2018-07-04 10:34:28.658 UTC [common/configtx] addToMap -> DEBU 4832 Adding to config map: [Group]  /Channel/Orderer
+2018-07-04 10:34:28.658 UTC [common/configtx] addToMap -> DEBU 4833 Adding to config map: [Group]  /Channel
+2018-07-04 10:34:28.658 UTC [common/configtx] addToMap -> DEBU 4834 Adding to config map: [Group]  /Channel/Orderer
+2018-07-04 10:34:28.658 UTC [common/configtx] addToMap -> DEBU 4835 Adding to config map: [Value]  /Channel/Orderer/BatchTimeout
+2018-07-04 10:34:28.658 UTC [common/configtx] verifyDeltaSet -> DEBU 4836 Processing change to key: [Value]  /Channel/Orderer/BatchTimeout
+2018-07-04 10:34:28.658 UTC [common/configtx] policyForItem -> DEBU 4837 Getting policy for item BatchTimeout with mod_policy Admins
+2018-07-04 10:34:28.658 UTC [policies] Manager -> DEBU 4838 Manager Channel looking up path [Orderer]
+2018-07-04 10:34:28.658 UTC [policies] Manager -> DEBU 4839 Manager Channel has managers Orderer
+2018-07-04 10:34:28.658 UTC [policies] Manager -> DEBU 483a Manager Channel has managers Application
+2018-07-04 10:34:28.658 UTC [policies] Manager -> DEBU 483b Manager Channel/Orderer looking up path []
+2018-07-04 10:34:28.658 UTC [policies] Manager -> DEBU 483c Manager Channel/Orderer has managers OrdererOrg
+2018-07-04 10:34:28.658 UTC [policies] Evaluate -> DEBU 483d == Evaluating *policies.implicitMetaPolicy Policy /Channel/Orderer/Admins ==
+2018-07-04 10:34:28.658 UTC [policies] Evaluate -> DEBU 483e This is an implicit meta policy, it will trigger other policy evaluations, whose failures may be benign
+2018-07-04 10:34:28.659 UTC [policies] Evaluate -> DEBU 483f == Evaluating *cauthdsl.policy Policy /Channel/Orderer/OrdererOrg/Admins ==
+2018-07-04 10:34:28.659 UTC [cauthdsl] func1 -> DEBU 4840 0xc420be44f8 gate 1530700468659029491 evaluation starts
+2018-07-04 10:34:28.659 UTC [cauthdsl] func2 -> DEBU 4841 0xc420be44f8 signed by 0 principal evaluation starts (used [false])
+2018-07-04 10:34:28.659 UTC [cauthdsl] func2 -> DEBU 4842 0xc420be44f8 processing identity 0 with bytes of 0a0a4f7264657265724d5350129e062d2d2d2d2d424547494e2043455254494649434154452d2d2d2d2d0a4d494943487a4343416357674177494241674951577a55523361696957364e30703744414a4f69394f7a414b42676771686b6a4f50515144416a42334d5173770a435159445651514745774a56557a45544d4245474131554543424d4b5132467361575a76636d3570595445574d4251474131554542784d4e5532467549455a790a5957356a61584e6a627a45624d426b474131554543684d53596d78765932746a61474670626d526c62573875593239744d52347748415944565151444578566a0a595335696247396a61324e6f59576c755a4756746279356a623230774868634e4d5467774e6a41324d4449314f5455785768634e4d6a67774e6a417a4d4449310a4f545578576a42644d517377435159445651514745774a56557a45544d4245474131554543424d4b5132467361575a76636d3570595445574d425147413155450a42784d4e5532467549455a795957356a61584e6a627a45684d42384741315545417777595157527461573541596d78765932746a61474670626d526c625738750a593239744d466b77457759484b6f5a497a6a3043415159494b6f5a497a6a30444151634451674145565761684d4c4158377245656358326c6d4b433841714c390a4f737435576e49646e433766373050443458626f496b7776377070785030694e747831627250416a742f552b676e2f6c63466e5642374872537652592b364e4e0a4d45737744675944565230504151482f42415144416765414d41774741315564457745422f7751434d4141774b7759445652306a42435177496f4167373472450a586952696b3858344747353171616f67516471656c2f5a7a6965593859324a634d49706f536a4977436759494b6f5a497a6a30454177494453414177525149680a414e33754c3968655369346741416b49485333385a3468737a79777535365638676e592b7a6231755243793841694279386b42757163326f6a444c31655441450a4d3337562b73637144585332756d2f5863576b334d49316557413d3d0a2d2d2d2d2d454e442043455254494649434154452d2d2d2d2d0a
+2018-07-04 10:34:28.659 UTC [msp] SatisfiesPrincipal -> DEBU 4843 Checking if identity satisfies ADMIN role for OrdererMSP
+2018-07-04 10:34:28.659 UTC [cauthdsl] func2 -> DEBU 4844 0xc420be44f8 principal matched by identity 0
+2018-07-04 10:34:28.659 UTC [msp/identity] Verify -> DEBU 4845 Verify: digest = 00000000  36 5c 89 3a 7b 74 0e 9e  1a 9f 8a 3e cc c5 3f 45  |6\.:{t.....>..?E|
+00000010  df d5 84 b5 b5 57 73 02  b5 8b 84 43 56 f6 4d b1  |.....Ws....CV.M.|
+2018-07-04 10:34:28.659 UTC [msp/identity] Verify -> DEBU 4846 Verify: sig = 00000000  30 45 02 21 00 80 b2 ef  79 02 d2 ff 09 60 4c 57  |0E.!....y....`LW|
+00000010  62 8c af ba 9b e1 74 46  ea d3 b7 97 c1 55 c1 00  |b.....tF.....U..|
+00000020  81 6e a8 12 da 02 20 0d  9a ad af 79 5e f4 68 76  |.n.... ....y^.hv|
+00000030  93 9b 68 15 72 00 ac ea  50 15 ee c2 9c ba 98 c5  |..h.r...P.......|
+00000040  ac ac f2 05 b3 2c c0                              |.....,.|
+2018-07-04 10:34:28.659 UTC [cauthdsl] func2 -> DEBU 4847 0xc420be44f8 principal evaluation succeeds for identity 0
+2018-07-04 10:34:28.659 UTC [cauthdsl] func1 -> DEBU 4848 0xc420be44f8 gate 1530700468659029491 evaluation succeeds
+2018-07-04 10:34:28.659 UTC [policies] Evaluate -> DEBU 4849 Signature set satisfies policy /Channel/Orderer/OrdererOrg/Admins
+2018-07-04 10:34:28.659 UTC [policies] Evaluate -> DEBU 484a == Done Evaluating *cauthdsl.policy Policy /Channel/Orderer/OrdererOrg/Admins
+2018-07-04 10:34:28.659 UTC [policies] Evaluate -> DEBU 484b Signature set satisfies policy /Channel/Orderer/Admins
+2018-07-04 10:34:28.659 UTC [policies] Evaluate -> DEBU 484c == Done Evaluating *policies.implicitMetaPolicy Policy /Channel/Orderer/Admins
+2018-07-04 10:34:28.659 UTC [common/configtx] recurseConfigMap -> DEBU 484d Setting policy for key Writers to policy:<type:1 value:"\022\010\022\006\010\001\022\002\010\000\032\016\022\014\n\nOrdererMSP" > mod_policy:"Admins"
+2018-07-04 10:34:28.659 UTC [common/configtx] recurseConfigMap -> DEBU 484e Setting policy for key Admins to policy:<type:1 value:"\022\010\022\006\010\001\022\002\010\000\032\020\022\016\n\nOrdererMSP\020\001" > mod_policy:"Admins"
+2018-07-04 10:34:28.659 UTC [common/configtx] recurseConfigMap -> DEBU 484f Setting policy for key Readers to policy:<type:1 value:"\022\010\022\006\010\001\022\002\010\000\032\016\022\014\n\nOrdererMSP" > mod_policy:"Admins"
+2018-07-04 10:34:28.659 UTC [common/configtx] recurseConfigMap -> DEBU 4850 Setting policy for key Readers to policy:<type:3 value:"\n\007Readers" > mod_policy:"Admins"
+2018-07-04 10:34:28.659 UTC [common/configtx] recurseConfigMap -> DEBU 4851 Setting policy for key Writers to policy:<type:3 value:"\n\007Writers" > mod_policy:"Admins"
+2018-07-04 10:34:28.659 UTC [common/configtx] recurseConfigMap -> DEBU 4852 Setting policy for key BlockValidation to policy:<type:3 value:"\n\007Writers" > mod_policy:"Admins"
+2018-07-04 10:34:28.659 UTC [common/configtx] recurseConfigMap -> DEBU 4853 Setting policy for key Admins to policy:<type:3 value:"\n\006Admins\020\002" > mod_policy:"Admins"
+2018-07-04 10:34:28.659 UTC [common/configtx] recurseConfigMap -> DEBU 4854 Setting policy for key Writers to policy:<type:1 value:"\022\010\022\006\010\001\022\002\010\000\032\013\022\t\n\007Org2MSP" > mod_policy:"Admins"
+2018-07-04 10:34:28.659 UTC [common/configtx] recurseConfigMap -> DEBU 4855 Setting policy for key Admins to policy:<type:1 value:"\022\010\022\006\010\001\022\002\010\000\032\r\022\013\n\007Org2MSP\020\001" > mod_policy:"Admins"
+2018-07-04 10:34:28.659 UTC [common/configtx] recurseConfigMap -> DEBU 4856 Setting policy for key Readers to policy:<type:1 value:"\022\010\022\006\010\001\022\002\010\000\032\013\022\t\n\007Org2MSP" > mod_policy:"Admins"
+2018-07-04 10:34:28.659 UTC [common/configtx] recurseConfigMap -> DEBU 4857 Setting policy for key Readers to policy:<type:1 value:"\022\010\022\006\010\001\022\002\010\000\032\013\022\t\n\007Org1MSP" > mod_policy:"Admins"
+2018-07-04 10:34:28.659 UTC [common/configtx] recurseConfigMap -> DEBU 4858 Setting policy for key Writers to policy:<type:1 value:"\022\010\022\006\010\001\022\002\010\000\032\013\022\t\n\007Org1MSP" > mod_policy:"Admins"
+2018-07-04 10:34:28.660 UTC [common/configtx] recurseConfigMap -> DEBU 4859 Setting policy for key Admins to policy:<type:1 value:"\022\010\022\006\010\001\022\002\010\000\032\r\022\013\n\007Org1MSP\020\001" > mod_policy:"Admins"
+2018-07-04 10:34:28.660 UTC [common/configtx] recurseConfigMap -> DEBU 485a Setting policy for key Admins to policy:<type:3 value:"\n\006Admins\020\002" > mod_policy:"Admins"
+2018-07-04 10:34:28.660 UTC [common/configtx] recurseConfigMap -> DEBU 485b Setting policy for key Readers to policy:<type:3 value:"\n\007Readers" > mod_policy:"Admins"
+2018-07-04 10:34:28.660 UTC [common/configtx] recurseConfigMap -> DEBU 485c Setting policy for key Writers to policy:<type:3 value:"\n\007Writers" > mod_policy:"Admins"
+2018-07-04 10:34:28.660 UTC [common/configtx] recurseConfigMap -> DEBU 485d Setting policy for key Readers to policy:<type:3 value:"\n\007Readers" > mod_policy:"Admins"
+2018-07-04 10:34:28.660 UTC [common/configtx] recurseConfigMap -> DEBU 485e Setting policy for key Writers to policy:<type:3 value:"\n\007Writers" > mod_policy:"Admins"
+2018-07-04 10:34:28.660 UTC [common/configtx] recurseConfigMap -> DEBU 485f Setting policy for key Admins to policy:<type:3 value:"\n\006Admins\020\002" > mod_policy:"Admins"
+2018-07-04 10:34:28.660 UTC [common/channelconfig] NewStandardValues -> DEBU 4860 Initializing protos for *channelconfig.ChannelProtos
+2018-07-04 10:34:28.660 UTC [common/channelconfig] initializeProtosStruct -> DEBU 4861 Processing field: HashingAlgorithm
+2018-07-04 10:34:28.660 UTC [common/channelconfig] initializeProtosStruct -> DEBU 4862 Processing field: BlockDataHashingStructure
+2018-07-04 10:34:28.660 UTC [common/channelconfig] initializeProtosStruct -> DEBU 4863 Processing field: OrdererAddresses
+2018-07-04 10:34:28.660 UTC [common/channelconfig] initializeProtosStruct -> DEBU 4864 Processing field: Consortium
+2018-07-04 10:34:28.660 UTC [common/channelconfig] initializeProtosStruct -> DEBU 4865 Processing field: Capabilities
+2018-07-04 10:34:28.660 UTC [common/channelconfig] NewStandardValues -> DEBU 4866 Initializing protos for *channelconfig.OrdererProtos
+2018-07-04 10:34:28.660 UTC [common/channelconfig] initializeProtosStruct -> DEBU 4867 Processing field: ConsensusType
+2018-07-04 10:34:28.660 UTC [common/channelconfig] initializeProtosStruct -> DEBU 4868 Processing field: BatchSize
+2018-07-04 10:34:28.660 UTC [common/channelconfig] initializeProtosStruct -> DEBU 4869 Processing field: BatchTimeout
+2018-07-04 10:34:28.660 UTC [common/channelconfig] initializeProtosStruct -> DEBU 486a Processing field: KafkaBrokers
+2018-07-04 10:34:28.660 UTC [common/channelconfig] initializeProtosStruct -> DEBU 486b Processing field: ChannelRestrictions
+2018-07-04 10:34:28.660 UTC [common/channelconfig] initializeProtosStruct -> DEBU 486c Processing field: Capabilities
+2018-07-04 10:34:28.660 UTC [common/channelconfig] NewStandardValues -> DEBU 486d Initializing protos for *channelconfig.OrganizationProtos
+2018-07-04 10:34:28.660 UTC [common/channelconfig] initializeProtosStruct -> DEBU 486e Processing field: MSP
+2018-07-04 10:34:28.660 UTC [common/channelconfig] validateMSP -> DEBU 486f Setting up MSP for org OrdererOrg
+2018-07-04 10:34:28.660 UTC [msp] newBccspMsp -> DEBU 4870 Creating BCCSP-based MSP instance
+2018-07-04 10:34:28.660 UTC [msp] New -> DEBU 4871 Creating Cache-MSP instance
+2018-07-04 10:34:28.660 UTC [msp] Setup -> DEBU 4872 Setting up MSP instance OrdererMSP
+2018-07-04 10:34:28.660 UTC [msp/identity] newIdentity -> DEBU 4873 Creating identity instance for cert -----BEGIN CERTIFICATE-----
+MIICSzCCAfKgAwIBAgIRAK4LqjgfhzbGgAkIRYzzbB8wCgYIKoZIzj0EAwIwdzEL
+MAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG
+cmFuY2lzY28xGzAZBgNVBAoTEmJsb2NrY2hhaW5kZW1vLmNvbTEeMBwGA1UEAxMV
+Y2EuYmxvY2tjaGFpbmRlbW8uY29tMB4XDTE4MDYwNjAyNTk1MVoXDTI4MDYwMzAy
+NTk1MVowdzELMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNV
+BAcTDVNhbiBGcmFuY2lzY28xGzAZBgNVBAoTEmJsb2NrY2hhaW5kZW1vLmNvbTEe
+MBwGA1UEAxMVY2EuYmxvY2tjaGFpbmRlbW8uY29tMFkwEwYHKoZIzj0CAQYIKoZI
+zj0DAQcDQgAExZVwX6fUyEzsEjQyC21w5QeL9jYMgGgsI6UlbBgTcEwPN77QwPiz
+8jIBof67JRP1kTcQXTXee0+XCyyVkM0xHaNfMF0wDgYDVR0PAQH/BAQDAgGmMA8G
+A1UdJQQIMAYGBFUdJQAwDwYDVR0TAQH/BAUwAwEB/zApBgNVHQ4EIgQg74rEXiRi
+k8X4GG51qaogQdqel/ZzieY8Y2JcMIpoSjIwCgYIKoZIzj0EAwIDRwAwRAIgOJbj
+8BiAjF5uHv38SsJq+BAu2cymVLO+Q6BsjTdIe/8CICVo4BQYGrco5Y1B5YHW9UDu
+sWIt2h5x2jhoEfBrGvsC
+-----END CERTIFICATE-----
+2018-07-04 10:34:28.661 UTC [msp/identity] newIdentity -> DEBU 4874 Creating identity instance for cert -----BEGIN CERTIFICATE-----
+MIICHzCCAcWgAwIBAgIQWzUR3aiiW6N0p7DAJOi9OzAKBggqhkjOPQQDAjB3MQsw
+CQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZy
+YW5jaXNjbzEbMBkGA1UEChMSYmxvY2tjaGFpbmRlbW8uY29tMR4wHAYDVQQDExVj
+YS5ibG9ja2NoYWluZGVtby5jb20wHhcNMTgwNjA2MDI1OTUxWhcNMjgwNjAzMDI1
+OTUxWjBdMQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UE
+BxMNU2FuIEZyYW5jaXNjbzEhMB8GA1UEAwwYQWRtaW5AYmxvY2tjaGFpbmRlbW8u
+Y29tMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEVWahMLAX7rEecX2lmKC8AqL9
+Ost5WnIdnC7f70PD4XboIkwv7ppxP0iNtx1brPAjt/U+gn/lcFnVB7HrSvRY+6NN
+MEswDgYDVR0PAQH/BAQDAgeAMAwGA1UdEwEB/wQCMAAwKwYDVR0jBCQwIoAg74rE
+XiRik8X4GG51qaogQdqel/ZzieY8Y2JcMIpoSjIwCgYIKoZIzj0EAwIDSAAwRQIh
+AN3uL9heSi4gAAkIHS38Z4hszywu56V8gnY+zb1uRCy8AiBy8kBuqc2ojDL1eTAE
+M37V+scqDXS2um/XcWk3MI1eWA==
+-----END CERTIFICATE-----
+2018-07-04 10:34:28.661 UTC [msp] Validate -> DEBU 4875 MSP OrdererMSP validating identity
+2018-07-04 10:34:28.661 UTC [common/channelconfig] NewStandardValues -> DEBU 4876 Initializing protos for *channelconfig.ApplicationProtos
+2018-07-04 10:34:28.661 UTC [common/channelconfig] initializeProtosStruct -> DEBU 4877 Processing field: Capabilities
+2018-07-04 10:34:28.661 UTC [common/channelconfig] NewStandardValues -> DEBU 4878 Initializing protos for *channelconfig.ApplicationOrgProtos
+2018-07-04 10:34:28.661 UTC [common/channelconfig] initializeProtosStruct -> DEBU 4879 Processing field: AnchorPeers
+2018-07-04 10:34:28.661 UTC [common/channelconfig] NewStandardValues -> DEBU 487a Initializing protos for *channelconfig.OrganizationProtos
+2018-07-04 10:34:28.661 UTC [common/channelconfig] initializeProtosStruct -> DEBU 487b Processing field: MSP
+2018-07-04 10:34:28.661 UTC [common/channelconfig] Validate -> DEBU 487c Anchor peers for org Org1MSP are
+2018-07-04 10:34:28.661 UTC [common/channelconfig] validateMSP -> DEBU 487d Setting up MSP for org Org1MSP
+2018-07-04 10:34:28.661 UTC [msp] newBccspMsp -> DEBU 487e Creating BCCSP-based MSP instance
+2018-07-04 10:34:28.661 UTC [msp] New -> DEBU 487f Creating Cache-MSP instance
+2018-07-04 10:34:28.661 UTC [msp] Setup -> DEBU 4880 Setting up MSP instance Org1MSP
+2018-07-04 10:34:28.661 UTC [msp/identity] newIdentity -> DEBU 4881 Creating identity instance for cert -----BEGIN CERTIFICATE-----
+MIICYjCCAgigAwIBAgIRAKvQCUPNzkDar98G7O96eUswCgYIKoZIzj0EAwIwgYEx
+CzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1TYW4g
+RnJhbmNpc2NvMSAwHgYDVQQKExdvcmcxLmJsb2NrY2hhaW5kZW1vLmNvbTEjMCEG
+A1UEAxMaY2Eub3JnMS5ibG9ja2NoYWluZGVtby5jb20wHhcNMTgwNjA2MDI1OTUx
+WhcNMjgwNjAzMDI1OTUxWjCBgTELMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlm
+b3JuaWExFjAUBgNVBAcTDVNhbiBGcmFuY2lzY28xIDAeBgNVBAoTF29yZzEuYmxv
+Y2tjaGFpbmRlbW8uY29tMSMwIQYDVQQDExpjYS5vcmcxLmJsb2NrY2hhaW5kZW1v
+LmNvbTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABCxVEI32McJ1WryRm6Ofcw5L
+fVz79tqad0ORjvbH/Nr70Fpn6vFN4qdjO0KvA6tqTVg8PUxIZdQEWiNeUl6ZLNqj
+XzBdMA4GA1UdDwEB/wQEAwIBpjAPBgNVHSUECDAGBgRVHSUAMA8GA1UdEwEB/wQF
+MAMBAf8wKQYDVR0OBCIEIJKhx7nIQwrUV2JDvZpue/CnuIMVQGp4Eg55Q3RfOq0U
+MAoGCCqGSM49BAMCA0gAMEUCIQCs7ynjG8lZvLbPzgDsyLjv4huey6GZ9CB9ed69
+yX9SjAIgELn50VVcD/Ftyv+YHkZ/H+YmAE0L3Ry85aASNfXrlgU=
+-----END CERTIFICATE-----
+2018-07-04 10:34:28.662 UTC [msp/identity] newIdentity -> DEBU 4882 Creating identity instance for cert -----BEGIN CERTIFICATE-----
+MIICMDCCAdagAwIBAgIRAIBIpQd4fwqtbDA8G5gbgz8wCgYIKoZIzj0EAwIwgYEx
+CzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1TYW4g
+RnJhbmNpc2NvMSAwHgYDVQQKExdvcmcxLmJsb2NrY2hhaW5kZW1vLmNvbTEjMCEG
+A1UEAxMaY2Eub3JnMS5ibG9ja2NoYWluZGVtby5jb20wHhcNMTgwNjA2MDI1OTUx
+WhcNMjgwNjAzMDI1OTUxWjBiMQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZv
+cm5pYTEWMBQGA1UEBxMNU2FuIEZyYW5jaXNjbzEmMCQGA1UEAwwdQWRtaW5Ab3Jn
+MS5ibG9ja2NoYWluZGVtby5jb20wWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAATI
+q18k8DV1OJuBhtqesZywhQ8ZdNGotGGg2+VG60SX7P+wt7dN3UjjRdzLSJeTOZ2b
+J6TL0MKmJZNtiHrmHC25o00wSzAOBgNVHQ8BAf8EBAMCB4AwDAYDVR0TAQH/BAIw
+ADArBgNVHSMEJDAigCCSoce5yEMK1FdiQ72abnvwp7iDFUBqeBIOeUN0XzqtFDAK
+BggqhkjOPQQDAgNIADBFAiEAlHzc+iZh6fc51RfrZRPCY0wi1frapsvBxOdrrnQD
+E64CICkxd6UP9hFJ1DTE6hQWBvls/ov7T8iyBRr3xfowdg7n
+-----END CERTIFICATE-----
+2018-07-04 10:34:28.662 UTC [msp] Validate -> DEBU 4883 MSP Org1MSP validating identity
+2018-07-04 10:34:28.662 UTC [common/channelconfig] NewStandardValues -> DEBU 4884 Initializing protos for *channelconfig.ApplicationOrgProtos
+2018-07-04 10:34:28.662 UTC [common/channelconfig] initializeProtosStruct -> DEBU 4885 Processing field: AnchorPeers
+2018-07-04 10:34:28.662 UTC [common/channelconfig] NewStandardValues -> DEBU 4886 Initializing protos for *channelconfig.OrganizationProtos
+2018-07-04 10:34:28.662 UTC [common/channelconfig] initializeProtosStruct -> DEBU 4887 Processing field: MSP
+2018-07-04 10:34:28.662 UTC [common/channelconfig] Validate -> DEBU 4888 Anchor peers for org Org2MSP are
+2018-07-04 10:34:28.662 UTC [common/channelconfig] validateMSP -> DEBU 4889 Setting up MSP for org Org2MSP
+2018-07-04 10:34:28.662 UTC [msp] newBccspMsp -> DEBU 488a Creating BCCSP-based MSP instance
+2018-07-04 10:34:28.662 UTC [msp] New -> DEBU 488b Creating Cache-MSP instance
+2018-07-04 10:34:28.662 UTC [msp] Setup -> DEBU 488c Setting up MSP instance Org2MSP
+2018-07-04 10:34:28.663 UTC [msp/identity] newIdentity -> DEBU 488d Creating identity instance for cert -----BEGIN CERTIFICATE-----
+MIICYjCCAgigAwIBAgIRANgeaf/MyY8Tpeoh//X0EMwwCgYIKoZIzj0EAwIwgYEx
+CzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1TYW4g
+RnJhbmNpc2NvMSAwHgYDVQQKExdvcmcyLmJsb2NrY2hhaW5kZW1vLmNvbTEjMCEG
+A1UEAxMaY2Eub3JnMi5ibG9ja2NoYWluZGVtby5jb20wHhcNMTgwNjA2MDI1OTUx
+WhcNMjgwNjAzMDI1OTUxWjCBgTELMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlm
+b3JuaWExFjAUBgNVBAcTDVNhbiBGcmFuY2lzY28xIDAeBgNVBAoTF29yZzIuYmxv
+Y2tjaGFpbmRlbW8uY29tMSMwIQYDVQQDExpjYS5vcmcyLmJsb2NrY2hhaW5kZW1v
+LmNvbTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABFHEVtfQEjKTZpi9mOKg4CeS
+SBIAG4vmjWqQZcI8pWMDUeYBw9ThYw1u48PYQtALfvQBNZbU+iIAPHMUtjZFviaj
+XzBdMA4GA1UdDwEB/wQEAwIBpjAPBgNVHSUECDAGBgRVHSUAMA8GA1UdEwEB/wQF
+MAMBAf8wKQYDVR0OBCIEIKu6wWGU7zg4iGDb9zPF5Un8UrQqKpg8hzQ3F7X7kTSa
+MAoGCCqGSM49BAMCA0gAMEUCIQD2kWnBDP8PcExcRmIZG1kUxpOJ2EEi/S9MujNB
+3qbRawIgCPD5kJlvyi7dTd9gn/59onFMdL5IgZV1CviiIxYSCIU=
+-----END CERTIFICATE-----
+2018-07-04 10:34:28.663 UTC [msp/identity] newIdentity -> DEBU 488e Creating identity instance for cert -----BEGIN CERTIFICATE-----
+MIICLjCCAdWgAwIBAgIQGVqCZKIw/JtLkAKsrHeMiDAKBggqhkjOPQQDAjCBgTEL
+MAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG
+cmFuY2lzY28xIDAeBgNVBAoTF29yZzIuYmxvY2tjaGFpbmRlbW8uY29tMSMwIQYD
+VQQDExpjYS5vcmcyLmJsb2NrY2hhaW5kZW1vLmNvbTAeFw0xODA2MDYwMjU5NTFa
+Fw0yODA2MDMwMjU5NTFaMGIxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9y
+bmlhMRYwFAYDVQQHEw1TYW4gRnJhbmNpc2NvMSYwJAYDVQQDDB1BZG1pbkBvcmcy
+LmJsb2NrY2hhaW5kZW1vLmNvbTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABFXq
+CZmbXyIDYmyPFIfbzxCX6ECsytqpSW1jxjhOMSaRcGNPNHNot8z1/jX7dHWIC1Mf
+26xiQmllTAS4eQG4g/WjTTBLMA4GA1UdDwEB/wQEAwIHgDAMBgNVHRMBAf8EAjAA
+MCsGA1UdIwQkMCKAIKu6wWGU7zg4iGDb9zPF5Un8UrQqKpg8hzQ3F7X7kTSaMAoG
+CCqGSM49BAMCA0cAMEQCIE6K54DiUGtVODy5p/IWma0ldcVP7XLR95QD0m6z/Xfi
+AiBoL7viSVy0UM/RkMacO+SWgz4oc8th7elpsae/pfNzzg==
+-----END CERTIFICATE-----
+2018-07-04 10:34:28.663 UTC [msp] Validate -> DEBU 488f MSP Org2MSP validating identity
+2018-07-04 10:34:28.663 UTC [msp] Setup -> DEBU 4890 Setting up the MSP manager (3 msps)
+2018-07-04 10:34:28.663 UTC [msp] Setup -> DEBU 4891 MSP manager setup complete, setup 3 msps
+2018-07-04 10:34:28.663 UTC [policies] NewManagerImpl -> DEBU 4892 Proposed new policy Writers for Channel/Orderer/OrdererOrg
+2018-07-04 10:34:28.663 UTC [policies] NewManagerImpl -> DEBU 4893 Proposed new policy Admins for Channel/Orderer/OrdererOrg
+2018-07-04 10:34:28.663 UTC [policies] NewManagerImpl -> DEBU 4894 Proposed new policy Readers for Channel/Orderer/OrdererOrg
+2018-07-04 10:34:28.663 UTC [policies] NewManagerImpl -> DEBU 4895 Proposed new policy Admins for Channel/Orderer
+2018-07-04 10:34:28.663 UTC [policies] NewManagerImpl -> DEBU 4896 Proposed new policy Readers for Channel/Orderer
+2018-07-04 10:34:28.663 UTC [policies] NewManagerImpl -> DEBU 4897 Proposed new policy Writers for Channel/Orderer
+2018-07-04 10:34:28.663 UTC [policies] NewManagerImpl -> DEBU 4898 Proposed new policy BlockValidation for Channel/Orderer
+2018-07-04 10:34:28.663 UTC [policies] NewManagerImpl -> DEBU 4899 Proposed new policy Admins for Channel/Application/Org1MSP
+2018-07-04 10:34:28.663 UTC [policies] NewManagerImpl -> DEBU 489a Proposed new policy Readers for Channel/Application/Org1MSP
+2018-07-04 10:34:28.663 UTC [policies] NewManagerImpl -> DEBU 489b Proposed new policy Writers for Channel/Application/Org1MSP
+2018-07-04 10:34:28.663 UTC [policies] NewManagerImpl -> DEBU 489c Proposed new policy Writers for Channel/Application/Org2MSP
+2018-07-04 10:34:28.663 UTC [policies] NewManagerImpl -> DEBU 489d Proposed new policy Admins for Channel/Application/Org2MSP
+2018-07-04 10:34:28.663 UTC [policies] NewManagerImpl -> DEBU 489e Proposed new policy Readers for Channel/Application/Org2MSP
+2018-07-04 10:34:28.664 UTC [policies] NewManagerImpl -> DEBU 489f Proposed new policy Admins for Channel/Application
+2018-07-04 10:34:28.664 UTC [policies] NewManagerImpl -> DEBU 48a0 Proposed new policy Readers for Channel/Application
+2018-07-04 10:34:28.664 UTC [policies] NewManagerImpl -> DEBU 48a1 Proposed new policy Writers for Channel/Application
+2018-07-04 10:34:28.664 UTC [policies] NewManagerImpl -> DEBU 48a2 Proposed new policy Admins for Channel
+2018-07-04 10:34:28.664 UTC [policies] NewManagerImpl -> DEBU 48a3 Proposed new policy Readers for Channel
+2018-07-04 10:34:28.664 UTC [policies] NewManagerImpl -> DEBU 48a4 Proposed new policy Writers for Channel
+2018-07-04 10:34:28.664 UTC [common/configtx] addToMap -> DEBU 48a5 Adding to config map: [Group]  /Channel
+2018-07-04 10:34:28.664 UTC [common/configtx] addToMap -> DEBU 48a6 Adding to config map: [Group]  /Channel/Orderer
+2018-07-04 10:34:28.664 UTC [common/configtx] addToMap -> DEBU 48a7 Adding to config map: [Group]  /Channel/Orderer/OrdererOrg
+2018-07-04 10:34:28.664 UTC [common/configtx] addToMap -> DEBU 48a8 Adding to config map: [Value]  /Channel/Orderer/OrdererOrg/MSP
+2018-07-04 10:34:28.664 UTC [common/configtx] addToMap -> DEBU 48a9 Adding to config map: [Policy] /Channel/Orderer/OrdererOrg/Writers
+2018-07-04 10:34:28.664 UTC [common/configtx] addToMap -> DEBU 48aa Adding to config map: [Policy] /Channel/Orderer/OrdererOrg/Admins
+2018-07-04 10:34:28.664 UTC [common/configtx] addToMap -> DEBU 48ab Adding to config map: [Policy] /Channel/Orderer/OrdererOrg/Readers
+2018-07-04 10:34:28.664 UTC [common/configtx] addToMap -> DEBU 48ac Adding to config map: [Value]  /Channel/Orderer/BatchTimeout
+2018-07-04 10:34:28.664 UTC [common/configtx] addToMap -> DEBU 48ad Adding to config map: [Value]  /Channel/Orderer/ChannelRestrictions
+2018-07-04 10:34:28.664 UTC [common/configtx] addToMap -> DEBU 48ae Adding to config map: [Value]  /Channel/Orderer/KafkaBrokers
+2018-07-04 10:34:28.664 UTC [common/configtx] addToMap -> DEBU 48af Adding to config map: [Value]  /Channel/Orderer/ConsensusType
+2018-07-04 10:34:28.664 UTC [common/configtx] addToMap -> DEBU 48b0 Adding to config map: [Value]  /Channel/Orderer/BatchSize
+2018-07-04 10:34:28.664 UTC [common/configtx] addToMap -> DEBU 48b1 Adding to config map: [Policy] /Channel/Orderer/BlockValidation
+2018-07-04 10:34:28.664 UTC [common/configtx] addToMap -> DEBU 48b2 Adding to config map: [Policy] /Channel/Orderer/Admins
+2018-07-04 10:34:28.664 UTC [common/configtx] addToMap -> DEBU 48b3 Adding to config map: [Policy] /Channel/Orderer/Readers
+2018-07-04 10:34:28.664 UTC [common/configtx] addToMap -> DEBU 48b4 Adding to config map: [Policy] /Channel/Orderer/Writers
+2018-07-04 10:34:28.664 UTC [common/configtx] addToMap -> DEBU 48b5 Adding to config map: [Group]  /Channel/Application
+2018-07-04 10:34:28.664 UTC [common/configtx] addToMap -> DEBU 48b6 Adding to config map: [Group]  /Channel/Application/Org1MSP
+2018-07-04 10:34:28.664 UTC [common/configtx] addToMap -> DEBU 48b7 Adding to config map: [Value]  /Channel/Application/Org1MSP/MSP
+2018-07-04 10:34:28.664 UTC [common/configtx] addToMap -> DEBU 48b8 Adding to config map: [Policy] /Channel/Application/Org1MSP/Readers
+2018-07-04 10:34:28.664 UTC [common/configtx] addToMap -> DEBU 48b9 Adding to config map: [Policy] /Channel/Application/Org1MSP/Writers
+2018-07-04 10:34:28.664 UTC [common/configtx] addToMap -> DEBU 48ba Adding to config map: [Policy] /Channel/Application/Org1MSP/Admins
+2018-07-04 10:34:28.664 UTC [common/configtx] addToMap -> DEBU 48bb Adding to config map: [Group]  /Channel/Application/Org2MSP
+2018-07-04 10:34:28.664 UTC [common/configtx] addToMap -> DEBU 48bc Adding to config map: [Value]  /Channel/Application/Org2MSP/MSP
+2018-07-04 10:34:28.664 UTC [common/configtx] addToMap -> DEBU 48bd Adding to config map: [Policy] /Channel/Application/Org2MSP/Writers
+2018-07-04 10:34:28.664 UTC [common/configtx] addToMap -> DEBU 48be Adding to config map: [Policy] /Channel/Application/Org2MSP/Admins
+2018-07-04 10:34:28.664 UTC [common/configtx] addToMap -> DEBU 48bf Adding to config map: [Policy] /Channel/Application/Org2MSP/Readers
+2018-07-04 10:34:28.664 UTC [common/configtx] addToMap -> DEBU 48c0 Adding to config map: [Policy] /Channel/Application/Writers
+2018-07-04 10:34:28.665 UTC [common/configtx] addToMap -> DEBU 48c1 Adding to config map: [Policy] /Channel/Application/Admins
+2018-07-04 10:34:28.665 UTC [common/configtx] addToMap -> DEBU 48c2 Adding to config map: [Policy] /Channel/Application/Readers
+2018-07-04 10:34:28.665 UTC [common/configtx] addToMap -> DEBU 48c3 Adding to config map: [Value]  /Channel/OrdererAddresses
+2018-07-04 10:34:28.665 UTC [common/configtx] addToMap -> DEBU 48c4 Adding to config map: [Value]  /Channel/Consortium
+2018-07-04 10:34:28.665 UTC [common/configtx] addToMap -> DEBU 48c5 Adding to config map: [Value]  /Channel/HashingAlgorithm
+2018-07-04 10:34:28.665 UTC [common/configtx] addToMap -> DEBU 48c6 Adding to config map: [Value]  /Channel/BlockDataHashingStructure
+2018-07-04 10:34:28.665 UTC [common/configtx] addToMap -> DEBU 48c7 Adding to config map: [Policy] /Channel/Readers
+2018-07-04 10:34:28.665 UTC [common/configtx] addToMap -> DEBU 48c8 Adding to config map: [Policy] /Channel/Writers
+2018-07-04 10:34:28.665 UTC [common/configtx] addToMap -> DEBU 48c9 Adding to config map: [Policy] /Channel/Admins
+2018-07-04 10:34:28.665 UTC [common/channelconfig] LogSanityChecks -> DEBU 48ca As expected, current configuration has policy '/Channel/Readers'
+2018-07-04 10:34:28.665 UTC [common/channelconfig] LogSanityChecks -> DEBU 48cb As expected, current configuration has policy '/Channel/Writers'
+2018-07-04 10:34:28.665 UTC [policies] Manager -> DEBU 48cc Manager Channel looking up path [Application]
+2018-07-04 10:34:28.665 UTC [policies] Manager -> DEBU 48cd Manager Channel has managers Orderer
+2018-07-04 10:34:28.665 UTC [policies] Manager -> DEBU 48ce Manager Channel has managers Application
+2018-07-04 10:34:28.665 UTC [policies] Manager -> DEBU 48cf Manager Channel/Application looking up path []
+2018-07-04 10:34:28.665 UTC [policies] Manager -> DEBU 48d0 Manager Channel/Application has managers Org1MSP
+2018-07-04 10:34:28.665 UTC [policies] Manager -> DEBU 48d1 Manager Channel/Application has managers Org2MSP
+2018-07-04 10:34:28.665 UTC [common/channelconfig] LogSanityChecks -> DEBU 48d2 As expected, current configuration has policy '/Channel/Application/Readers'
+2018-07-04 10:34:28.665 UTC [common/channelconfig] LogSanityChecks -> DEBU 48d3 As expected, current configuration has policy '/Channel/Application/Writers'
+2018-07-04 10:34:28.665 UTC [common/channelconfig] LogSanityChecks -> DEBU 48d4 As expected, current configuration has policy '/Channel/Application/Admins'
+2018-07-04 10:34:28.665 UTC [policies] Manager -> DEBU 48d5 Manager Channel looking up path [Orderer]
+2018-07-04 10:34:28.665 UTC [policies] Manager -> DEBU 48d6 Manager Channel has managers Orderer
+2018-07-04 10:34:28.665 UTC [policies] Manager -> DEBU 48d7 Manager Channel has managers Application
+2018-07-04 10:34:28.665 UTC [policies] Manager -> DEBU 48d8 Manager Channel/Orderer looking up path []
+2018-07-04 10:34:28.665 UTC [policies] Manager -> DEBU 48d9 Manager Channel/Orderer has managers OrdererOrg
+2018-07-04 10:34:28.665 UTC [common/channelconfig] LogSanityChecks -> DEBU 48da As expected, current configuration has policy '/Channel/Orderer/BlockValidation'
+2018-07-04 10:34:28.665 UTC [msp] GetLocalMSP -> DEBU 48db Returning existing local MSP
+2018-07-04 10:34:28.665 UTC [msp] GetDefaultSigningIdentity -> DEBU 48dc Obtaining default signing identity
+2018-07-04 10:34:28.665 UTC [msp] GetLocalMSP -> DEBU 48dd Returning existing local MSP
+2018-07-04 10:34:28.665 UTC [msp] GetDefaultSigningIdentity -> DEBU 48de Obtaining default signing identity
+2018-07-04 10:34:28.665 UTC [msp/identity] Sign -> DEBU 48df Sign: plaintext: 0AE4060A1508011A0608B4C5F2D90522...913A9DCB0735975967756A2FAF9FBF94
+2018-07-04 10:34:28.665 UTC [msp/identity] Sign -> DEBU 48e0 Sign: digest: 733425BBF40EFB4022EBA7F67B68DB74F24CB0BA2E2A691DC9F4E6C1D5C34F2B
+2018-07-04 10:34:28.665 UTC [policies] Evaluate -> DEBU 48e1 == Evaluating *policies.implicitMetaPolicy Policy /Channel/Writers ==
+2018-07-04 10:34:28.665 UTC [policies] Evaluate -> DEBU 48e2 This is an implicit meta policy, it will trigger other policy evaluations, whose failures may be benign
+2018-07-04 10:34:28.665 UTC [policies] Evaluate -> DEBU 48e3 == Evaluating *policies.implicitMetaPolicy Policy /Channel/Orderer/Writers ==
+2018-07-04 10:34:28.665 UTC [policies] Evaluate -> DEBU 48e4 This is an implicit meta policy, it will trigger other policy evaluations, whose failures may be benign
+2018-07-04 10:34:28.665 UTC [policies] Evaluate -> DEBU 48e5 == Evaluating *cauthdsl.policy Policy /Channel/Orderer/OrdererOrg/Writers ==
+2018-07-04 10:34:28.665 UTC [msp] DeserializeIdentity -> INFO 48e6 Obtaining identity
+2018-07-04 10:34:28.666 UTC [msp/identity] newIdentity -> DEBU 48e7 Creating identity instance for cert -----BEGIN CERTIFICATE-----
+MIICITCCAcigAwIBAgIQcgGZ/+YXrfWOuq8ctcijtTAKBggqhkjOPQQDAjB3MQsw
+CQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZy
+YW5jaXNjbzEbMBkGA1UEChMSYmxvY2tjaGFpbmRlbW8uY29tMR4wHAYDVQQDExVj
+YS5ibG9ja2NoYWluZGVtby5jb20wHhcNMTgwNjA2MDI1OTUxWhcNMjgwNjAzMDI1
+OTUxWjBgMQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UE
+BxMNU2FuIEZyYW5jaXNjbzEkMCIGA1UEAxMbb3JkZXJlcjAuYmxvY2tjaGFpbmRl
+bW8uY29tMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEAfySeXCB0h1VRDsbuxN7
+lRLeAtKUCYFMmOLINX+p8wuPn5XMfocoDo95VNTv32rE29rRHb0muSsakN0v11il
+G6NNMEswDgYDVR0PAQH/BAQDAgeAMAwGA1UdEwEB/wQCMAAwKwYDVR0jBCQwIoAg
+74rEXiRik8X4GG51qaogQdqel/ZzieY8Y2JcMIpoSjIwCgYIKoZIzj0EAwIDRwAw
+RAIgWCDYBJTuyik/Cf4nIqOdXfdkNA9EOpWhgG1lGOKG1gECIF/Cfc0jVCmYBeqC
+HPX04IplTuq7noPtgSuCzJ7W3VaU
+-----END CERTIFICATE-----
+2018-07-04 10:34:28.666 UTC [cauthdsl] func1 -> DEBU 48e8 0xc420be4b80 gate 1530700468666500491 evaluation starts
+2018-07-04 10:34:28.666 UTC [cauthdsl] func2 -> DEBU 48e9 0xc420be4b80 signed by 0 principal evaluation starts (used [false])
+2018-07-04 10:34:28.666 UTC [cauthdsl] func2 -> DEBU 48ea 0xc420be4b80 processing identity 0 with bytes of 0a0a4f7264657265724d5350129e062d2d2d2d2d424547494e2043455254494649434154452d2d2d2d2d0a4d494943495443434163696741774942416749516367475a2f2b59587266574f757138637463696a7454414b42676771686b6a4f50515144416a42334d5173770a435159445651514745774a56557a45544d4245474131554543424d4b5132467361575a76636d3570595445574d4251474131554542784d4e5532467549455a790a5957356a61584e6a627a45624d426b474131554543684d53596d78765932746a61474670626d526c62573875593239744d52347748415944565151444578566a0a595335696247396a61324e6f59576c755a4756746279356a623230774868634e4d5467774e6a41324d4449314f5455785768634e4d6a67774e6a417a4d4449310a4f545578576a42674d517377435159445651514745774a56557a45544d4245474131554543424d4b5132467361575a76636d3570595445574d425147413155450a42784d4e5532467549455a795957356a61584e6a627a456b4d4349474131554541784d6262334a6b5a584a6c636a4175596d78765932746a61474670626d526c0a62573875593239744d466b77457759484b6f5a497a6a3043415159494b6f5a497a6a304441516344516741454166795365584342306831565244736275784e370a6c524c6541744b554359464d6d4f4c494e582b70387775506e35584d666f636f446f3935564e547633327245323972524862306d755373616b4e30763131696c0a47364e4e4d45737744675944565230504151482f42415144416765414d41774741315564457745422f7751434d4141774b7759445652306a42435177496f41670a37347245586952696b3858344747353171616f67516471656c2f5a7a6965593859324a634d49706f536a4977436759494b6f5a497a6a304541774944527741770a5241496757434459424a547579696b2f4366346e49714f645866646b4e4139454f7057686747316c474f4b473167454349462f436663306a56436d59426571430a485058303449706c547571376e6f5074675375437a4a3757335661550a2d2d2d2d2d454e442043455254494649434154452d2d2d2d2d0a
+2018-07-04 10:34:28.666 UTC [msp] SatisfiesPrincipal -> DEBU 48eb Checking if identity satisfies MEMBER role for OrdererMSP
+2018-07-04 10:34:28.666 UTC [msp] Validate -> DEBU 48ec MSP OrdererMSP validating identity
+2018-07-04 10:34:28.666 UTC [cauthdsl] func2 -> DEBU 48ed 0xc420be4b80 principal matched by identity 0
+2018-07-04 10:34:28.666 UTC [msp/identity] Verify -> DEBU 48ee Verify: digest = 00000000  73 34 25 bb f4 0e fb 40  22 eb a7 f6 7b 68 db 74  |s4%....@"...{h.t|
+00000010  f2 4c b0 ba 2e 2a 69 1d  c9 f4 e6 c1 d5 c3 4f 2b  |.L...*i.......O+|
+2018-07-04 10:34:28.666 UTC [msp/identity] Verify -> DEBU 48ef Verify: sig = 00000000  30 45 02 21 00 ae 3e 8a  14 47 57 4b 74 ca d3 07  |0E.!..>..GWKt...|
+00000010  8e d9 8b b9 11 05 44 00  69 c3 8b 18 2e 36 09 27  |......D.i....6.'|
+00000020  19 95 59 cf a2 02 20 27  e6 84 a3 00 52 58 78 e0  |..Y... '....RXx.|
+00000030  06 ce b8 77 39 c3 8f 05  eb c2 d5 b4 04 5b 53 f8  |...w9........[S.|
+00000040  f6 4e 46 c3 70 4c ae                              |.NF.pL.|
+2018-07-04 10:34:28.667 UTC [cauthdsl] func2 -> DEBU 48f0 0xc420be4b80 principal evaluation succeeds for identity 0
+2018-07-04 10:34:28.667 UTC [cauthdsl] func1 -> DEBU 48f1 0xc420be4b80 gate 1530700468666500491 evaluation succeeds
+2018-07-04 10:34:28.667 UTC [policies] Evaluate -> DEBU 48f2 Signature set satisfies policy /Channel/Orderer/OrdererOrg/Writers
+2018-07-04 10:34:28.667 UTC [policies] Evaluate -> DEBU 48f3 == Done Evaluating *cauthdsl.policy Policy /Channel/Orderer/OrdererOrg/Writers
+2018-07-04 10:34:28.667 UTC [policies] Evaluate -> DEBU 48f4 Signature set satisfies policy /Channel/Orderer/Writers
+2018-07-04 10:34:28.667 UTC [policies] Evaluate -> DEBU 48f5 == Done Evaluating *policies.implicitMetaPolicy Policy /Channel/Orderer/Writers
+2018-07-04 10:34:28.667 UTC [policies] Evaluate -> DEBU 48f6 Signature set satisfies policy /Channel/Writers
+2018-07-04 10:34:28.667 UTC [policies] Evaluate -> DEBU 48f7 == Done Evaluating *policies.implicitMetaPolicy Policy /Channel/Writers
+2018-07-04 10:34:28.667 UTC [orderer/consensus/kafka] func2 -> DEBU 48f8 [channel: mychannel] Received config message
+2018-07-04 10:34:28.667 UTC [orderer/consensus/kafka] func2 -> DEBU 48f9 [channel: mychannel] Creating isolated block for config message
+2018-07-04 10:34:28.667 UTC [common/configtx] addToMap -> DEBU 48fa Adding to config map: [Group]  /Channel
+2018-07-04 10:34:28.667 UTC [common/configtx] addToMap -> DEBU 48fb Adding to config map: [Group]  /Channel/Orderer
+2018-07-04 10:34:28.667 UTC [common/configtx] addToMap -> DEBU 48fc Adding to config map: [Group]  /Channel
+2018-07-04 10:34:28.667 UTC [common/configtx] addToMap -> DEBU 48fd Adding to config map: [Group]  /Channel/Orderer
+2018-07-04 10:34:28.667 UTC [common/configtx] addToMap -> DEBU 48fe Adding to config map: [Value]  /Channel/Orderer/BatchTimeout
+2018-07-04 10:34:28.667 UTC [common/configtx] verifyDeltaSet -> DEBU 48ff Processing change to key: [Value]  /Channel/Orderer/BatchTimeout
+2018-07-04 10:34:28.667 UTC [common/configtx] policyForItem -> DEBU 4900 Getting policy for item BatchTimeout with mod_policy Admins
+2018-07-04 10:34:28.667 UTC [policies] Manager -> DEBU 4901 Manager Channel looking up path [Orderer]
+2018-07-04 10:34:28.667 UTC [policies] Manager -> DEBU 4902 Manager Channel has managers Orderer
+2018-07-04 10:34:28.667 UTC [policies] Manager -> DEBU 4903 Manager Channel has managers Application
+2018-07-04 10:34:28.667 UTC [policies] Manager -> DEBU 4904 Manager Channel/Orderer looking up path []
+2018-07-04 10:34:28.667 UTC [policies] Manager -> DEBU 4905 Manager Channel/Orderer has managers OrdererOrg
+2018-07-04 10:34:28.667 UTC [policies] Evaluate -> DEBU 4906 == Evaluating *policies.implicitMetaPolicy Policy /Channel/Orderer/Admins ==
+2018-07-04 10:34:28.667 UTC [policies] Evaluate -> DEBU 4907 This is an implicit meta policy, it will trigger other policy evaluations, whose failures may be benign
+2018-07-04 10:34:28.668 UTC [policies] Evaluate -> DEBU 4908 == Evaluating *cauthdsl.policy Policy /Channel/Orderer/OrdererOrg/Admins ==
+2018-07-04 10:34:28.668 UTC [cauthdsl] func1 -> DEBU 4909 0xc420be4fb0 gate 1530700468668047710 evaluation starts
+2018-07-04 10:34:28.668 UTC [cauthdsl] func2 -> DEBU 490a 0xc420be4fb0 signed by 0 principal evaluation starts (used [false])
+2018-07-04 10:34:28.668 UTC [cauthdsl] func2 -> DEBU 490b 0xc420be4fb0 processing identity 0 with bytes of 0a0a4f7264657265724d5350129e062d2d2d2d2d424547494e2043455254494649434154452d2d2d2d2d0a4d494943487a4343416357674177494241674951577a55523361696957364e30703744414a4f69394f7a414b42676771686b6a4f50515144416a42334d5173770a435159445651514745774a56557a45544d4245474131554543424d4b5132467361575a76636d3570595445574d4251474131554542784d4e5532467549455a790a5957356a61584e6a627a45624d426b474131554543684d53596d78765932746a61474670626d526c62573875593239744d52347748415944565151444578566a0a595335696247396a61324e6f59576c755a4756746279356a623230774868634e4d5467774e6a41324d4449314f5455785768634e4d6a67774e6a417a4d4449310a4f545578576a42644d517377435159445651514745774a56557a45544d4245474131554543424d4b5132467361575a76636d3570595445574d425147413155450a42784d4e5532467549455a795957356a61584e6a627a45684d42384741315545417777595157527461573541596d78765932746a61474670626d526c625738750a593239744d466b77457759484b6f5a497a6a3043415159494b6f5a497a6a30444151634451674145565761684d4c4158377245656358326c6d4b433841714c390a4f737435576e49646e433766373050443458626f496b7776377070785030694e747831627250416a742f552b676e2f6c63466e5642374872537652592b364e4e0a4d45737744675944565230504151482f42415144416765414d41774741315564457745422f7751434d4141774b7759445652306a42435177496f4167373472450a586952696b3858344747353171616f67516471656c2f5a7a6965593859324a634d49706f536a4977436759494b6f5a497a6a30454177494453414177525149680a414e33754c3968655369346741416b49485333385a3468737a79777535365638676e592b7a6231755243793841694279386b42757163326f6a444c31655441450a4d3337562b73637144585332756d2f5863576b334d49316557413d3d0a2d2d2d2d2d454e442043455254494649434154452d2d2d2d2d0a
+2018-07-04 10:34:28.668 UTC [msp] SatisfiesPrincipal -> DEBU 490c Checking if identity satisfies ADMIN role for OrdererMSP
+2018-07-04 10:34:28.668 UTC [cauthdsl] func2 -> DEBU 490d 0xc420be4fb0 principal matched by identity 0
+2018-07-04 10:34:28.668 UTC [msp/identity] Verify -> DEBU 490e Verify: digest = 00000000  36 5c 89 3a 7b 74 0e 9e  1a 9f 8a 3e cc c5 3f 45  |6\.:{t.....>..?E|
+00000010  df d5 84 b5 b5 57 73 02  b5 8b 84 43 56 f6 4d b1  |.....Ws....CV.M.|
+2018-07-04 10:34:28.668 UTC [msp/identity] Verify -> DEBU 490f Verify: sig = 00000000  30 45 02 21 00 80 b2 ef  79 02 d2 ff 09 60 4c 57  |0E.!....y....`LW|
+00000010  62 8c af ba 9b e1 74 46  ea d3 b7 97 c1 55 c1 00  |b.....tF.....U..|
+00000020  81 6e a8 12 da 02 20 0d  9a ad af 79 5e f4 68 76  |.n.... ....y^.hv|
+00000030  93 9b 68 15 72 00 ac ea  50 15 ee c2 9c ba 98 c5  |..h.r...P.......|
+00000040  ac ac f2 05 b3 2c c0                              |.....,.|
+2018-07-04 10:34:28.668 UTC [cauthdsl] func2 -> DEBU 4910 0xc420be4fb0 principal evaluation succeeds for identity 0
+2018-07-04 10:34:28.668 UTC [cauthdsl] func1 -> DEBU 4911 0xc420be4fb0 gate 1530700468668047710 evaluation succeeds
+2018-07-04 10:34:28.668 UTC [policies] Evaluate -> DEBU 4912 Signature set satisfies policy /Channel/Orderer/OrdererOrg/Admins
+2018-07-04 10:34:28.668 UTC [policies] Evaluate -> DEBU 4913 == Done Evaluating *cauthdsl.policy Policy /Channel/Orderer/OrdererOrg/Admins
+2018-07-04 10:34:28.668 UTC [policies] Evaluate -> DEBU 4914 Signature set satisfies policy /Channel/Orderer/Admins
+2018-07-04 10:34:28.668 UTC [policies] Evaluate -> DEBU 4915 == Done Evaluating *policies.implicitMetaPolicy Policy /Channel/Orderer/Admins
+2018-07-04 10:34:28.669 UTC [common/configtx] recurseConfigMap -> DEBU 4916 Setting policy for key Writers to policy:<type:1 value:"\022\010\022\006\010\001\022\002\010\000\032\016\022\014\n\nOrdererMSP" > mod_policy:"Admins"
+2018-07-04 10:34:28.669 UTC [common/configtx] recurseConfigMap -> DEBU 4917 Setting policy for key Admins to policy:<type:1 value:"\022\010\022\006\010\001\022\002\010\000\032\020\022\016\n\nOrdererMSP\020\001" > mod_policy:"Admins"
+2018-07-04 10:34:28.669 UTC [common/configtx] recurseConfigMap -> DEBU 4918 Setting policy for key Readers to policy:<type:1 value:"\022\010\022\006\010\001\022\002\010\000\032\016\022\014\n\nOrdererMSP" > mod_policy:"Admins"
+2018-07-04 10:34:28.669 UTC [common/configtx] recurseConfigMap -> DEBU 4919 Setting policy for key Readers to policy:<type:3 value:"\n\007Readers" > mod_policy:"Admins"
+2018-07-04 10:34:28.669 UTC [common/configtx] recurseConfigMap -> DEBU 491a Setting policy for key Writers to policy:<type:3 value:"\n\007Writers" > mod_policy:"Admins"
+2018-07-04 10:34:28.669 UTC [common/configtx] recurseConfigMap -> DEBU 491b Setting policy for key BlockValidation to policy:<type:3 value:"\n\007Writers" > mod_policy:"Admins"
+2018-07-04 10:34:28.669 UTC [common/configtx] recurseConfigMap -> DEBU 491c Setting policy for key Admins to policy:<type:3 value:"\n\006Admins\020\002" > mod_policy:"Admins"
+2018-07-04 10:34:28.669 UTC [common/configtx] recurseConfigMap -> DEBU 491d Setting policy for key Readers to policy:<type:1 value:"\022\010\022\006\010\001\022\002\010\000\032\013\022\t\n\007Org1MSP" > mod_policy:"Admins"
+2018-07-04 10:34:28.669 UTC [common/configtx] recurseConfigMap -> DEBU 491e Setting policy for key Writers to policy:<type:1 value:"\022\010\022\006\010\001\022\002\010\000\032\013\022\t\n\007Org1MSP" > mod_policy:"Admins"
+2018-07-04 10:34:28.669 UTC [common/configtx] recurseConfigMap -> DEBU 491f Setting policy for key Admins to policy:<type:1 value:"\022\010\022\006\010\001\022\002\010\000\032\r\022\013\n\007Org1MSP\020\001" > mod_policy:"Admins"
+2018-07-04 10:34:28.669 UTC [common/configtx] recurseConfigMap -> DEBU 4920 Setting policy for key Writers to policy:<type:1 value:"\022\010\022\006\010\001\022\002\010\000\032\013\022\t\n\007Org2MSP" > mod_policy:"Admins"
+2018-07-04 10:34:28.669 UTC [common/configtx] recurseConfigMap -> DEBU 4921 Setting policy for key Admins to policy:<type:1 value:"\022\010\022\006\010\001\022\002\010\000\032\r\022\013\n\007Org2MSP\020\001" > mod_policy:"Admins"
+2018-07-04 10:34:28.669 UTC [common/configtx] recurseConfigMap -> DEBU 4922 Setting policy for key Readers to policy:<type:1 value:"\022\010\022\006\010\001\022\002\010\000\032\013\022\t\n\007Org2MSP" > mod_policy:"Admins"
+2018-07-04 10:34:28.669 UTC [common/configtx] recurseConfigMap -> DEBU 4923 Setting policy for key Readers to policy:<type:3 value:"\n\007Readers" > mod_policy:"Admins"
+2018-07-04 10:34:28.669 UTC [common/configtx] recurseConfigMap -> DEBU 4924 Setting policy for key Writers to policy:<type:3 value:"\n\007Writers" > mod_policy:"Admins"
+2018-07-04 10:34:28.669 UTC [common/configtx] recurseConfigMap -> DEBU 4925 Setting policy for key Admins to policy:<type:3 value:"\n\006Admins\020\002" > mod_policy:"Admins"
+2018-07-04 10:34:28.670 UTC [common/configtx] recurseConfigMap -> DEBU 4926 Setting policy for key Readers to policy:<type:3 value:"\n\007Readers" > mod_policy:"Admins"
+2018-07-04 10:34:28.670 UTC [common/configtx] recurseConfigMap -> DEBU 4927 Setting policy for key Writers to policy:<type:3 value:"\n\007Writers" > mod_policy:"Admins"
+2018-07-04 10:34:28.670 UTC [common/configtx] recurseConfigMap -> DEBU 4928 Setting policy for key Admins to policy:<type:3 value:"\n\006Admins\020\002" > mod_policy:"Admins"
+2018-07-04 10:34:28.670 UTC [common/channelconfig] NewStandardValues -> DEBU 4929 Initializing protos for *channelconfig.ChannelProtos
+2018-07-04 10:34:28.670 UTC [common/channelconfig] initializeProtosStruct -> DEBU 492a Processing field: HashingAlgorithm
+2018-07-04 10:34:28.670 UTC [common/channelconfig] initializeProtosStruct -> DEBU 492b Processing field: BlockDataHashingStructure
+2018-07-04 10:34:28.670 UTC [common/channelconfig] initializeProtosStruct -> DEBU 492c Processing field: OrdererAddresses
+2018-07-04 10:34:28.670 UTC [common/channelconfig] initializeProtosStruct -> DEBU 492d Processing field: Consortium
+2018-07-04 10:34:28.670 UTC [common/channelconfig] initializeProtosStruct -> DEBU 492e Processing field: Capabilities
+2018-07-04 10:34:28.670 UTC [common/channelconfig] NewStandardValues -> DEBU 492f Initializing protos for *channelconfig.ApplicationProtos
+2018-07-04 10:34:28.670 UTC [common/channelconfig] initializeProtosStruct -> DEBU 4930 Processing field: Capabilities
+2018-07-04 10:34:28.670 UTC [common/channelconfig] NewStandardValues -> DEBU 4931 Initializing protos for *channelconfig.ApplicationOrgProtos
+2018-07-04 10:34:28.670 UTC [common/channelconfig] initializeProtosStruct -> DEBU 4932 Processing field: AnchorPeers
+2018-07-04 10:34:28.670 UTC [common/channelconfig] NewStandardValues -> DEBU 4933 Initializing protos for *channelconfig.OrganizationProtos
+2018-07-04 10:34:28.670 UTC [common/channelconfig] initializeProtosStruct -> DEBU 4934 Processing field: MSP
+2018-07-04 10:34:28.670 UTC [common/channelconfig] Validate -> DEBU 4935 Anchor peers for org Org1MSP are
+2018-07-04 10:34:28.670 UTC [common/channelconfig] validateMSP -> DEBU 4936 Setting up MSP for org Org1MSP
+2018-07-04 10:34:28.670 UTC [msp] newBccspMsp -> DEBU 4937 Creating BCCSP-based MSP instance
+2018-07-04 10:34:28.670 UTC [msp] New -> DEBU 4938 Creating Cache-MSP instance
+2018-07-04 10:34:28.670 UTC [msp] Setup -> DEBU 4939 Setting up MSP instance Org1MSP
+2018-07-04 10:34:28.671 UTC [msp/identity] newIdentity -> DEBU 493a Creating identity instance for cert -----BEGIN CERTIFICATE-----
+MIICYjCCAgigAwIBAgIRAKvQCUPNzkDar98G7O96eUswCgYIKoZIzj0EAwIwgYEx
+CzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1TYW4g
+RnJhbmNpc2NvMSAwHgYDVQQKExdvcmcxLmJsb2NrY2hhaW5kZW1vLmNvbTEjMCEG
+A1UEAxMaY2Eub3JnMS5ibG9ja2NoYWluZGVtby5jb20wHhcNMTgwNjA2MDI1OTUx
+WhcNMjgwNjAzMDI1OTUxWjCBgTELMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlm
+b3JuaWExFjAUBgNVBAcTDVNhbiBGcmFuY2lzY28xIDAeBgNVBAoTF29yZzEuYmxv
+Y2tjaGFpbmRlbW8uY29tMSMwIQYDVQQDExpjYS5vcmcxLmJsb2NrY2hhaW5kZW1v
+LmNvbTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABCxVEI32McJ1WryRm6Ofcw5L
+fVz79tqad0ORjvbH/Nr70Fpn6vFN4qdjO0KvA6tqTVg8PUxIZdQEWiNeUl6ZLNqj
+XzBdMA4GA1UdDwEB/wQEAwIBpjAPBgNVHSUECDAGBgRVHSUAMA8GA1UdEwEB/wQF
+MAMBAf8wKQYDVR0OBCIEIJKhx7nIQwrUV2JDvZpue/CnuIMVQGp4Eg55Q3RfOq0U
+MAoGCCqGSM49BAMCA0gAMEUCIQCs7ynjG8lZvLbPzgDsyLjv4huey6GZ9CB9ed69
+yX9SjAIgELn50VVcD/Ftyv+YHkZ/H+YmAE0L3Ry85aASNfXrlgU=
+-----END CERTIFICATE-----
+2018-07-04 10:34:28.671 UTC [msp/identity] newIdentity -> DEBU 493b Creating identity instance for cert -----BEGIN CERTIFICATE-----
+MIICMDCCAdagAwIBAgIRAIBIpQd4fwqtbDA8G5gbgz8wCgYIKoZIzj0EAwIwgYEx
+CzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1TYW4g
+RnJhbmNpc2NvMSAwHgYDVQQKExdvcmcxLmJsb2NrY2hhaW5kZW1vLmNvbTEjMCEG
+A1UEAxMaY2Eub3JnMS5ibG9ja2NoYWluZGVtby5jb20wHhcNMTgwNjA2MDI1OTUx
+WhcNMjgwNjAzMDI1OTUxWjBiMQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZv
+cm5pYTEWMBQGA1UEBxMNU2FuIEZyYW5jaXNjbzEmMCQGA1UEAwwdQWRtaW5Ab3Jn
+MS5ibG9ja2NoYWluZGVtby5jb20wWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAATI
+q18k8DV1OJuBhtqesZywhQ8ZdNGotGGg2+VG60SX7P+wt7dN3UjjRdzLSJeTOZ2b
+J6TL0MKmJZNtiHrmHC25o00wSzAOBgNVHQ8BAf8EBAMCB4AwDAYDVR0TAQH/BAIw
+ADArBgNVHSMEJDAigCCSoce5yEMK1FdiQ72abnvwp7iDFUBqeBIOeUN0XzqtFDAK
+BggqhkjOPQQDAgNIADBFAiEAlHzc+iZh6fc51RfrZRPCY0wi1frapsvBxOdrrnQD
+E64CICkxd6UP9hFJ1DTE6hQWBvls/ov7T8iyBRr3xfowdg7n
+-----END CERTIFICATE-----
+2018-07-04 10:34:28.672 UTC [msp] Validate -> DEBU 493c MSP Org1MSP validating identity
+2018-07-04 10:34:28.672 UTC [common/channelconfig] NewStandardValues -> DEBU 493d Initializing protos for *channelconfig.ApplicationOrgProtos
+2018-07-04 10:34:28.672 UTC [common/channelconfig] initializeProtosStruct -> DEBU 493e Processing field: AnchorPeers
+2018-07-04 10:34:28.672 UTC [common/channelconfig] NewStandardValues -> DEBU 493f Initializing protos for *channelconfig.OrganizationProtos
+2018-07-04 10:34:28.672 UTC [common/channelconfig] initializeProtosStruct -> DEBU 4940 Processing field: MSP
+2018-07-04 10:34:28.672 UTC [common/channelconfig] Validate -> DEBU 4941 Anchor peers for org Org2MSP are
+2018-07-04 10:34:28.672 UTC [common/channelconfig] validateMSP -> DEBU 4942 Setting up MSP for org Org2MSP
+2018-07-04 10:34:28.672 UTC [msp] newBccspMsp -> DEBU 4943 Creating BCCSP-based MSP instance
+2018-07-04 10:34:28.672 UTC [msp] New -> DEBU 4944 Creating Cache-MSP instance
+2018-07-04 10:34:28.672 UTC [msp] Setup -> DEBU 4945 Setting up MSP instance Org2MSP
+2018-07-04 10:34:28.673 UTC [msp/identity] newIdentity -> DEBU 4946 Creating identity instance for cert -----BEGIN CERTIFICATE-----
+MIICYjCCAgigAwIBAgIRANgeaf/MyY8Tpeoh//X0EMwwCgYIKoZIzj0EAwIwgYEx
+CzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1TYW4g
+RnJhbmNpc2NvMSAwHgYDVQQKExdvcmcyLmJsb2NrY2hhaW5kZW1vLmNvbTEjMCEG
+A1UEAxMaY2Eub3JnMi5ibG9ja2NoYWluZGVtby5jb20wHhcNMTgwNjA2MDI1OTUx
+WhcNMjgwNjAzMDI1OTUxWjCBgTELMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlm
+b3JuaWExFjAUBgNVBAcTDVNhbiBGcmFuY2lzY28xIDAeBgNVBAoTF29yZzIuYmxv
+Y2tjaGFpbmRlbW8uY29tMSMwIQYDVQQDExpjYS5vcmcyLmJsb2NrY2hhaW5kZW1v
+LmNvbTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABFHEVtfQEjKTZpi9mOKg4CeS
+SBIAG4vmjWqQZcI8pWMDUeYBw9ThYw1u48PYQtALfvQBNZbU+iIAPHMUtjZFviaj
+XzBdMA4GA1UdDwEB/wQEAwIBpjAPBgNVHSUECDAGBgRVHSUAMA8GA1UdEwEB/wQF
+MAMBAf8wKQYDVR0OBCIEIKu6wWGU7zg4iGDb9zPF5Un8UrQqKpg8hzQ3F7X7kTSa
+MAoGCCqGSM49BAMCA0gAMEUCIQD2kWnBDP8PcExcRmIZG1kUxpOJ2EEi/S9MujNB
+3qbRawIgCPD5kJlvyi7dTd9gn/59onFMdL5IgZV1CviiIxYSCIU=
+-----END CERTIFICATE-----
+2018-07-04 10:34:28.673 UTC [msp/identity] newIdentity -> DEBU 4947 Creating identity instance for cert -----BEGIN CERTIFICATE-----
+MIICLjCCAdWgAwIBAgIQGVqCZKIw/JtLkAKsrHeMiDAKBggqhkjOPQQDAjCBgTEL
+MAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG
+cmFuY2lzY28xIDAeBgNVBAoTF29yZzIuYmxvY2tjaGFpbmRlbW8uY29tMSMwIQYD
+VQQDExpjYS5vcmcyLmJsb2NrY2hhaW5kZW1vLmNvbTAeFw0xODA2MDYwMjU5NTFa
+Fw0yODA2MDMwMjU5NTFaMGIxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9y
+bmlhMRYwFAYDVQQHEw1TYW4gRnJhbmNpc2NvMSYwJAYDVQQDDB1BZG1pbkBvcmcy
+LmJsb2NrY2hhaW5kZW1vLmNvbTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABFXq
+CZmbXyIDYmyPFIfbzxCX6ECsytqpSW1jxjhOMSaRcGNPNHNot8z1/jX7dHWIC1Mf
+26xiQmllTAS4eQG4g/WjTTBLMA4GA1UdDwEB/wQEAwIHgDAMBgNVHRMBAf8EAjAA
+MCsGA1UdIwQkMCKAIKu6wWGU7zg4iGDb9zPF5Un8UrQqKpg8hzQ3F7X7kTSaMAoG
+CCqGSM49BAMCA0cAMEQCIE6K54DiUGtVODy5p/IWma0ldcVP7XLR95QD0m6z/Xfi
+AiBoL7viSVy0UM/RkMacO+SWgz4oc8th7elpsae/pfNzzg==
+-----END CERTIFICATE-----
+2018-07-04 10:34:28.674 UTC [msp] Validate -> DEBU 4948 MSP Org2MSP validating identity
+2018-07-04 10:34:28.674 UTC [common/channelconfig] NewStandardValues -> DEBU 4949 Initializing protos for *channelconfig.OrdererProtos
+2018-07-04 10:34:28.674 UTC [common/channelconfig] initializeProtosStruct -> DEBU 494a Processing field: ConsensusType
+2018-07-04 10:34:28.674 UTC [common/channelconfig] initializeProtosStruct -> DEBU 494b Processing field: BatchSize
+2018-07-04 10:34:28.674 UTC [common/channelconfig] initializeProtosStruct -> DEBU 494c Processing field: BatchTimeout
+2018-07-04 10:34:28.674 UTC [common/channelconfig] initializeProtosStruct -> DEBU 494d Processing field: KafkaBrokers
+2018-07-04 10:34:28.674 UTC [common/channelconfig] initializeProtosStruct -> DEBU 494e Processing field: ChannelRestrictions
+2018-07-04 10:34:28.674 UTC [common/channelconfig] initializeProtosStruct -> DEBU 494f Processing field: Capabilities
+2018-07-04 10:34:28.674 UTC [common/channelconfig] NewStandardValues -> DEBU 4950 Initializing protos for *channelconfig.OrganizationProtos
+2018-07-04 10:34:28.674 UTC [common/channelconfig] initializeProtosStruct -> DEBU 4951 Processing field: MSP
+2018-07-04 10:34:28.674 UTC [common/channelconfig] validateMSP -> DEBU 4952 Setting up MSP for org OrdererOrg
+2018-07-04 10:34:28.674 UTC [msp] newBccspMsp -> DEBU 4953 Creating BCCSP-based MSP instance
+2018-07-04 10:34:28.674 UTC [msp] New -> DEBU 4954 Creating Cache-MSP instance
+2018-07-04 10:34:28.674 UTC [msp] Setup -> DEBU 4955 Setting up MSP instance OrdererMSP
+2018-07-04 10:34:28.675 UTC [msp/identity] newIdentity -> DEBU 4956 Creating identity instance for cert -----BEGIN CERTIFICATE-----
+MIICSzCCAfKgAwIBAgIRAK4LqjgfhzbGgAkIRYzzbB8wCgYIKoZIzj0EAwIwdzEL
+MAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG
+cmFuY2lzY28xGzAZBgNVBAoTEmJsb2NrY2hhaW5kZW1vLmNvbTEeMBwGA1UEAxMV
+Y2EuYmxvY2tjaGFpbmRlbW8uY29tMB4XDTE4MDYwNjAyNTk1MVoXDTI4MDYwMzAy
+NTk1MVowdzELMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNV
+BAcTDVNhbiBGcmFuY2lzY28xGzAZBgNVBAoTEmJsb2NrY2hhaW5kZW1vLmNvbTEe
+MBwGA1UEAxMVY2EuYmxvY2tjaGFpbmRlbW8uY29tMFkwEwYHKoZIzj0CAQYIKoZI
+zj0DAQcDQgAExZVwX6fUyEzsEjQyC21w5QeL9jYMgGgsI6UlbBgTcEwPN77QwPiz
+8jIBof67JRP1kTcQXTXee0+XCyyVkM0xHaNfMF0wDgYDVR0PAQH/BAQDAgGmMA8G
+A1UdJQQIMAYGBFUdJQAwDwYDVR0TAQH/BAUwAwEB/zApBgNVHQ4EIgQg74rEXiRi
+k8X4GG51qaogQdqel/ZzieY8Y2JcMIpoSjIwCgYIKoZIzj0EAwIDRwAwRAIgOJbj
+8BiAjF5uHv38SsJq+BAu2cymVLO+Q6BsjTdIe/8CICVo4BQYGrco5Y1B5YHW9UDu
+sWIt2h5x2jhoEfBrGvsC
+-----END CERTIFICATE-----
+2018-07-04 10:34:28.675 UTC [msp/identity] newIdentity -> DEBU 4957 Creating identity instance for cert -----BEGIN CERTIFICATE-----
+MIICHzCCAcWgAwIBAgIQWzUR3aiiW6N0p7DAJOi9OzAKBggqhkjOPQQDAjB3MQsw
+CQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZy
+YW5jaXNjbzEbMBkGA1UEChMSYmxvY2tjaGFpbmRlbW8uY29tMR4wHAYDVQQDExVj
+YS5ibG9ja2NoYWluZGVtby5jb20wHhcNMTgwNjA2MDI1OTUxWhcNMjgwNjAzMDI1
+OTUxWjBdMQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UE
+BxMNU2FuIEZyYW5jaXNjbzEhMB8GA1UEAwwYQWRtaW5AYmxvY2tjaGFpbmRlbW8u
+Y29tMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEVWahMLAX7rEecX2lmKC8AqL9
+Ost5WnIdnC7f70PD4XboIkwv7ppxP0iNtx1brPAjt/U+gn/lcFnVB7HrSvRY+6NN
+MEswDgYDVR0PAQH/BAQDAgeAMAwGA1UdEwEB/wQCMAAwKwYDVR0jBCQwIoAg74rE
+XiRik8X4GG51qaogQdqel/ZzieY8Y2JcMIpoSjIwCgYIKoZIzj0EAwIDSAAwRQIh
+AN3uL9heSi4gAAkIHS38Z4hszywu56V8gnY+zb1uRCy8AiBy8kBuqc2ojDL1eTAE
+M37V+scqDXS2um/XcWk3MI1eWA==
+-----END CERTIFICATE-----
+2018-07-04 10:34:28.676 UTC [msp] Validate -> DEBU 4958 MSP OrdererMSP validating identity
+2018-07-04 10:34:28.676 UTC [msp] Setup -> DEBU 4959 Setting up the MSP manager (3 msps)
+2018-07-04 10:34:28.676 UTC [msp] Setup -> DEBU 495a MSP manager setup complete, setup 3 msps
+2018-07-04 10:34:28.676 UTC [policies] NewManagerImpl -> DEBU 495b Proposed new policy Admins for Channel/Application/Org1MSP
+2018-07-04 10:34:28.676 UTC [policies] NewManagerImpl -> DEBU 495c Proposed new policy Readers for Channel/Application/Org1MSP
+2018-07-04 10:34:28.676 UTC [policies] NewManagerImpl -> DEBU 495d Proposed new policy Writers for Channel/Application/Org1MSP
+2018-07-04 10:34:28.676 UTC [policies] NewManagerImpl -> DEBU 495e Proposed new policy Admins for Channel/Application/Org2MSP
+2018-07-04 10:34:28.676 UTC [policies] NewManagerImpl -> DEBU 495f Proposed new policy Readers for Channel/Application/Org2MSP
+2018-07-04 10:34:28.676 UTC [policies] NewManagerImpl -> DEBU 4960 Proposed new policy Writers for Channel/Application/Org2MSP
+2018-07-04 10:34:28.676 UTC [policies] NewManagerImpl -> DEBU 4961 Proposed new policy Readers for Channel/Application
+2018-07-04 10:34:28.677 UTC [policies] NewManagerImpl -> DEBU 4962 Proposed new policy Writers for Channel/Application
+2018-07-04 10:34:28.677 UTC [policies] NewManagerImpl -> DEBU 4963 Proposed new policy Admins for Channel/Application
+2018-07-04 10:34:28.677 UTC [policies] NewManagerImpl -> DEBU 4964 Proposed new policy Admins for Channel/Orderer/OrdererOrg
+2018-07-04 10:34:28.677 UTC [policies] NewManagerImpl -> DEBU 4965 Proposed new policy Readers for Channel/Orderer/OrdererOrg
+2018-07-04 10:34:28.677 UTC [policies] NewManagerImpl -> DEBU 4966 Proposed new policy Writers for Channel/Orderer/OrdererOrg
+2018-07-04 10:34:28.677 UTC [policies] NewManagerImpl -> DEBU 4967 Proposed new policy Admins for Channel/Orderer
+2018-07-04 10:34:28.677 UTC [policies] NewManagerImpl -> DEBU 4968 Proposed new policy Readers for Channel/Orderer
+2018-07-04 10:34:28.677 UTC [policies] NewManagerImpl -> DEBU 4969 Proposed new policy Writers for Channel/Orderer
+2018-07-04 10:34:28.677 UTC [policies] NewManagerImpl -> DEBU 496a Proposed new policy BlockValidation for Channel/Orderer
+2018-07-04 10:34:28.677 UTC [policies] NewManagerImpl -> DEBU 496b Proposed new policy Readers for Channel
+2018-07-04 10:34:28.677 UTC [policies] NewManagerImpl -> DEBU 496c Proposed new policy Writers for Channel
+2018-07-04 10:34:28.677 UTC [policies] NewManagerImpl -> DEBU 496d Proposed new policy Admins for Channel
+2018-07-04 10:34:28.677 UTC [common/configtx] addToMap -> DEBU 496e Adding to config map: [Group]  /Channel
+2018-07-04 10:34:28.677 UTC [common/configtx] addToMap -> DEBU 496f Adding to config map: [Group]  /Channel/Application
+2018-07-04 10:34:28.677 UTC [common/configtx] addToMap -> DEBU 4970 Adding to config map: [Group]  /Channel/Application/Org1MSP
+2018-07-04 10:34:28.678 UTC [common/configtx] addToMap -> DEBU 4971 Adding to config map: [Value]  /Channel/Application/Org1MSP/MSP
+2018-07-04 10:34:28.678 UTC [common/configtx] addToMap -> DEBU 4972 Adding to config map: [Policy] /Channel/Application/Org1MSP/Readers
+2018-07-04 10:34:28.678 UTC [common/configtx] addToMap -> DEBU 4973 Adding to config map: [Policy] /Channel/Application/Org1MSP/Writers
+2018-07-04 10:34:28.678 UTC [common/configtx] addToMap -> DEBU 4974 Adding to config map: [Policy] /Channel/Application/Org1MSP/Admins
+2018-07-04 10:34:28.678 UTC [common/configtx] addToMap -> DEBU 4975 Adding to config map: [Group]  /Channel/Application/Org2MSP
+2018-07-04 10:34:28.678 UTC [common/configtx] addToMap -> DEBU 4976 Adding to config map: [Value]  /Channel/Application/Org2MSP/MSP
+2018-07-04 10:34:28.678 UTC [common/configtx] addToMap -> DEBU 4977 Adding to config map: [Policy] /Channel/Application/Org2MSP/Admins
+2018-07-04 10:34:28.678 UTC [common/configtx] addToMap -> DEBU 4978 Adding to config map: [Policy] /Channel/Application/Org2MSP/Readers
+2018-07-04 10:34:28.678 UTC [common/configtx] addToMap -> DEBU 4979 Adding to config map: [Policy] /Channel/Application/Org2MSP/Writers
+2018-07-04 10:34:28.678 UTC [common/configtx] addToMap -> DEBU 497a Adding to config map: [Policy] /Channel/Application/Admins
+2018-07-04 10:34:28.678 UTC [common/configtx] addToMap -> DEBU 497b Adding to config map: [Policy] /Channel/Application/Readers
+2018-07-04 10:34:28.678 UTC [common/configtx] addToMap -> DEBU 497c Adding to config map: [Policy] /Channel/Application/Writers
+2018-07-04 10:34:28.678 UTC [common/configtx] addToMap -> DEBU 497d Adding to config map: [Group]  /Channel/Orderer
+2018-07-04 10:34:28.678 UTC [common/configtx] addToMap -> DEBU 497e Adding to config map: [Group]  /Channel/Orderer/OrdererOrg
+2018-07-04 10:34:28.678 UTC [common/configtx] addToMap -> DEBU 497f Adding to config map: [Value]  /Channel/Orderer/OrdererOrg/MSP
+2018-07-04 10:34:28.678 UTC [common/configtx] addToMap -> DEBU 4980 Adding to config map: [Policy] /Channel/Orderer/OrdererOrg/Writers
+2018-07-04 10:34:28.678 UTC [common/configtx] addToMap -> DEBU 4981 Adding to config map: [Policy] /Channel/Orderer/OrdererOrg/Admins
+2018-07-04 10:34:28.678 UTC [common/configtx] addToMap -> DEBU 4982 Adding to config map: [Policy] /Channel/Orderer/OrdererOrg/Readers
+2018-07-04 10:34:28.678 UTC [common/configtx] addToMap -> DEBU 4983 Adding to config map: [Value]  /Channel/Orderer/ChannelRestrictions
+2018-07-04 10:34:28.679 UTC [common/configtx] addToMap -> DEBU 4984 Adding to config map: [Value]  /Channel/Orderer/KafkaBrokers
+2018-07-04 10:34:28.679 UTC [common/configtx] addToMap -> DEBU 4985 Adding to config map: [Value]  /Channel/Orderer/ConsensusType
+2018-07-04 10:34:28.679 UTC [common/configtx] addToMap -> DEBU 4986 Adding to config map: [Value]  /Channel/Orderer/BatchSize
+2018-07-04 10:34:28.679 UTC [common/configtx] addToMap -> DEBU 4987 Adding to config map: [Value]  /Channel/Orderer/BatchTimeout
+2018-07-04 10:34:28.679 UTC [common/configtx] addToMap -> DEBU 4988 Adding to config map: [Policy] /Channel/Orderer/Admins
+2018-07-04 10:34:28.679 UTC [common/configtx] addToMap -> DEBU 4989 Adding to config map: [Policy] /Channel/Orderer/Readers
+2018-07-04 10:34:28.679 UTC [common/configtx] addToMap -> DEBU 498a Adding to config map: [Policy] /Channel/Orderer/Writers
+2018-07-04 10:34:28.679 UTC [common/configtx] addToMap -> DEBU 498b Adding to config map: [Policy] /Channel/Orderer/BlockValidation
+2018-07-04 10:34:28.679 UTC [common/configtx] addToMap -> DEBU 498c Adding to config map: [Value]  /Channel/OrdererAddresses
+2018-07-04 10:34:28.679 UTC [common/configtx] addToMap -> DEBU 498d Adding to config map: [Value]  /Channel/Consortium
+2018-07-04 10:34:28.679 UTC [common/configtx] addToMap -> DEBU 498e Adding to config map: [Value]  /Channel/HashingAlgorithm
+2018-07-04 10:34:28.679 UTC [common/configtx] addToMap -> DEBU 498f Adding to config map: [Value]  /Channel/BlockDataHashingStructure
+2018-07-04 10:34:28.679 UTC [common/configtx] addToMap -> DEBU 4990 Adding to config map: [Policy] /Channel/Admins
+2018-07-04 10:34:28.679 UTC [common/configtx] addToMap -> DEBU 4991 Adding to config map: [Policy] /Channel/Readers
+2018-07-04 10:34:28.679 UTC [common/configtx] addToMap -> DEBU 4992 Adding to config map: [Policy] /Channel/Writers
+2018-07-04 10:34:28.679 UTC [common/channelconfig] LogSanityChecks -> DEBU 4993 As expected, current configuration has policy '/Channel/Readers'
+2018-07-04 10:34:28.679 UTC [common/channelconfig] LogSanityChecks -> DEBU 4994 As expected, current configuration has policy '/Channel/Writers'
+2018-07-04 10:34:28.679 UTC [policies] Manager -> DEBU 4995 Manager Channel looking up path [Application]
+2018-07-04 10:34:28.679 UTC [policies] Manager -> DEBU 4996 Manager Channel has managers Application
+2018-07-04 10:34:28.679 UTC [policies] Manager -> DEBU 4997 Manager Channel has managers Orderer
+2018-07-04 10:34:28.679 UTC [policies] Manager -> DEBU 4998 Manager Channel/Application looking up path []
+2018-07-04 10:34:28.679 UTC [policies] Manager -> DEBU 4999 Manager Channel/Application has managers Org1MSP
+2018-07-04 10:34:28.679 UTC [policies] Manager -> DEBU 499a Manager Channel/Application has managers Org2MSP
+2018-07-04 10:34:28.679 UTC [common/channelconfig] LogSanityChecks -> DEBU 499b As expected, current configuration has policy '/Channel/Application/Readers'
+2018-07-04 10:34:28.679 UTC [common/channelconfig] LogSanityChecks -> DEBU 499c As expected, current configuration has policy '/Channel/Application/Writers'
+2018-07-04 10:34:28.679 UTC [common/channelconfig] LogSanityChecks -> DEBU 499d As expected, current configuration has policy '/Channel/Application/Admins'
+2018-07-04 10:34:28.679 UTC [policies] Manager -> DEBU 499e Manager Channel looking up path [Orderer]
+2018-07-04 10:34:28.679 UTC [policies] Manager -> DEBU 499f Manager Channel has managers Application
+2018-07-04 10:34:28.679 UTC [policies] Manager -> DEBU 49a0 Manager Channel has managers Orderer
+2018-07-04 10:34:28.679 UTC [policies] Manager -> DEBU 49a1 Manager Channel/Orderer looking up path []
+2018-07-04 10:34:28.679 UTC [policies] Manager -> DEBU 49a2 Manager Channel/Orderer has managers OrdererOrg
+2018-07-04 10:34:28.679 UTC [common/channelconfig] LogSanityChecks -> DEBU 49a3 As expected, current configuration has policy '/Channel/Orderer/BlockValidation'
+2018-07-04 10:34:28.679 UTC [msp] GetLocalMSP -> DEBU 49a4 Returning existing local MSP
+2018-07-04 10:34:28.679 UTC [msp] GetDefaultSigningIdentity -> DEBU 49a5 Obtaining default signing identity
+2018-07-04 10:34:28.679 UTC [msp] GetLocalMSP -> DEBU 49a6 Returning existing local MSP
+2018-07-04 10:34:28.679 UTC [msp] GetDefaultSigningIdentity -> DEBU 49a7 Obtaining default signing identity
+2018-07-04 10:34:28.679 UTC [msp/identity] Sign -> DEBU 49a8 Sign: plaintext: 0AAD060A0A4F7264657265724D535012...ECBF4340069657227DCF711DED236662
+2018-07-04 10:34:28.680 UTC [msp/identity] Sign -> DEBU 49a9 Sign: digest: 017BC4D915ADEC1FD4ABEA20F917A1CE04EA22B753CA8255025E3F3985E87821
+2018-07-04 10:34:28.680 UTC [orderer/commmon/multichannel] addLastConfigSignature -> DEBU 49aa [channel: mychannel] Detected lastConfigSeq transitioning from 11 to 12, setting lastConfigBlockNum from 211 to 212
+2018-07-04 10:34:28.680 UTC [msp] GetLocalMSP -> DEBU 49ab Returning existing local MSP
+2018-07-04 10:34:28.680 UTC [msp] GetDefaultSigningIdentity -> DEBU 49ac Obtaining default signing identity
+2018-07-04 10:34:28.680 UTC [orderer/commmon/multichannel] addLastConfigSignature -> DEBU 49ad [channel: mychannel] About to write block, setting its LAST_CONFIG to 212
+2018-07-04 10:34:28.680 UTC [msp] GetLocalMSP -> DEBU 49ae Returning existing local MSP
+2018-07-04 10:34:28.680 UTC [msp] GetDefaultSigningIdentity -> DEBU 49af Obtaining default signing identity
+2018-07-04 10:34:28.680 UTC [msp/identity] Sign -> DEBU 49b0 Sign: plaintext: 08D4010AAD060A0A4F7264657265724D...ECBF4340069657227DCF711DED236662
+2018-07-04 10:34:28.680 UTC [msp/identity] Sign -> DEBU 49b1 Sign: digest: F05BB1D7AC45F658DCEFB8ADA6C5EB5BEBB7D67AB691155883A076DA1348F674
+2018-07-04 10:34:28.682 UTC [fsblkstorage] indexBlock -> DEBU 49b2 Indexing block [blockNum=212, blockHash=[]byte{0xc6, 0x18, 0x35, 0x43, 0xd8, 0x9d, 0x4b, 0x3b, 0xc9, 0xa0, 0xab, 0xb7, 0xfc, 0x37, 0x0, 0xa7, 0x59, 0x66, 0x93, 0x41, 0xbd, 0x79, 0x43, 0xc9, 0xe1, 0x8a, 0x70, 0x80, 0x18, 0xd3, 0xcc, 0xf1} txOffsets=
+txId= locPointer=offset=71, bytesLength=12301
+]
+2018-07-04 10:34:28.682 UTC [fsblkstorage] updateCheckpoint -> DEBU 49b3 Broadcasting about update checkpointInfo: latestFileChunkSuffixNum=[0], latestFileChunksize=[3639058], isChainEmpty=[false], lastBlockNumber=[212]
+2018-07-04 10:34:28.682 UTC [orderer/commmon/multichannel] commitBlock -> DEBU 49b4 [channel: mychannel] Wrote block 212
