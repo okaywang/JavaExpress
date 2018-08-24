@@ -7,7 +7,11 @@ import org.hyperledger.fabric.sdk.User;
 import org.hyperledger.fabric.sdk.exception.InvalidArgumentException;
 import org.hyperledger.fabric.sdk.exception.TransactionException;
 
+import javax.annotation.Resources;
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 import java.security.PrivateKey;
@@ -25,14 +29,18 @@ public class ConfigHelper {
         Enrollment enrollment = new Enrollment() {
             @Override
             public PrivateKey getKey() {
+                String path = "";
+
                 String key = "-----BEGIN PRIVATE KEY-----\n" +
-                        "MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgpnDbEvHlh2ZGvcuW\n" +
-                        "+9h7RDWTKYIfyjAb6eNOYTJV6OuhRANCAASm9v5ZU9GAFyTVKGDacZl/M77nYKZS\n" +
-                        "dTp4gCRT4IHXgfI2U0YZ9SjezpSYY+eEFvYEUCFTkpZHsE196ozh5sH0\n" +
+                        "MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQg7QJe/7CDxJGUzzqi\n" +
+                        "2DiRuXPe7xqVMyWoKXZh2yM0PG+hRANCAAQvxXsZY0/Ma/3/2B9MHp5kI8i2pttD\n" +
+                        "YIGtqpz0/FctkCowYoag1f4a1jasitYiswZ0DFofugArwc7xFJZcJkVZ\n" +
                         "-----END PRIVATE KEY-----";
                 PrivateKey privateKey = null;
                 try {
-                    privateKey = PrivateKeyUtil.getPrivateKeyFromBytes(key.getBytes("UTF-8"));
+                    //byte[] bytes = Files.readAllBytes(Paths.get(this.getClass().getResource("/fabric/crypto-config/crypto-config/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp/keystore/d038d0fc224ed43a8f4668c3f466534aeb599d66d37ef930ff9096339294f4c8_sk").toURI()));
+                    byte[] bytes = Files.readAllBytes(Paths.get(this.getClass().getResource("/fabric/crypto-config/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/keystore/15a9e7b7af2f72e58af330d94d7fdefc9e0b8c2e2f5f9a557fdc9a9cb3abeff9_sk").toURI()));
+                    privateKey = PrivateKeyUtil.getPrivateKeyFromBytes(bytes);
                 } catch (IOException e) {
                     e.printStackTrace();
                 } catch (NoSuchProviderException e) {
@@ -41,26 +49,39 @@ public class ConfigHelper {
                     e.printStackTrace();
                 } catch (InvalidKeySpecException e) {
                     e.printStackTrace();
+                } catch (URISyntaxException e) {
+                    e.printStackTrace();
                 }
                 return privateKey;
             }
             //github.com/chaincode/chaincode_example02/go
             @Override
             public String getCert() {
-                return "-----BEGIN CERTIFICATE-----\n" +
-                        "MIICKjCCAdGgAwIBAgIRALmsOVUFJuQYakEfxMR6f1MwCgYIKoZIzj0EAwIwczEL\n" +
-                        "MAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG\n" +
-                        "cmFuY2lzY28xGTAXBgNVBAoTEG9yZzIuZXhhbXBsZS5jb20xHDAaBgNVBAMTE2Nh\n" +
-                        "Lm9yZzIuZXhhbXBsZS5jb20wHhcNMTgwNzA0MTI1NzU5WhcNMjgwNzAxMTI1NzU5\n" +
-                        "WjBsMQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMN\n" +
-                        "U2FuIEZyYW5jaXNjbzEPMA0GA1UECxMGY2xpZW50MR8wHQYDVQQDDBZBZG1pbkBv\n" +
-                        "cmcyLmV4YW1wbGUuY29tMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEpvb+WVPR\n" +
-                        "gBck1Shg2nGZfzO+52CmUnU6eIAkU+CB14HyNlNGGfUo3s6UmGPnhBb2BFAhU5KW\n" +
-                        "R7BNfeqM4ebB9KNNMEswDgYDVR0PAQH/BAQDAgeAMAwGA1UdEwEB/wQCMAAwKwYD\n" +
-                        "VR0jBCQwIoAgz6bWq8RVtKeyDCwK9KyIJkFrTipTpH0tE4gHtf8CyOIwCgYIKoZI\n" +
-                        "zj0EAwIDRwAwRAIgMVvo1wz2UtbbQJ55mMSoUFJPDEp3TMypPBRjR1Cft6cCIDe0\n" +
-                        "+LqI1K93f2lm6ufxU//Wb2U7eWO4SVy+9GCgCksW\n" +
-                        "-----END CERTIFICATE-----";
+//                return "-----BEGIN CERTIFICATE-----\n" +
+//                        "MIICKzCCAdGgAwIBAgIRAMzX5KBWGpcTXTK4NRAhQHswCgYIKoZIzj0EAwIwczEL\n" +
+//                        "MAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG\n" +
+//                        "cmFuY2lzY28xGTAXBgNVBAoTEG9yZzEuZXhhbXBsZS5jb20xHDAaBgNVBAMTE2Nh\n" +
+//                        "Lm9yZzEuZXhhbXBsZS5jb20wHhcNMTgwNzA2MDQwNTU5WhcNMjgwNzAzMDQwNTU5\n" +
+//                        "WjBsMQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMN\n" +
+//                        "U2FuIEZyYW5jaXNjbzEPMA0GA1UECxMGY2xpZW50MR8wHQYDVQQDDBZBZG1pbkBv\n" +
+//                        "cmcxLmV4YW1wbGUuY29tMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEcY5Dw1YP\n" +
+//                        "8d/e+0LFwqMNGrt/pouDGJ+FX42up68NlPDASAcH/YlM1m6m1HkmtNZ1Gv4hzXLe\n" +
+//                        "MjEswYZG2NCSOqNNMEswDgYDVR0PAQH/BAQDAgeAMAwGA1UdEwEB/wQCMAAwKwYD\n" +
+//                        "VR0jBCQwIoAgtX71wHITiV0qAzR3JPH1C9Gvg0TZ9C2L0IYuHXk0V/IwCgYIKoZI\n" +
+//                        "zj0EAwIDSAAwRQIhAOONG0ZFtzxM7g3cyiWpJvrqHWX7462KaGI5YjI7LNVnAiBz\n" +
+//                        "ZTMy93sjJlZmOChS/ZUe+FQ43uwLVLINHrRj5drBFQ==\n" +
+//                        "-----END CERTIFICATE-----";
+
+                try {
+                    byte[] bytes = Files.readAllBytes(Paths.get(this.getClass().getResource("/fabric/crypto-config/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/signcerts/Admin@org1.example.com-cert.pem").toURI()));
+                    //byte[] bytes = Files.readAllBytes(Paths.get(this.getClass().getResource("/fabric/crypto-config/crypto-config/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp/signcerts/Admin@org2.example.com-cert.pem").toURI()));
+                    return new String(bytes);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (URISyntaxException e) {
+                    e.printStackTrace();
+                }
+                return "";
             }
         };
 
@@ -73,9 +94,9 @@ public class ConfigHelper {
             @Override
             public PrivateKey getKey() {
                 String key = "-----BEGIN PRIVATE KEY-----\n" +
-                        "MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgcJNbPbRPPH01sbKn\n" +
-                        "yVUieNmbG7+WVpBz7lviOkS8mlmhRANCAARZpuT07zjVsSor/lVl+M0AxqKrOBSx\n" +
-                        "W6XmJGp5CPd5y7JFcO24PhfnzK5dF1quw0CmuBCjaHqr30Myw0isiScr\n" +
+                        "MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgdSxBMRxtitNqlE1G\n" +
+                        "YVyq23kxjKDeyensOZfUbaQN4+ehRANCAAQ4HBp17R6TDDxU50zFcimtdeaLc85I\n" +
+                        "8pEvpslg4O1XIh7lD5ZYP9oSV8rR4el+JnkX0qlOpdfxjomc0p9i56Wt\n" +
                         "-----END PRIVATE KEY-----";
                 PrivateKey privateKey = null;
                 try {
@@ -95,17 +116,17 @@ public class ConfigHelper {
             @Override
             public String getCert() {
                 return "-----BEGIN CERTIFICATE-----\n" +
-                        "MIICCzCCAbGgAwIBAgIRAMYT+1h9p2VUmCMEcux7CTUwCgYIKoZIzj0EAwIwaTEL\n" +
+                        "MIICCjCCAbGgAwIBAgIRANQQdn/oVIkBi2KHk8ENNg0wCgYIKoZIzj0EAwIwaTEL\n" +
                         "MAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG\n" +
                         "cmFuY2lzY28xFDASBgNVBAoTC2V4YW1wbGUuY29tMRcwFQYDVQQDEw5jYS5leGFt\n" +
-                        "cGxlLmNvbTAeFw0xODA3MDQxMjU3NTlaFw0yODA3MDExMjU3NTlaMFYxCzAJBgNV\n" +
+                        "cGxlLmNvbTAeFw0xODA3MDYwNDA1NTlaFw0yODA3MDMwNDA1NTlaMFYxCzAJBgNV\n" +
                         "BAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1TYW4gRnJhbmNp\n" +
                         "c2NvMRowGAYDVQQDDBFBZG1pbkBleGFtcGxlLmNvbTBZMBMGByqGSM49AgEGCCqG\n" +
-                        "SM49AwEHA0IABFmm5PTvONWxKiv+VWX4zQDGoqs4FLFbpeYkankI93nLskVw7bg+\n" +
-                        "F+fMrl0XWq7DQKa4EKNoeqvfQzLDSKyJJyujTTBLMA4GA1UdDwEB/wQEAwIHgDAM\n" +
-                        "BgNVHRMBAf8EAjAAMCsGA1UdIwQkMCKAIKWE0nkwrnW02iz17VdpmCGldXNIvuOo\n" +
-                        "DLm0IELAtVh/MAoGCCqGSM49BAMCA0gAMEUCIQD1h88UlVxAielxNcLz5MnAVHoo\n" +
-                        "vcLI+VUD2dLLW6U9CQIgLOGjaQP2wTYhPXVTZyXHUzQGCT6+NZhxHznrcadtA9M=\n" +
+                        "SM49AwEHA0IABDgcGnXtHpMMPFTnTMVyKa115otzzkjykS+myWDg7VciHuUPllg/\n" +
+                        "2hJXytHh6X4meRfSqU6l1/GOiZzSn2Lnpa2jTTBLMA4GA1UdDwEB/wQEAwIHgDAM\n" +
+                        "BgNVHRMBAf8EAjAAMCsGA1UdIwQkMCKAIOKxRrVpspqEqis64y9HVl/+fA+usAtV\n" +
+                        "O3/vqMe6Vdi5MAoGCCqGSM49BAMCA0cAMEQCID82T8AB/3/++e/dEqPNihEfC7rg\n" +
+                        "PDzgGQ2XhtvGyoAfAiB3CliAJJwH4DYHmHXa4+mAYbgqXQbmfkUfYUlx2StMaQ==\n" +
                         "-----END CERTIFICATE-----";
             }
         };
@@ -119,8 +140,8 @@ public class ConfigHelper {
 
         Channel channel =  client.newChannel(channelName);
         channel.addOrderer(client.newOrderer("orderer0","grpc://111.230.147.33:7050"));
-//        channel.addPeer(client.newPeer("peer0", "grpc://111.230.147.33:7051"));
-        channel.addPeer(client.newPeer("peer0", "grpc://111.230.147.33:9051"));
+        channel.addPeer(client.newPeer("peer0", "grpc://111.230.147.33:7051"));
+        //channel.addPeer(client.newPeer("peer0", "grpc://111.230.147.33:9051"));
         channel.initialize();
 
         return channel;

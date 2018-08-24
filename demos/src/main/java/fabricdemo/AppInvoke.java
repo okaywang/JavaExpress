@@ -7,8 +7,12 @@ import org.hyperledger.fabric.sdk.exception.ProposalException;
 import org.hyperledger.fabric.sdk.exception.TransactionException;
 import org.hyperledger.fabric.sdk.security.CryptoSuite;
 
+import javax.annotation.Resources;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.net.URISyntaxException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 import java.security.PrivateKey;
@@ -26,26 +30,27 @@ import static java.nio.charset.StandardCharsets.UTF_8;
  * Created by wangguojun01 on 2018/6/25.
  */
 public class AppInvoke {
-    public static void main(String[] args) throws InvalidArgumentException, ProposalException, IllegalAccessException, InvocationTargetException, InstantiationException, NoSuchMethodException, CryptoException, ClassNotFoundException, TransactionException, InterruptedException, ExecutionException, TimeoutException {
+    public static void main(String[] args) throws InvalidArgumentException, ProposalException, IllegalAccessException, InvocationTargetException, InstantiationException, NoSuchMethodException, CryptoException, ClassNotFoundException, TransactionException, InterruptedException, ExecutionException, TimeoutException, URISyntaxException, IOException {
         Enrollment enrollment = ConfigHelper.getEnrollment();
-        User user1 = new ClientUser("Admin", enrollment, "Org2MSP");
+        User user1 = new ClientUser("Admin", enrollment, "Org1MSP");
 
         HFClient client = HFClient.createNewInstance();
         client.setCryptoSuite(CryptoSuite.Factory.getCryptoSuite());
         client.setUserContext(user1);
         Channel channel = ConfigHelper.getChannel("mychannel", client);
 
+        invokeMethod(channel, user1, client);
+
+
         for (int i = 0; i < 35; i++) {
+            Thread.sleep(5000);
             invokeMethod(channel, user1, client);
         }
-
-
     }
 
     private static void invokeMethod(Channel channel, User user1, HFClient client) throws InvalidArgumentException, TransactionException, ProposalException, InterruptedException, ExecutionException, TimeoutException {
         ChaincodeID.Builder chaincodeIDBuilder = ChaincodeID.newBuilder().setName("mycc")
-                .setVersion("5.1");
-        //.setPath("github.com/hyperledger/fabric/examples/chaincode/go/chaincode_example02");
+                .setVersion("1.0");
 
         ChaincodeID chaincodeID = chaincodeIDBuilder.build();
 
@@ -57,6 +62,8 @@ public class AppInvoke {
         transactionProposalRequest.setFcn("move");
         //transactionProposalRequest.setProposalWaitTime(testConfig.getProposalWaitTime());
         transactionProposalRequest.setArgs("a", "b", "1");
+        //String v = randomString(1 * 800);
+        //transactionProposalRequest.setArgs("a", v);
 
 
         Map<String, byte[]> tm2 = ConfigHelper.getTransientMap();
@@ -101,9 +108,22 @@ public class AppInvoke {
 
         CompletableFuture<BlockEvent.TransactionEvent> transactionEventCompletableFuture = channel.sendTransaction(successful);
 
-        //BlockEvent.TransactionEvent txEvent = transactionEventCompletableFuture.get(1000, TimeUnit.SECONDS);
 
-        //out("Finished transaction with transaction id %s", txEvent.getTransactionID());
+        BlockEvent.TransactionEvent txEvent = transactionEventCompletableFuture.get(1000, TimeUnit.SECONDS);
+
+        out("Finished transaction with transaction id %s", txEvent.getTransactionID());
+    }
+
+    static String randomString(final int length) {
+        char[] chars = "abcdefghijklmnopqrstuvwxyz".toCharArray();
+        StringBuilder sb = new StringBuilder(20);
+        Random random = new Random();
+        for (int i = 0; i < length; i++) {
+            char c = chars[random.nextInt(chars.length)];
+            sb.append(c);
+        }
+        String output = sb.toString();
+        return output;
     }
 
     static void out(String format, Object... args) {

@@ -9,6 +9,18 @@ import java.util.Date;
  */
 public class AppTime {
     public static void main(String[] args) throws InterruptedException {
+
+        System.out.println("gdejicbegh".hashCode());
+        System.out.println("hgebcijedg".hashCode());
+
+        String s = "/aaa/bbb/cc.go";
+        System.out.println(s);
+
+        System.out.println(new Date().getTime());
+
+        System.out.println(s.substring(0, s.lastIndexOf("/")));
+
+
         Date d = new Date();
         System.out.println(d.getHours());
         System.out.println(d.getMinutes());

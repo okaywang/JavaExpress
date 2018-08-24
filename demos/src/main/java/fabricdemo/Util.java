@@ -20,6 +20,7 @@ import org.apache.commons.compress.archivers.ArchiveEntry;
 import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
 import org.apache.commons.compress.archivers.tar.TarArchiveOutputStream;
 import org.apache.commons.compress.compressors.gzip.GzipCompressorOutputStream;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
 import org.hyperledger.fabric.sdk.helper.Utils;
@@ -85,7 +86,9 @@ class Util {
             IOUtils.closeQuietly(archiveOutputStream);
         }
 
-        return new ByteArrayInputStream(bos.toByteArray());
+        byte[] bytes = bos.toByteArray();
+        FileUtils.writeByteArrayToFile(new File("D:\\workspace\\JavaExpress\\demos\\src\\main\\resources\\fabric\\gocc\\sample1\\src\\github.com\\aa.data"),bytes);
+        return new ByteArrayInputStream(bytes);
     }
 
     public static File findFileSk(File directory) {

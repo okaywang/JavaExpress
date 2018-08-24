@@ -7,8 +7,6 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
-import org.apache.http.entity.mime.HttpMultipartMode;
-import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.hyperledger.fabric.sdk.*;
@@ -29,11 +27,9 @@ import static java.lang.String.format;
  * Created by wangguojun01 on 2018/6/25.
  */
 public class AppBlockInfo {
-    private static final String CONFIGTXLATOR_LOCATION = "http://111.230.147.33:7059";
-
     public static void main(String[] args) throws InvalidArgumentException, ProposalException, IllegalAccessException, InvocationTargetException, InstantiationException, NoSuchMethodException, CryptoException, ClassNotFoundException, TransactionException, InterruptedException, ExecutionException, TimeoutException, IOException {
         Enrollment enrollment = ConfigHelper.getEnrollment();
-        User user1 = new ClientUser("Admin", enrollment, "Org2MSP");
+        User user1 = new ClientUser("Admin", enrollment, "Org1MSP");
 
         HFClient client = HFClient.createNewInstance();
         client.setCryptoSuite(CryptoSuite.Factory.getCryptoSuite());
@@ -45,23 +41,21 @@ public class AppBlockInfo {
         long height = blockchainInfo.getHeight();
 
         for (int i = 0; i < 5; i++) {
-            BlockInfo blockInfo = channel.queryBlockByNumber(height - i -1);
+            BlockInfo blockInfo = channel.queryBlockByNumber(height - i - 1);
             System.out.println(blockInfo.getBlockNumber());
             System.out.println(blockInfo.getEnvelopeCount());
+            System.out.println(blockInfo.getBlock().getData().getSerializedSize());
+            System.out.println(blockInfo.getBlock().getData().getSerializedSize() / blockInfo.getEnvelopeCount());
             System.out.println("-----------------------------------------------------");
         }
-
-
     }
 
     static void out(String format, Object... args) {
-
         System.err.flush();
         System.out.flush();
 
         System.out.println(format(format, args));
         System.err.flush();
         System.out.flush();
-
     }
 }

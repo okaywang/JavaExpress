@@ -1,6 +1,5 @@
 package dp.state.zhaopin;
 
-import ch.qos.logback.classic.LoggerContext;
 import ch.qos.logback.core.util.StatusPrinter;
 import dp.state.zhaopin.jr.Applying;
 import org.slf4j.Logger;

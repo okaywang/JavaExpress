@@ -5,6 +5,7 @@ import org.hyperledger.fabric.sdk.exception.*;
 import org.hyperledger.fabric.sdk.security.CryptoSuite;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.nio.file.Paths;
@@ -19,9 +20,9 @@ import static org.hyperledger.fabric.sdk.Channel.TransactionOptions.createTransa
  * Created by wangguojun01 on 2018/6/28.
  */
 public class AppCCInstall {
-    final static String CC_NAME = "mycc";
+    final static String CC_NAME = "baasce";
     //final static String CC_PATH = "github.com/chaincode/chaincode_example08/go";
-    final static String CC_PATH = "aaabbb";
+    final static String CC_PATH = "58.com/cc/n1";
 
     public static void main(String[] args) throws IllegalAccessException, InvocationTargetException, InvalidArgumentException, InstantiationException, NoSuchMethodException, CryptoException, ClassNotFoundException, TransactionException, ProposalException, IOException, ChaincodeEndorsementPolicyParseException {
         System.out.println("cc install");
@@ -32,11 +33,13 @@ public class AppCCInstall {
         client.setCryptoSuite(CryptoSuite.Factory.getCryptoSuite());
         client.setUserContext(user1);
 
+        System.out.println(System.currentTimeMillis());
         Channel channel = ConfigHelper.getChannel("mychannel", client);
+        System.out.println(System.currentTimeMillis());
 
         InstallProposalRequest installProposalRequest = client.newInstallProposalRequest();
         ChaincodeID.Builder chaincodeIDBuilder = ChaincodeID.newBuilder().setName(CC_NAME)
-                .setVersion("5.1")
+                .setVersion("1.0")
                 .setPath(CC_PATH);
         ChaincodeID chaincodeID = chaincodeIDBuilder.build();
 
@@ -45,11 +48,12 @@ public class AppCCInstall {
         //installProposalRequest.setChaincodeSourceLocation(Paths.get("D:\\workspace\\JavaExpress\\demos\\src\\main\\resources\\fabric\\gocc\\sample1").toFile());
 
         installProposalRequest.setChaincodeInputStream(Util.generateTarGzInputStream(
-                (Paths.get("D:\\workspace\\JavaExpress\\demos\\src\\main\\resources\\fabric\\gocc\\sample1\\src\\github.com\\abcde").toFile()),
+                (Paths.get("D:\\workspace\\JavaExpress\\demos\\src\\main\\resources\\fabric\\gocc\\sample1\\src\\github.com\\he").toFile()),
                 Paths.get("src", CC_PATH).toString()));
 
+        //installProposalRequest.setChaincodeInputStream(new FileInputStream("C:\\Users\\wangguojun01\\Documents\\baas\\testtar\\baas.data"));
 
-        installProposalRequest.setChaincodeVersion("5.1");
+        installProposalRequest.setChaincodeVersion("1.0");
         installProposalRequest.setChaincodeLanguage(TransactionRequest.Type.GO_LANG);
         out("Sending install proposal");
 

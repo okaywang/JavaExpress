@@ -16,6 +16,7 @@ public class App {
         jedisClusterNodes.add(new HostAndPort("127.0.0.1", 7379));
         JedisCluster jc = new JedisCluster(jedisClusterNodes);
         jc.set("foo", "bar");
+        jc.set("", "", "NX", "EX", 60);
         String value = jc.get("foo");
     }
 }

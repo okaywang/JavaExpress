@@ -7,6 +7,8 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
+//import org.apache.http.entity.mime.HttpMultipartMode;
+//import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.entity.mime.HttpMultipartMode;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.impl.client.HttpClients;
@@ -40,14 +42,17 @@ public class AppUpdateChannel {
 //    private static final String UPDATED_BATCH_TIMEOUT = "\"timeout\": \"2s\"";  // What we want to change it to.
 
 
-    private static final String ORIGINAL_BATCH_TIMEOUT = "\"max_message_count\": 10"; // Batch time out in configtx.yaml
-    private static final String UPDATED_BATCH_TIMEOUT = "\"max_message_count\": 3";  // What we want to change it to.
+    //private static final String ORIGINAL_BATCH_TIMEOUT = "\"max_message_count\": 5"; // Batch time out in configtx.yaml
+    //private static final String UPDATED_BATCH_TIMEOUT = "\"max_message_count\": 7";  // What we want to change it to.
+
+    private static final String ORIGINAL_BATCH_TIMEOUT = "\"preferred_max_bytes\": 524288"; // Batch time out in configtx.yaml
+    private static final String UPDATED_BATCH_TIMEOUT = "\"preferred_max_bytes\": 10000";  // What we want to change it to.
 
     private static final String CONFIGTXLATOR_LOCATION = "http://111.230.147.33:7059";
 
     public static void main(String[] args) throws InvalidArgumentException, ProposalException, IllegalAccessException, InvocationTargetException, InstantiationException, NoSuchMethodException, CryptoException, ClassNotFoundException, TransactionException, InterruptedException, ExecutionException, TimeoutException, IOException {
         Enrollment enrollment = ConfigHelper.getEnrollment();
-        User user1 = new ClientUser("Admin", enrollment, "Org2MSP");
+        User user1 = new ClientUser("Admin", enrollment, "Org1MSP");
 
         HFClient client = HFClient.createNewInstance();
         client.setCryptoSuite(CryptoSuite.Factory.getCryptoSuite());
@@ -58,7 +63,7 @@ public class AppUpdateChannel {
         final byte[] channelConfigurationBytes = channel.getChannelConfigurationBytes();
 
         HttpClient httpclient = HttpClients.createDefault();
-        HttpPost httppost = new HttpPost("http://111.230.147.33:7059" + "/protolator/decode/common.Config");
+        HttpPost httppost = new HttpPost(CONFIGTXLATOR_LOCATION + "/protolator/decode/common.Config");
         httppost.setEntity(new ByteArrayEntity(channelConfigurationBytes));
 
         HttpResponse response = httpclient.execute(httppost);
