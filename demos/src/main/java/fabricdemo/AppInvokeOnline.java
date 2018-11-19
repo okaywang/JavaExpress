@@ -24,22 +24,27 @@ import static java.lang.String.format;
  */
 public class AppInvokeOnline {
 
+    private static String user = "User1";
+    private static String mspId = "org1MSP";
+    private static String channelName = "wellchannel";
+    private static String ccName = "cc100";
+    private static String ccVersion = "1";
+
     public static void main(String[] args) throws InvalidArgumentException, ProposalException, IllegalAccessException, InvocationTargetException, InstantiationException, NoSuchMethodException, CryptoException, ClassNotFoundException, TransactionException, InterruptedException, ExecutionException, TimeoutException, URISyntaxException, IOException {
         Enrollment enrollment = ConfigHelperOnline.getEnrollment();
-        //User user1 = new ClientUser(ConfigHelperOnline.USERNAME, enrollment, ConfigHelperOnline.MSPID);
-        User user1 = new ClientUser("User1", enrollment, ConfigHelperOnline.MSPID);
+        User user1 = new ClientUser(user, enrollment, mspId);
 
         HFClient client = HFClient.createNewInstance();
         client.setCryptoSuite(CryptoSuite.Factory.getCryptoSuite());
         client.setUserContext(user1);
-        Channel channel = ConfigHelperOnline.getChannel(ConfigHelperOnline.CHANNELNAME, client, enrollment);
+        Channel channel = ConfigHelperOnline.getChannel(channelName, client, enrollment);
 
         invokeMethod(channel, user1, client);
     }
 
     private static void invokeMethod(Channel channel, User user1, HFClient client) throws InvalidArgumentException, TransactionException, ProposalException, InterruptedException, ExecutionException, TimeoutException {
-        ChaincodeID.Builder chaincodeIDBuilder = ChaincodeID.newBuilder().setName(ConfigHelperOnline.CCNAME)
-                .setVersion(ConfigHelperOnline.CCVERSION);
+        ChaincodeID.Builder chaincodeIDBuilder = ChaincodeID.newBuilder().setName(ccName)
+                .setVersion(ccVersion);
 
         ChaincodeID chaincodeID = chaincodeIDBuilder.build();
 

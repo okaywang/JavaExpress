@@ -26,11 +26,23 @@ import static java.nio.charset.StandardCharsets.UTF_8;
  * Created by wangguojun01 on 2018/6/26.
  */
 public class ConfigHelperOnline {
+
+    private static long appId = 90095;
+    private static String orgName = "org1";
+    private static String appName = "wjnetwell";
+    private static String domain = orgName + "-" + appName;
+    private static String user = "User1";
+    private static String ordererHostname = "orderer.wjnetwell";
+    private static String ordererGrpcUrl = "grpcs://10.132.22.9:36444";
+
+
+    private static String skName = "bc6f6f680d1b112503154671773ffb092695e54c8bcb02e5f219308952a158c8_sk";
+
     public static Enrollment getEnrollment() {
         Enrollment enrollment = new Enrollment() {
             @Override
             public PrivateKey getKey() {
-                String path = "";
+//                String path = "";
 
 //                String key = "-----BEGIN PRIVATE KEY-----\n" +
 //                        "MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgyEHu6B4/pH6liM3k\n" +
@@ -39,7 +51,10 @@ public class ConfigHelperOnline {
 //                        "-----END PRIVATE KEY-----";
                 PrivateKey privateKey = null;
                 try {
-                    byte[] bytes = Files.readAllBytes(Paths.get(this.getClass().getResource("/132/crypto-config/peerOrganizations/org1-wangjun1/users/User1@org1-wangjun1/msp/keystore/f6983b5d2768a4e25914d49c21c6fee7dd8af4e6af59892cca8faec04ec4282c_sk").toURI()));
+                    String path = "/" + String.valueOf(appId) + "/crypto-config/peerOrganizations/" + domain + "/users/" + user + "@" + domain + "/msp/keystore/" + skName;
+                    System.out.println(path);
+                    //byte[] bytes = Files.readAllBytes(Paths.get(this.getClass().getResource("/132/crypto-config/peerOrganizations/org1-wangjun1/users/User1@org1-wangjun1/msp/keystore/f6983b5d2768a4e25914d49c21c6fee7dd8af4e6af59892cca8faec04ec4282c_sk").toURI()));
+                    byte[] bytes = Files.readAllBytes(Paths.get(this.getClass().getResource(path).toURI()));
                     //byte[] bytes = Files.readAllBytes(Paths.get(this.getClass().getResource("/132/crypto-config/peerOrganizations/org1-wangjun1/users/Admin@org1.example.com/msp/keystore/15a9e7b7af2f72e58af330d94d7fdefc9e0b8c2e2f5f9a557fdc9a9cb3abeff9_sk").toURI()));
                     privateKey = PrivateKeyUtil.getPrivateKeyFromBytes(bytes);
                 } catch (IOException e) {
@@ -74,7 +89,10 @@ public class ConfigHelperOnline {
 //                        "-----END CERTIFICATE-----";
 
                 try {
-                    byte[] bytes = Files.readAllBytes(Paths.get(this.getClass().getResource("/132/crypto-config/peerOrganizations/org1-wangjun1/users/User1@org1-wangjun1/msp/signcerts/User1@org1-wangjun1-cert.pem").toURI()));
+                    String path = "/" + appId + "/crypto-config/peerOrganizations/" + domain + "/users/" + user + "@" + domain + "/msp/signcerts/" + user + "@" + domain + "-cert.pem";
+                    System.out.println(path);
+                    //byte[] bytes = Files.readAllBytes(Paths.get(this.getClass().getResource("/132/crypto-config/peerOrganizations/org1-wangjun1/users/User1@org1-wangjun1/msp/signcerts/User1@org1-wangjun1-cert.pem").toURI()));
+                    byte[] bytes = Files.readAllBytes(Paths.get(this.getClass().getResource(path).toURI()));
                     //byte[] bytes = Files.readAllBytes(Paths.get(this.getClass().getResource("/fabric/crypto-config/crypto-config/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp/signcerts/Admin@org2.example.com-cert.pem").toURI()));
                     return new String(bytes);
                 } catch (IOException e) {
@@ -143,23 +161,23 @@ public class ConfigHelperOnline {
         Channel channel = client.newChannel(channelName);
         Properties orderPeerProperties = new Properties();
         try {
-            orderPeerProperties.put("pemBytes", Files.readAllBytes(Paths.get("D:\\workspace\\JavaExpress\\demos\\src\\main\\resources\\132\\crypto-config\\ordererOrganizations\\wangjun1\\orderers\\orderer0.wangjun1\\tls\\server.crt")));
+            orderPeerProperties.put("pemBytes", Files.readAllBytes(Paths.get("D:\\Projects\\JavaExpress\\demos\\src\\main\\resources\\90095\\crypto-config\\ordererOrganizations\\wjnetwell\\orderers\\orderer.wjnetwell\\tls\\server.crt")));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        orderPeerProperties.setProperty("hostnameOverride", "orderer0.wangjun1");
+        orderPeerProperties.setProperty("hostnameOverride", ordererHostname);
         orderPeerProperties.setProperty("sslProvider", "openSSL");
         orderPeerProperties.setProperty("negotiationType", "TLS");
 
-        channel.addOrderer(client.newOrderer("orderer0.wangjun1", "grpcs://10.126.93.205:26350", orderPeerProperties));
+        channel.addOrderer(client.newOrderer(ordererHostname, ordererGrpcUrl, orderPeerProperties));
 
         Properties peerProperties = new Properties();
         try {
-            peerProperties.put("pemBytes", Files.readAllBytes(Paths.get("D:\\workspace\\JavaExpress\\demos\\src\\main\\resources\\132\\crypto-config\\peerOrganizations\\org1-wangjun1\\peers\\peer0.org1-wangjun1\\tls\\server.crt")));
+            peerProperties.put("pemBytes", Files.readAllBytes(Paths.get("D:\\Projects\\JavaExpress\\demos\\src\\main\\resources\\90095\\crypto-config\\peerOrganizations\\org1-wjnetwell\\peers\\peer0.org1-wjnetwell\\tls\\server.crt")));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        peerProperties.setProperty("hostnameOverride", "peer0.org1-wangjun1");
+        peerProperties.setProperty("hostnameOverride", "peer0." + domain);
         peerProperties.setProperty("sslProvider", "openSSL");
         peerProperties.setProperty("negotiationType", "TLS");
 
@@ -172,7 +190,7 @@ public class ConfigHelperOnline {
 //        peerProperties.put("clientCertBytes", enrollment.getCert().getBytes());
         //peerProperties.put("peer0.test-aaa1", tlsProperties);
         peerProperties.put("grpc.NettyChannelBuilderOption.maxInboundMessageSize", 9000000);
-        channel.addPeer(client.newPeer("peer0.org1-wangjun1", "grpcs://10.126.93.205:20718", peerProperties));
+        channel.addPeer(client.newPeer("peer0." + domain, "grpcs://10.132.22.9:31087", peerProperties));
         //channel.addPeer(client.newPeer("peer0", "grpc://111.230.147.33:9051"));
         channel.initialize();
 

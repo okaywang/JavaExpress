@@ -1,5 +1,5 @@
 import com.rabbitmq.client.*;
-import com.sun.xml.internal.messaging.saaj.soap.Envelope;
+
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
